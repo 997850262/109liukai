@@ -1,0 +1,161 @@
+/*.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}*/
+
+*{
+  margin:0;
+  padding: 0;
+  font-size: 20px;
+}
+
+.all{
+  width: 500px;
+  height: auto;
+  margin: 0 auto;
+  border: 2px solid  rgb(70, 69, 69);
+}
+.header{
+
+  width: 100%;
+  height: 100px;
+  background: rgb(70, 69, 69);
+}
+.header span{
+  justify-content: flex-start;
+  color:white;
+  margin-left: 25px;
+  line-height: 100px;
+}
+.header img{
+  margin-right: 50px;
+  margin-top:25px;
+  height: 50px;
+  width: 50px;
+  float: right;
+}
+.main{
+  display: flex;
+  flex-flow: column ;
+  justify-content: flex-start;
+  flex:0 1 auto ;
+  height: 400px;
+}
+.content{
+  width: 100%;
+  height: 100px; 
+  border-bottom:1px gray solid;
+}
+.content img{
+  margin-left: 25px;
+  margin-top:5px;
+  height: 70px;
+  width: 70px;
+  float: left;
+}
+.content div{
+  position: absolute;
+  margin-left: 60px;
+  margin-top: 25px;
+}
+.content .name{
+  margin-left: 50px;
+}
+.content .time{
+margin-left:180px;
+}
+.content .word{
+  margin-left: 50px;
+}
+.footer{
+  display: flex;
+
+  width: 100%;
+  height: 150px;
+  border:1px gray solid;
+}
+.footer ul{
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: space-around ;
+  align-items: center;
+}
+.footer ul li{
+  list-style: none;
+  flex-grow: 1;
+  float: left;
+}
+.footer img{
+  height: 60px;
+  width: 60px;
+}
+.footer span.i1{
+  
+  margin-top:50px;
+}
+.footer span.i2{
+  
+  margin-top:50px;
+}
+.footer span.i3{
+  margin-left:-5px;
+  margin-top:50px;
+}
+.footer span.i4{
+  margin-left: -5px;
+  margin-top:50px;
+}
+
+#item{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 300px; 
+  border-bottom:1px gray solid;
+}
+#Dialog{
+  display: flex;
+  flex-flow: column ;
+  justify-content: flex-start;
+  flex:0 1 auto ;
+  height: 400px;
+
+  position:absolute;
+  left:0px;
+  top:0px;
+  z-index:9;
+}
+#hd{
+  float: right;
+  width: 100%;
+  height: 100px;
+  background: rgb(70, 69, 69);
+}
+#button{
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: space-around ;
+  align-items: center;
+}
