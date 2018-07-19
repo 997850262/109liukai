@@ -1,203 +1,145 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import MessageItemView from './MessageItem.js';
+import DialogView from './DialogView.js';
+import HeaderView from './HeaderView.js';
+import fuxuan from './fuxuan.js';
 import './App.css';
-import MessagesView from './Message.js';
-import ButtonView from './button.js';
-import ShowDialog from './DialogView.js';
-import Headerview from './header.js';
 
-const img1=require("./source/发现.svg");
-const img2=require("./source/微信.svg");
-const img3=require("./source/微信支付.svg");
-const img4=require("./source/我.svg");
-const img5=require("./source/搜索.svg");
+// const icon = require('./resource/icon_Good_B-2.png');
+
+import icon from './source/icon_Good_B-2.png';
+// const img5=require("./source/搜索.svg");
 const img6=require("./source/添加.svg");
-const img7=require("./source/美团.svg");
-const img8=require("./source/腾讯新闻.svg");
-const img9=require("./source/通讯录.svg");
 
+class App extends React.Component {
 
-
-class App extends Component {
   constructor(props){
     super(props);
-    this.state={
+
+    this.state = {
       header:[
         {
         head:"微信",
-        img:img5,
-        
-        },
-        {
-        img:img6,
+        // img:img5,
+        imga:img6,
         }
       ],
-      message:[
-      {
-      img:img8,
-      name:"腾讯新闻",
-      word:"hello world",
-      time:"早上10:00",
-      },
-      {
-        img:img3,
-        name:"微信支付",
-        word:"hello world!",
-        time:"中午12:05",
-      },
-      {
-        img:img7,
-        name:"美团助手",
-        word:"hello world!!",
-        time:"下午5:00",
-      }
-    ],
-    button:[
-      {
-      img:img2,
-      name:"微信",
-      },
-      {
-        img:img9,
-        name:"通讯录",
-      },
-      {
-        img:img1,
-        name:"发现",
-      },
-      {
-        img:img4,
-        name:"我",
-      }
-
-    ],
-    ShowDialog:false
-      }
-  }
-  onItemClick=(Message)=>{
-console.log(Message);
-this.setState(
-  {
-    ShowDialog:true
-  }
-)
+      messages: [
+        {
+          icon: icon,
+          title: '小年糕',
+          descript: 'hello 小年糕',
+          time: '7-18 11:14'
+        },
+        {
+          icon: icon,
+          title: '小板凳',
+          descript: 'hello 小板凳',
+          time: '7-18 11:15',
+        },
+        {
+          icon: icon,
+          title: '小豆包',
+          descript: 'hi 小豆包',
+          time: '7-17 10:00',
+        }
+      ],
+      isDialogActive: false
     }
-  onbuttonClick=(button)=>{
-    console.log(button.name);
-    }
+  }
 
+  onItemClick = (message) => {
+    console.log(message);
+  }
+  
+  onHeadClick = () => {
+    this.setState(
+      {
+        isDialogActive:true
+      }
+    )
+       }
+       onDialogViewClick = () => {
+        const newMessages = this.state.messages.slice();
+        newMessages.unshift({
+          icon: icon,
+          title:1,
+          descript:2,
+          time:3
+        });
+        this.setState({
+          messages: newMessages
+        });
+      }
+        
+           
 
-renderDailogView=()=>{
-  if(this.setState.ShowDialog)
-  return null;
-}
-renderheader=()=>{
-  const head=this.state.header.map((item,idx)=>{
-    return <Headerview key={idx} item={item} />
-  });
-  return head;
-}
-renderMessage=()=>{
-  const msg=this.state.message.map((item,idx)=>{
-    return <MessagesView key={idx} item={item} onClick={this.onItemClick} />
-  });
-  return msg;
-}
+  // handleAddItem = () => {
+  //   const newMessages = this.state.messages.slice();
+  //   newMessages.unshift({
+  //     icon: icon,
+  //     title:1,
+  //     descript:2,
+  //     time:3
+  //   });
+  //   this.setState({
+  //     messages: newMessages
+  //   });
+  // }
 
-renderbutton=()=>{
-  const button=this.state.button.map((item,idx)=>{
-    return <ButtonView key={idx} item={item} onClick={this.onbuttonClick} />
-  });
-  return button;
-}
+  handleShowDialog = isActive => {
+    this.setState({ isDialogActive: isActive });
+    const Dialog=this.state.header.map((item,idx)=>{
+      return <DialogView key={idx} item={item} onClick={this.onDialogViewClick}/>
+    });
+    return Dialog;
+  }
+  
+  renderheader=()=>{
+    const head=this.state.header.map((item,idx)=>{
+      return <HeaderView key={idx} item={item} onClick={this.onHeadClick}/>
+    });
+    return head;
+  }
+  renderMessageList = () => {
+    const messageViews = this.state.messages.map((item,i) => {
+      return <MessageItemView key={i} item={item} onClick={this.onItemClick}/>
+    });
+    return messageViews;
+  }
+
 
   render() {
     return (
-      <div>
-        <div id="hd">
+      <div className="main">
+              <div className="header" >
         {
          this.renderheader()
         }
         </div>
-        <div id="Dialog">
-      {
-      this.renderDailogView()
-      }
-        </div>
-        <div id="item">
-      {
-        this.renderMessage()
-      }
-        </div>
-        <div id="button">
-      {
-        this.renderbutton()
-      }
-        </div>
-      </div>
-      /*<div className="all">
-        <div className="header">
-          <span>微信</span>
-          <img src="搜索.svg" alt="搜索" />
-          <img src="添加.svg" alt="添加" />
-        </div>
-        <div className="main">
-          <div className="content" id="item1" onclick="printf(0)">
-            <img src="腾讯新闻.svg" alt="腾讯新闻" id="img1" />
-            <div>
-              <span className="name" id="name1">腾讯新闻</span>
-              <span className="time" id="time1">早上10:00</span>
-              <br/>
-                <span className="word" id="word1">hello world</span>
-            </div>
+        { this.renderMessageList() }
+        <nav className="chat-nav">
+          <div className="chat-nav__item" >
+            <img className="chat-nav__item__icon" src={icon} alt="" />
+            <div className="chat-nav__item__name">微信</div>
           </div>
-            <div className="content" id="item2" onclick="printf(1)">
-              <img src="微信支付.svg" alt="微信支付" id="img2" />
-              <div>
-                <span className="name" id="name2">微信支付</span>
-                <span className="time" id="time2">中午12:05</span>
-                <br/>
-                  <span className="word" id="word2">hello world!</span>
-              </div>
-            </div>
-            <div className="content" id="item3" onclick="printf(2)">
-              <img src="美团.svg" alt="美团" id="img3" />
-              <div>
-                <span className="name" id="name3">美团助手</span>
-                <span className="time" id="time3">下午5:00</span>
-                <br/>
-                  <span className="word" id="word3">hello world!!</span>
-              </div>
-            </div>
-        </div>
-              <div className="footer">
-                <ul>
-                  <li>
-                  <img src="微信.svg" alt="微信" />
-                  <br/>
-                  <span className="i1">微信</span>
-                  </li>
-                  <li>
-                  <img src="通讯录.svg" alt="通讯录" />
-                  <br/>
-                  <span className="i2">通讯录</span>
-                  </li>
-                  <li>
-                  <img src="发现.svg" alt="发现" />
-                  <br/>
-                  <span className="i3">发现</span>
-                  </li>
-                  <li>
-                  <img src="我.svg" alt="我" />
-                  <br/>
-                  <span className="i4">我</span>
-                  </li>
-                </ul>
-              </div>
-      </div>*/
+          <div className="chat-nav__item">
+            <img className="chat-nav__item__icon" src={icon} alt="" />
+            <div className="chat-nav__item__name">通讯录</div>
+          </div>
+          <div className="chat-nav__item">
+            <img className="chat-nav__item__icon" src={icon} alt="" />
+            <div className="chat-nav__item__name">发现</div>
+          </div>
+          <div className="chat-nav__item" >
+            <img className="chat-nav__item__icon" src={icon} alt="" />
+            <div className="chat-nav__item__name">我</div>
+          </div>
+        </nav>
+        <DialogView isActive={this.state.isDialogActive} onCloseClick={this.handleShowDialog} onClick={this.onDialogViewClick}/>
+      </div>
+    );
+  }
+}
 
-                    );
-                  }
-                }
-                
-                export default App;
+export default App;

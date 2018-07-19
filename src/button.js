@@ -15,12 +15,12 @@ export default class button extends Component{
                 render(){
 const {item}=this.props
 return(
-              <div className="footer" id="button">
+              <div className="footer" id="button" onClick={this.onbuttonClick}>
                 <ul>
                   <li>
                   <img src={item.img} alt="微信" />
                   <br/>
-                  <span className="i1">微信</span>
+                  <span className="i1">{item.name}</span>
                   </li>
                   {/* <li>
                   <img src={item.img} alt="通讯录" />
