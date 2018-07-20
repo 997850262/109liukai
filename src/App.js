@@ -2,7 +2,6 @@ import React from 'react';
 import MessageItemView from './MessageItem.js';
 import DialogView from './DialogView.js';
 import HeaderView from './HeaderView.js';
-import fuxuan from './fuxuan.js';
 import './App.css';
 
 // const icon = require('./resource/icon_Good_B-2.png');
@@ -44,7 +43,8 @@ class App extends React.Component {
           time: '7-17 10:00',
         }
       ],
-      isDialogActive: false
+      isDialogActive: false,
+      tianjia:false,
     }
   }
 
@@ -55,24 +55,65 @@ class App extends React.Component {
   onHeadClick = () => {
     this.setState(
       {
-        isDialogActive:true
+        isDialogActive:true,
+        tianjia:true
       }
     )
        }
-       onDialogViewClick = () => {
+       
+       onDialogViewClick = obj => {
+        //this.state={title, descript,time}=this.props
         const newMessages = this.state.messages.slice();
         newMessages.unshift({
           icon: icon,
-          title:1,
-          descript:2,
-          time:3
+          ...obj,
+/*title:obj.title,//{this.state.title}
+          descript:obj.descript,
+          time:obj.*/
         });
         this.setState({
           messages: newMessages
         });
       }
-        
-           
+      onfuxuanClick=(item,idx)=>{
+         this.index=idx;
+        this.setState(
+          {
+            isDialogActive:true,
+            tianjia:false
+          })
+      }
+
+      shanchu=()=>{
+        if(this.index!=null)
+        {
+          const newMessages = this.state.messages.slice();
+          newMessages.splice(this.index,1);
+          this.setState({
+            messages: newMessages
+          });
+        }
+        this.index=null;
+         //const {this.index,messages}=this.state;
+//         slice
+// Splice(idx,1);
+////置顶 unshift
+// this.setState({
+
+// })
+      }
+      zhiding=()=>{
+        if(this.index!=null)
+        {
+          const newMessages = this.state.messages.slice();
+          const a=newMessages.splice(this.index,1);
+          newMessages.unshift(a[0]);
+          this.setState({
+            messages: newMessages
+          });
+        }
+        this.index=null;
+      }
 
   // handleAddItem = () => {
   //   const newMessages = this.state.messages.slice();
@@ -87,12 +128,12 @@ class App extends React.Component {
   //   });
   // }
 
-  handleShowDialog = isActive => {
-    this.setState({ isDialogActive: isActive });
-    const Dialog=this.state.header.map((item,idx)=>{
-      return <DialogView key={idx} item={item} onClick={this.onDialogViewClick}/>
-    });
-    return Dialog;
+  handleShowDialog = (isActive,isjia) => {
+    this.setState({ isDialogActive: isActive,tianjia:isjia });
+    // const Dialog=this.state.header.map((item,idx)=>{
+    //   return <DialogView key={idx} item={item} onClick={this.onDialogViewClick}/>
+    // });
+    // return Dialog;
   }
   
   renderheader=()=>{
@@ -103,7 +144,7 @@ class App extends React.Component {
   }
   renderMessageList = () => {
     const messageViews = this.state.messages.map((item,i) => {
-      return <MessageItemView key={i} item={item} onClick={this.onItemClick}/>
+      return <MessageItemView idx={i} item={item} /*onClick={this.onItemClick}*/ onClick={this.onfuxuanClick}/>
     });
     return messageViews;
   }
@@ -136,7 +177,7 @@ class App extends React.Component {
             <div className="chat-nav__item__name">我</div>
           </div>
         </nav>
-        <DialogView isActive={this.state.isDialogActive} onCloseClick={this.handleShowDialog} onClick={this.onDialogViewClick}/>
+        <DialogView isActive={this.state.isDialogActive} isjia={this.state.tianjia} onCloseClick={this.handleShowDialog} onClick={this.onDialogViewClick} onshanchuClick={this.shanchu} onzhidingClick={this.zhiding}/>
       </div>
     );
   }

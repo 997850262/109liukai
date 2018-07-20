@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 
 export default class MessageItem extends Component {
-  onMsgClick = () => {
+  /*onMsgClick = () => {
     const { onClick, item } = this.props;
     if (onClick) {
       onClick(item);
+    }
+  }*/
+  onfxClick = () => {
+    const { onClick, item,idx } = this.props;
+    if (onClick) {
+      onClick(item,idx);
     }
   }
 
@@ -19,7 +25,7 @@ export default class MessageItem extends Component {
             <div className="chat-list__item__content__time">{item['time']}</div>
           </div>
           <div className="chat-list__item__content__recentMsg">{item['descript']}</div>
-          <div className="gengduo">更多</div>
+          <div className="gengduo" onClick={this.onfxClick}>更多</div>
         </div>
       </li>
     );
