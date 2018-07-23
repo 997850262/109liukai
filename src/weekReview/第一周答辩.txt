@@ -1,4 +1,4 @@
-本周主要学习了html+css、javaScrpt、react
+本周主要学习了html+css、javaScript、react
 html+css:
 类选择器:.
 ID选择器:#

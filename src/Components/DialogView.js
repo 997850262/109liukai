@@ -95,17 +95,11 @@ export default class DialogView extends Component {
       time:e.target.value
     })
   }
-  /*addItem = () => {
-    const obj = { "title":this.state.title, "descript": this.state.descript, "time": this.state.time};
-    this.props.onClick(obj);
-  }*/
+
   render() {
     console.log('component render');
     const { isActive,isjia } = this.props;
-    // const a=[];
-    // a[0]=this.title.value;
-    // a[1]=this.descript.value;
-    // a[2]=this.time.value;
+
    
     if (!isActive) {
       return null;

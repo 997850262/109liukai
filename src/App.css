@@ -45,6 +45,10 @@ h2 {
   padding-left: 10px;
   border-bottom: 1px solid #eee;
 }
+.blank{
+  height: 30px;
+  margin-left: 45%;
+}
 .chat-list__item {
   display: flex;
   padding: 10px;
@@ -118,4 +122,11 @@ h2 {
 .chat-nav__item__name {
   font-size: 12px;
   color: #aaa;
+}
+
+.select{
+  float: left;
+}
+.notselect{
+  float: left;
 }
