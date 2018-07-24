@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MessageItemView from '../Components/MessageItem.js';
 import DialogView from '../Components/DialogView.js';
+import DialogViewMore from '../Components/DialogViewMore.js';
 import HeaderView from '../Components/HeaderView.js';
 import Blank from '../Components/Blank.js';
 import Footer from '../Components/Footer.js';
@@ -165,10 +166,17 @@ export default class Todo extends Component {
     });
     return messageViews;
   }
-  Footer=()=>{
-      return <Footer />
+  // Footer=()=>{
+  //     return <Footer />
+  // }
+  addDialog = () => {
+    const { tianjia } = this.state;
+    if(!tianjia) {
+      return <DialogViewMore isActive={this.state.isDialogActive} isjia={this.state.tianjia} onCloseClick={this.handleShowDialog} onClick={this.onDialogViewClick} onshanchuClick={this.shanchu} onzhidingClick={this.zhiding} onduoxuanClick={this.duoxuan}/>;
+    }else {
+    return <DialogView isActive={this.state.isDialogActive} isjia={this.state.tianjia} onCloseClick={this.handleShowDialog} onClick={this.onDialogViewClick} />
+    }
   }
-
   render() {
     return (
       <div className="main">
@@ -181,8 +189,12 @@ export default class Todo extends Component {
         <div className="blank">
         <Blank duoxuan={this.state.duoxuan} select={this.state.select} onClick={this.selectdelect}/>
         </div>
-        <div>{this.Footer()}</div>
-        <DialogView isActive={this.state.isDialogActive} isjia={this.state.tianjia} onCloseClick={this.handleShowDialog} onClick={this.onDialogViewClick} onshanchuClick={this.shanchu} onzhidingClick={this.zhiding} onduoxuanClick={this.duoxuan}/>
+        <div><Footer />
+        {/* {this.Footer()} */}
+        </div>
+        {this.addDialog()}
+        {/* <DialogView isActive={this.state.isDialogActive} isjia={this.state.tianjia} onCloseClick={this.handleShowDialog} onClick={this.onDialogViewClick} />
+        <DialogViewMore isActive={this.state.isDialogActive} isjia={this.state.tianjia} onCloseClick={this.handleShowDialog} onClick={this.onDialogViewClick} onshanchuClick={this.shanchu} onzhidingClick={this.zhiding} onduoxuanClick={this.duoxuan}/> */}
       </div>
     );
   }

@@ -18,13 +18,22 @@ export default class MessageItem extends Component {
     onduoxuanClick(idx,e.target.checked);
   }
 
+  addInput = () => {
+    const { duoxuan } = this.props;
+    if(!duoxuan) {
+      return null;
+    }else {
+      return <input className="notselect" type="checkbox" onClick={this.duoxuanonClick} />
+    }
+  }
 
   render(){
     const { item ,duoxuan,select} = this.props;
     //this.idx=new Array[]
-    if (!duoxuan) {
+    // if (!duoxuan) {
     return(
       <li className="chat-list__item" onClick={this.onMsgClick}>
+      {this.addInput()}
         <img className="chat-list__item__avatar" src={item.icon} alt="" />
         <div className="chat-list__item__content">
           <div className="chat-list__item__content__topBar">
@@ -36,8 +45,8 @@ export default class MessageItem extends Component {
         </div>
       </li>
     );
-  }
-else
+  //}
+/*else
 {
   // if(!select)
   // {
@@ -73,6 +82,6 @@ else
 //     </li>
 //   );
 // }
-}
+}*/
 }
 }

@@ -12,15 +12,15 @@ export default class HeaderView extends Component{
     }
 
 
-                render(){
-const {item}=this.props
-return(
-<div className="header" id="hd">
+    render(){
+      const {item}=this.props
+      return(
+        <div className="header" id="hd">
           <span>微信</span>
           <img src={item.imga} alt="添加" onClick={this.handleShowDialog.bind(this, true)} />
           {/* <img src={item.img} alt="搜索" /> */}
 
-        </div>
+        </div> 
 )
 
 }       

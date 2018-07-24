@@ -54,27 +54,27 @@ export default class DialogView extends Component {
     }
     }
 
-    zhiding=()=>{
-      this.props.onCloseClick(false);
-    const {onClick,idx} =this.props
-    if (onClick) {
-      this.props.onzhidingClick()
-    }
-    }
-    shanchu=()=>{
-      this.props.onCloseClick(false);
-      const { onClick} = this.props;
-      if (onClick) {
-        this.props.onshanchuClick()
-      }
-    }
-    duoxuan=()=>{
-      this.props.onCloseClick(false);
-      const { onClick} = this.props;
-      if (onClick) {
-        this.props.onduoxuanClick()
-      }
-    }
+    // zhiding=()=>{
+    //   this.props.onCloseClick(false);
+    // const {onClick,idx} =this.props
+    // if (onClick) {
+    //   this.props.onzhidingClick()
+    // }
+    // }
+    // shanchu=()=>{
+    //   this.props.onCloseClick(false);
+    //   const { onClick} = this.props;
+    //   if (onClick) {
+    //     this.props.onshanchuClick()
+    //   }
+    // }
+    // duoxuan=()=>{
+    //   this.props.onCloseClick(false);
+    //   const { onClick} = this.props;
+    //   if (onClick) {
+    //     this.props.onduoxuanClick()
+    //   }
+    // }
 
 
   handletitle(e)
@@ -100,43 +100,25 @@ export default class DialogView extends Component {
     console.log('component render');
     const { isActive,isjia } = this.props;
 
-   
     if (!isActive) {
       return null;
     }
-    else{
-      if(isjia==true)
-    return (
-      <div className="mask-ctn">
-        <div className="close-btn" onClick={this.handleClose}>close</div>
-        <div className="dialog-ctn">
-        <div>标题</div><input type="text" id="title"  onChange={this.handletitle}/>
-        <div>描述</div><input type="text" id="descript"  onChange={this.handledescript}/>
-        <div>时间</div><input type="text" id="time"  onChange={this.handletime}/>
-      <div className="queding" onClick={this.DialogView}>
-      <input type="button" name="确定" value="确定"/>
-      </div>
-        </div>
-      </div>
-    );
-else
-    return(
-      <div className="mask-ctn">
-      <div className="close-btn" onClick={this.handleClose}>close</div>
-      <div className="dialog-ctn">
-          <div onClick={this.zhiding}>
-          <input type="button" name="置顶" value="置顶"/>
+    else {
+      //if(isjia){
+        return (
+          <div className="mask-ctn">
+            <div className="close-btn" onClick={this.handleClose}>close</div>
+            <div className="dialog-ctn">
+              <div>标题</div><input type="text" id="title"  onChange={this.handletitle}/>
+              <div>描述</div><input type="text" id="descript"  onChange={this.handledescript}/>
+              <div>时间</div><input type="text" id="time"  onChange={this.handletime}/>
+              <div className="queding" onClick={this.DialogView}>
+                <input type="button" name="确定" value="确定"/>
+              </div>
+            </div>
           </div>
-          <div  onClick={this.shanchu}>
-          <input type="button" name="删除" value="删除"/>
-          </div>
-          <div  onClick={this.duoxuan}>
-          <input type="button" name="多选" value="多选"/>
-          </div>
-      </div>
-      </div>
-  );
+        );}
+    }
   }
-}
-}
+//}
 
