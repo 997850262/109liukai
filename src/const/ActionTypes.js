@@ -1,0 +1,5 @@
+export const ADD_TODO = 'ADD_TODO'
+export const more = 'more'
+export const shanchu = 'shanchu'
+export const zhiding = 'zhiding'
+export const duoxuan = 'duoxuan'

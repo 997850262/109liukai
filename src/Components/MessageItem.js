@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { more } from '../../actions'
 
 export default class MessageItem extends Component {
   /*onMsgClick = () => {
@@ -8,14 +9,23 @@ export default class MessageItem extends Component {
     }
   }*/
   onfxClick = () => {
-    const { onClick, item,idx } = this.props;
-    if (onClick) {
-      onClick(item,idx);
-    }
+    const {idx,isDialogActive,tianjia,dispatch } = this.props;
+    // if (onClick) {
+    //   onClick(item,idx);
+    // }
+    this.index=idx;
+    this.setState(
+      {
+        isDialogActive:true,
+        tianjia:false
+      })
+      const action=more(idx,isDialogActive,tianjia)
+      dispatch(action)
   }
   duoxuanonClick=(e)=>{
-    const { onduoxuanClick, item,idx } = this.props;
-    onduoxuanClick(idx,e.target.checked);
+    // const { onduoxuanClick, item,idx } = this.props;
+    // onduoxuanClick(idx,e.target.checked);
+    this.arr[idx] = checked;
   }
 
   addInput = () => {
@@ -32,7 +42,7 @@ export default class MessageItem extends Component {
     //this.idx=new Array[]
     // if (!duoxuan) {
     return(
-      <li className="chat-list__item" onClick={this.onMsgClick}>
+      <li className="chat-list__item" /*onClick={this.onMsgClick}*/>
       {this.addInput()}
         <img className="chat-list__item__avatar" src={item.icon} alt="" />
         <div className="chat-list__item__content">

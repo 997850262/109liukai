@@ -2,7 +2,9 @@
 .item{
     display: flex;
     flex-direction: column;
-    width: 100px;
+    width: 500px;
+    height: 100px;
+    border:1px solid rgb(72, 73, 73)
   }
   .nav__item{
       display: flex;
@@ -13,28 +15,30 @@
       margin-right: 100px;
   }
   .tupian{
+    position: absolute;
       width: 50px;
       height: 30px;
     display: flex;
     flex-direction: row;
+    margin-left: 200px
   }
   .first{
-    background: darkred;
+    /* background: darkred; */
     width: 30px;
     border-radius: 50%;
   }
   .second{
-    background: rgb(209, 169, 67);
+    /* background: rgb(209, 169, 67); */
     width: 30px;
     border-radius: 50%;
   }
   .third{
-    background: darkblue;
+    /* background: darkblue; */
     width: 30px;
     border-radius: 50%;
   }
   .fourth{
-    background: chartreuse;
+    /* background: chartreuse; */
     width: 30px;
     border-radius: 50%;
   }

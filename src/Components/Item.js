@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './Item.css';
-import icon from '../source/勾.png';
-import icon1 from '../source/圆圈.png';
-import icon2 from '../source/圆圈2.png';
-import icon3 from '../source/圆圈3.png';
-import icon4 from '../source/圆圈4.png';
+//import icon from '../source/勾.png';
+// import icon1 from '../source/圆圈.png';
+// import icon2 from '../source/圆圈2.png';
+// import icon3 from '../source/圆圈3.png';
+// import icon4 from '../source/圆圈4.png';
 export default class Item extends Component{
     // constructor(props){
     //     super(props);
@@ -18,26 +18,26 @@ export default class Item extends Component{
     color1=(idx)=>{
         const { messages} = this.props;
         if(messages[idx].color1==false)
-        return <img className="first" src={icon1} alt=""/>
-        else return <img className="first" src={icon} alt=""/>
+        return <img className="first" src={messages[idx].arr[0]} alt="1.1"/>
+        else return <img className="first" src={messages[idx].arr1[0]} alt="1.2"/>
     }
     color2=(idx)=>{
         const { messages} = this.props;
         if(messages[idx].color2==false)
-        return <img className="second" src={icon2} alt=""/>
-        else return <img className="second" src={icon} alt=""/>
+        return <img className="second" src={messages[idx].arr[1]} alt="2.1"/>
+        else return <img className="second" src={messages[idx].arr1[1]} alt="2.2"/>
     }
     color3=(idx)=>{
         const { messages} = this.props;
         if(messages[idx].color3==false)
-        return <img className="third" src={icon3} alt=""/>
-        else return <img className="third" src={icon} alt=""/>
+        return <img className="third" src={messages[idx].arr[2]} alt="3.1"/>
+        else return <img className="third" src={messages[idx].arr1[2]} alt="3.2"/>
     }
     color4=(idx)=>{
         const { messages} = this.props;
         if(messages[idx].color4==false)
-        return <img className="fourth" src={icon4} alt=""/>
-        else return <img className="fourth" src={icon} alt=""/>
+        return <img className="fourth" src={messages[idx].arr[3]} alt="4.1"/>
+        else return <img className="fourth" src={messages[idx].arr1[3]} alt="4.2"/>
     }
     setColor1=(idx,event)=>{
         const { onClick1,messages} = this.props;
@@ -76,7 +76,7 @@ export default class Item extends Component{
     }
 
     render(){
-        const { messages,color1} = this.props;
+        const { messages} = this.props;
         return(
             <div>
                 {

@@ -1,34 +1,57 @@
 import React, { Component } from 'react';
 import './DialogView.css';
+import { shanchu } from '../actions'
+import { zhiding } from '../actions'
+import { duoxuan } from '../actions'
 
-export default class DialogView extends Component {
+const icon = require('./resource/icon_Good_B-2.png');
+export default class DialogViewMore extends Component {
   handleClose = () => {
-    this.props.onCloseClick(false);
+    //this.props.onCloseClick(false);
+    const{isDialogActive,tianjia}=this.props
+    this.setState({ isDialogActive: false,tianjia:false });
   }
 zhiding=()=>{
-    this.props.onCloseClick(false);
-  const {onClick,idx} =this.props
-  if (onClick) {
-    this.props.onzhidingClick()
-  }
+    // this.props.onCloseClick(false);
+  // const {onClick,idx} =this.props
+  // if (onClick) {
+  //   this.props.onzhidingClick()
+  // }
+this.handleClose();
+const{dispatch,idx,messages,isDialogActive,duoxuan,vip}=thsi.props;
+const action=shanchu(idx,messages,this.state.isDialogActive,duoxuan,vip)
+dispatch(action)
+
   }
   shanchu=()=>{
-    this.props.onCloseClick(false);
-    const { onClick} = this.props;
-    if (onClick) {
-      this.props.onshanchuClick()
-    }
+    // this.props.onCloseClick(false);
+    // const { onClick} = this.props;
+    // if (onClick) {
+    //   this.props.onshanchuClick()
+    // }
+    const{dispatch,idx,messages,isDialogActive,duoxuan}=thsi.props;
+    this.handleClose();
+    const action=shanchu(idx,messages,this.state.isDialogActive,duoxuan)
+    dispatch(action)
   }
   duoxuan=()=>{
-    this.props.onCloseClick(false);
-    const { onClick} = this.props;
-    if (onClick) {
-      this.props.onduoxuanClick()
-    }
+    // this.props.onCloseClick(false);
+    // const { onClick} = this.props;
+    // if (onClick) {
+    //   this.props.onduoxuanClick()
+    // }
+    this.handleClose();
+    this.setState({
+      duoxuan:true,
+      //select:true
+    })
+const{dispatch,idx,messages,isDialogActive,duoxuan}=thsi.props;
+const action=shanchu(idx,messages,this.state.isDialogActive,duoxuan)
+dispatch(action)
   }
   render(){
-    const { isActive,isjia } = this.props;
-    if (!isActive) {
+    const { isDialogActive,tianjia } = this.props;
+    if (!isDialogActive) {
         return null;
       }
     else {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './DialogView.css';
-
+import { addTodo } from '../../actions'
+const icon = require('./resource/icon_Good_B-2.png');
 export default class DialogView extends Component {
 
   constructor(props) {
@@ -40,43 +41,18 @@ export default class DialogView extends Component {
   }
 
   handleClose = () => {
-    this.props.onCloseClick(false);
+    //this.props.onCloseClick(false);
+    const{isDialogActive,tianjia}=this.props
+    this.setState({ isDialogActive: false,tianjia:false });
   }
 
   DialogView=()=>{
-    this.props.onCloseClick(false);
-    const {onClick} =this.props
+    this.handleClose();
+    const{dispatch}=this.props;
     const obj = { "title":this.state.title, "descript": this.state.descript, "time": this.state.time};
-//+验证
-    if(onClick)
-    {
-    onClick (obj)
+    const action =addTodo(obj,isDialogActive,tianjia)
+    dispatch(action);
     }
-    }
-
-    // zhiding=()=>{
-    //   this.props.onCloseClick(false);
-    // const {onClick,idx} =this.props
-    // if (onClick) {
-    //   this.props.onzhidingClick()
-    // }
-    // }
-    // shanchu=()=>{
-    //   this.props.onCloseClick(false);
-    //   const { onClick} = this.props;
-    //   if (onClick) {
-    //     this.props.onshanchuClick()
-    //   }
-    // }
-    // duoxuan=()=>{
-    //   this.props.onCloseClick(false);
-    //   const { onClick} = this.props;
-    //   if (onClick) {
-    //     this.props.onduoxuanClick()
-    //   }
-    // }
-
-
   handletitle(e)
   {
     this.setState({
@@ -98,9 +74,9 @@ export default class DialogView extends Component {
 
   render() {
     console.log('component render');
-    const { isActive,isjia } = this.props;
+    const { isDialogActive,tianjia } = this.props;
 
-    if (!isActive) {
+    if (!isDialogActive) {
       return null;
     }
     else {

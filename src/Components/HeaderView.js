@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-
+import { addTodo } from '../../actions'
 
 export default class HeaderView extends Component{
   handleShowDialog=()=>{
-    const {onClick,item} =this.props
-    if(onClick)
-    {
-    onClick (item)
-    }
+    const {isDialogActive,tianjia} =this.props
+    this.setState(
+      {
+        isDialogActive:true,
+        tianjia:true
+      }
+    )
 
     }
 
