@@ -21,14 +21,15 @@ export default class Blank extends Component {
         //   duoxuan:false,
         //   //select:false
         // });
-        const{todoActions,idx,messages,isDialogActive,duoxuan}=this.props;
-        todoActions.duoxuan(idx,messages,isDialogActive,duoxuan);
+
+        const{todoActions}=this.props;
+        todoActions.selectdelect();
       }
 
 
 render(){
-const {duoxuan,select} = this.props;
-if(!duoxuan)
+const {state,duoxuan,select} = this.props;
+if(!state.duoxuan)
 {return null}
 else{
 return(

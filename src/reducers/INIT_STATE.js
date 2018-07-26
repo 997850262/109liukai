@@ -38,5 +38,6 @@ export const init_state = {
     isDialogActive: false,
     tianjia:false,
     duoxuan:false,
-    idx:null
+    idx:null,
+    arr:[]
   }

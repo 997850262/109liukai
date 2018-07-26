@@ -10,31 +10,39 @@ export default class MessageItem extends Component {
       onClick(item);
     }
   }*/
+  constructor(props) {
+    super(props);
+    // this.handleselect = this.handleselect.bind(this);
+  }
+
   onfxClick = (idx,event) => {
     const {isDialogActive,tianjia,todoActions,state } = this.props;
     // if (onClick) {
     //   onClick(item,idx);
     // }
-    //this.index=idx;
+    this.index=idx;
     todoActions.onfxClick(idx)
       
   }
-  duoxuanonClick=(e)=>{
-    // const { onduoxuanClick, item,idx } = this.props;
-    // onduoxuanClick(idx,e.target.checked);
-    const{isDialogActive,duoxuan,todoActions}= this.props;
-    //this.arr[idx] = checked;
-    todoActions.duoxuan();
+  // duoxuanonClick=(e)=>{
+  //   // const { onduoxuanClick, item,idx } = this.props;
+  //   // onduoxuanClick(idx,e.target.checked);
+  //   const{isDialogActive,duoxuan,todoActions,state}= this.props;
+  //   todoActions.duoxuan();
+  // }
+  select=(idx,event)=>{
+    const{state}=this.props;
+    state.arr[idx]=!state.arr[idx]
   }
 
-  addInput = () => {
+  addInput = (idx) => {
     const { state } = this.props;
     if(!state.duoxuan) {
       return null;
-    }else {
-      return <input className="notselect" type="checkbox" onClick={this.duoxuanonClick} />
+    }else 
+      return <input className="notselect" type="checkbox" onClick={()=>this.select(idx)} />
     }
-  }
+  
 
   render(){
     const { state} = this.props;
@@ -44,7 +52,7 @@ export default class MessageItem extends Component {
       state.messages.map((item,idx)=>{
         return(
         <li className="chat-list__item">
-          {this.addInput()}
+          {this.addInput(idx)}
           <img className="chat-list__item__avatar" src={item.icon} alt="" />
           <div className="chat-list__item__content">
             <div className="chat-list__item__content__topBar">

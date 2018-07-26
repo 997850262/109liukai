@@ -80,7 +80,7 @@ const img6=require("../source/添加.svg");
     const { tianjia,isDialogActive} = this.props;
     const { todoActions,state } = this.props;
     const { Item, Dialog } = this.props;
-    console.log(state.isDialogActive)
+    //console.log(state.isDialogActive)
     if(!state.tianjia) {
       return <DialogViewMore state={state} isDialogActive={isDialogActive} tianjia={tianjia} todoActions={todoActions}/*onCloseClick={this.handleShowDialog} onClick={this.onDialogViewClick} onshanchuClick={this.shanchu} onzhidingClick={this.zhiding} onduoxuanClick={this.duoxuan}*//>;
     }else {
@@ -108,7 +108,7 @@ const img6=require("../source/添加.svg");
          todoActions={todoActions}
          />
 
-        <Blank state={state}/>
+        <Blank state={state} todoActions={todoActions}/>
         <Footer />
         {this.addDialog()}
       

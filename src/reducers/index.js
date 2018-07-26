@@ -72,21 +72,30 @@ export default function index(state =init_state,action){
     //   newState.messages = newMessages
     //   return newState;
   }
-  case ActionTypes.Duoxuan:{
-    const { idx,messages  } = state;
+  case ActionTypes.Selectdelect:{
+    //let arr=new Array(state.messages.length)
+    //let arr=new Array(state.messages.length)
+    // this.arr[state.idx] = checked;
+    // console.log(111)
+    // console.log(arr.length)
     const newMessages = state.messages.slice();
-      for(let i=this.arr.length;i>=0;i--)
+      for(let i=state.arr.length;i>=0;i--)
       {
-        if(this.arr[i]==true)
+        if(state.arr[i]==true)
         {
           newMessages.splice(i,1);
         }
       }
       const newState={...state}
       newState.messages = newMessages;
-      newState.isDialogActive=true
-      newState.duoxuan=true
+       newState.duoxuan=false
       return newState;
+  }
+  case ActionTypes.Duoxuan:{
+    const newState={...state}
+    newState.duoxuan=true
+    newState.isDialogActive=false
+    return newState;
   }
 
       default:

@@ -1,4 +1,4 @@
-import { HandleShowDialog,OnfxClick,HandleClose,AddTodo,Shanchu,Zhiding,Duoxuan } from '../const/ActionTypes'
+import { HandleShowDialog,OnfxClick,HandleClose,AddTodo,Shanchu,Zhiding,Selectdelect,Duoxuan } from '../const/ActionTypes'
 
 export function handleShowDialog(){
   return {
@@ -46,10 +46,15 @@ export function addTodo(obj){
       // vip
     }
   }
-  export function duoxuan(idx){
+  export function selectdelect(){
+    return{
+      type:Selectdelect,
+    }
+  }
+  export function duoxuan(){
     return {
       type: Duoxuan,
-      idx
+
       // isDialogActive,
       // duoxuan
     }
