@@ -3,8 +3,7 @@ import { addTodo as AddTodoCreator } from '../actions'
 export default class VipItem extends Component {
 
     render(){
-        const { vip} = this.props;
-        vip.map((item,idx) => {
+        const { item} = this.props;
             return (<li className="chat-list__item">
               <img className="chat-list__item__avatar" src={item[0].icon} alt="" />
               <div className="chat-list__item__content">
@@ -15,6 +14,5 @@ export default class VipItem extends Component {
                 <div className="chat-list__item__content__recentMsg">{item[0]['descript']}</div>
               </div>
             </li>)
-    })
 }
 }

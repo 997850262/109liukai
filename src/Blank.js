@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 export default class Blank extends Component {
     onClick=()=>{
-        const { onClick, select ,idx} = this.props;
+        const { onClick ,idx} = this.props;
         if (onClick) {
             onClick();
         }
@@ -9,7 +9,7 @@ export default class Blank extends Component {
 
 
 render(){
-const {duoxuan,select} = this.props;
+const {duoxuan} = this.props;
 if(!duoxuan)
 {return null}
 else{

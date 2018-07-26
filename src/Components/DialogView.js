@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './DialogView.css';
-import { addTodo } from '../../actions'
-const icon = require('./resource/icon_Good_B-2.png');
+import { addTodo } from '../actions/index'
+const icon = require('../source/icon_Good_B-2.png');
 export default class DialogView extends Component {
 
   constructor(props) {
@@ -42,16 +42,16 @@ export default class DialogView extends Component {
 
   handleClose = () => {
     //this.props.onCloseClick(false);
-    const{isDialogActive,tianjia}=this.props
-    this.setState({ isDialogActive: false,tianjia:false });
+    const{isDialogActive,tianjia,todoActions,state}=this.props
+    todoActions.handleClose()
+    //this.setState({ isDialogActive: false,tianjia:false });
   }
 
   DialogView=()=>{
     this.handleClose();
-    const{dispatch}=this.props;
+    const { todoActions } = this.props;
     const obj = { "title":this.state.title, "descript": this.state.descript, "time": this.state.time};
-    const action =addTodo(obj,isDialogActive,tianjia)
-    dispatch(action);
+    todoActions.addTodo(obj)
     }
   handletitle(e)
   {
@@ -74,9 +74,9 @@ export default class DialogView extends Component {
 
   render() {
     console.log('component render');
-    const { isDialogActive,tianjia } = this.props;
+    const { state,isDialogActive,tianjia } = this.props;
 
-    if (!isDialogActive) {
+    if (!state.isDialogActive) {
       return null;
     }
     else {

@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { addTodo } from '../../actions'
-
+import { handleShowDialog } from '../actions/index'
+const img=require("../source/添加.svg");
 export default class HeaderView extends Component{
   handleShowDialog=()=>{
     const {isDialogActive,tianjia} =this.props
-    this.setState(
-      {
-        isDialogActive:true,
-        tianjia:true
-      }
-    )
+    const {state, todoActions} = this.props;
+    todoActions.handleShowDialog()
+    // this.setState(
+    //   {
+    //     isDialogActive:true,
+    //     tianjia:true
+    //   }
+    // )
 
     }
 
@@ -19,7 +21,7 @@ export default class HeaderView extends Component{
         return(
           <div className="header" id="hd">
           <span>微信</span>
-          <img src={item.imga} alt="添加" onClick={this.handleShowDialog.bind(this, true)} />
+          <img src={img} alt="添加" onClick={this.handleShowDialog.bind(this)} />
           {/* <img src={item.img} alt="搜索" /> */}
 
         </div>

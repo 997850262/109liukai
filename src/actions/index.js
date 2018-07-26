@@ -1,56 +1,57 @@
-import { ADD_TODO, more,shanchu,zhiding,duoxuan } from '../const/ActionTypes'
+import { HandleShowDialog,OnfxClick,HandleClose,AddTodo,Shanchu,Zhiding,Duoxuan } from '../const/ActionTypes'
 
-export function addTodo(text){
+export function handleShowDialog(){
   return {
-    type: ADD_TODO,
-    // text
-    obj,
-    isDialogActive,
-    tianjia
+    type: HandleShowDialog
   }
 }
-export function more(text){
+export function onfxClick(idx){
+  return {
+    type: OnfxClick,
+    idx
+    // isDialogActive,
+    // tianjia
+  }
+}
+export function handleClose(){
+  return {
+    type: HandleClose,
+    // isDialogActive,
+    // tianjia
+  }
+}
+
+export function addTodo(obj){
+  return {
+    type: AddTodo,
+    obj
+    // isDialogActive,
+    // tianjia
+  }
+}
+  export function shanchu(idx){
     return {
-      type: more,
-      // text
-      idx,
-      isDialogActive,
-      tianjia,
+      type: Shanchu,
+      idx
+      // isDialogActive,
+      // duoxuan
     }
   }
-  export function shanchu(text){
+  export function zhiding(idx){
     return {
-      type: shanchu,
-      // text
-      idx,
-      messages,
-      isDialogActive,
-      duoxuan
+      type: Zhiding,
+      idx
+      // isDialogActive,
+      // duoxuan,
+      // vip
     }
   }
-  export function zhiding(text){
+  export function duoxuan(idx){
     return {
-      type: zhiding,
-      // text
-      idx,
-      messages,
-      isDialogActive,
-      duoxuan,
-      vip
-    }
-  }
-  export function duoxuan(text){
-    return {
-      type: duoxuan,
-      // text
-      idx,
-      messages,
-      isDialogActive,
-    //   icon,
-    //   title,
-    //   descript,
-    //   time,
-      duoxuan
+      type: Duoxuan,
+      idx
+      // isDialogActive,
+      // duoxuan
     }
   }
 

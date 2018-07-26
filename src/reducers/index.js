@@ -1,79 +1,95 @@
-import { ADD_TODO, CHANGE_TODO_STATUS, zhiding } from '../const/ActionTypes'
-import { duoxuan } from '../actions';
-const icon = require('./resource/icon_Good_B-2.png');
-export default function todoList(state = { list: []},action){
+import { combineReducers } from 'redux';
+import Item from './Item';
+import Dialog from './Dialog';
+import { init_state } from './INIT_STATE';
+import * as ActionTypes from '../const/ActionTypes'
+const icon = require('../source/icon_Good_B-2.png');
+// export default combineReducers({
+//   Item,
+//   Dialog
+// });
+export default function index(state =init_state,action){
   switch(action.type){
-    case ADD_TODO:{
-      // const newList = state.list.slice();
-      // newList.unshift({
-      //   text: action.text,
-      //   isComplated: false
-      // });
-      // const newState = { ...state };
-      // newState.list = newList;
-      // return newState;
-      const obj = { "title":action.title, "descript": action.descript, "time": action.time};
-      //+验证
-      const newMessages = state.messages.slice();
-      newMessages.unshift({
-        icon: icon,
-        ...obj,
-      });
-      this.setState({
-        messages: newMessages
-      });
+    case ActionTypes.HandleShowDialog: 
+  {
+      let newState = {...state};
+      newState.isDialogActive = true;
+      newState.tianjia = true;
       return newState;
-    }
-    case shanchu: {
-    //   const newList = state.list.slice();
-    //   const { idx, isCompleted } = action;
-    //   newList[idx] = {...newList[idx], isCompleted };
-    //   const newState = { ...state };
-    //   newState.list = newList;
-    //   return newState;
+  }
 
-            const { idx,messages  } = action;
-            this.index=idx;
-          const newMessages = state.messages.slice();
-          newMessages.splice(this.index,1);
-          this.setState({
-            messages: newMessages
-          });
-        this.index=null;
+  case ActionTypes.OnfxClick:
+  {
+      const{idx}=action;
+      state.idx=idx;
+      let newState = {...state};
+      newState.isDialogActive = true;
+      newState.tianjia = false;
+      return newState;
+  }
+
+  case ActionTypes.HandleClose:
+  {
+      let newState = {...state};
+      newState.isDialogActive = false;
+      newState.tianjia = false;
+      return newState;
+  }
+  case ActionTypes.AddTodo:{
+    const{obj}=action;
+    //const obj = { "title":action.title, "descript": action.descript, "time": action.time};
+    const newMessages = state.messages.slice();
+    newMessages.unshift({
+      icon: icon,
+      ...obj,
+    });
+    const newState={...state}
+    newState.messages = newMessages
+    return newState;
+  }
+  case ActionTypes.Shanchu: {
+        const newMessages = state.messages.slice();
+        newMessages.splice(state.idx,1);
+        state.idx=null;
+      const newState={...state}
+      newState.messages = newMessages
+      return newState;
+  }
+  case ActionTypes.Zhiding:{
+    const newMessages = state.messages.slice();
+        const a=newMessages.splice(state.idx,1);
+        newMessages.unshift(a[0]);
+        state.idx=null;
+        const newState={...state}
+        newState.messages = newMessages
         return newState;
-    }
-    case zhiding:{
-      const { idx,messages  } = action;
-      this.index=idx;
-      const newMessages = state.messages.slice();
-          const a=newMessages.splice(this.index,1);
-      const newVip = state.vip.slice();
-          newVip.unshift(a[0]);
-          this.setState({
-            vip:newVip,
-            messages: newMessages
-          });
-        this.index=null;
-        return newState;
-    }
-    case duoxuan:{
-      const { idx,messages  } = action;
-      const newMessages = state.messages.slice();
-        for(let i=this.arr.length;i>=0;i--)
+    // const newVip = state.vip.slice();
+    //     newVip.unshift(a[0]);
+
+    //   this.index=null;
+    //   const newState={...state}
+    //   newState.vip=newVip
+    //   newState.messages = newMessages
+    //   return newState;
+  }
+  case ActionTypes.Duoxuan:{
+    const { idx,messages  } = state;
+    const newMessages = state.messages.slice();
+      for(let i=this.arr.length;i>=0;i--)
+      {
+        if(this.arr[i]==true)
         {
-          if(this.arr[i]==true)
-          {
-            newMessages.splice(i,1);
-          }
+          newMessages.splice(i,1);
         }
-        this.setState({
-          messages: newMessages,
-          duoxuan:false,
-          //select:false
-        });
-        return newState;
-    }
-    default:
-    return state;
+      }
+      const newState={...state}
+      newState.messages = newMessages;
+      newState.isDialogActive=true
+      newState.duoxuan=true
+      return newState;
+  }
+
+      default:
+      return state;
   }
 }

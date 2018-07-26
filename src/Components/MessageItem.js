@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { more } from '../../actions'
-
+import '../Container/Todo.css';
+import { more } from '../actions/index'
+import { duoxuan } from '../actions/index'
+const icon = require('../source/icon_Good_B-2.png');
 export default class MessageItem extends Component {
   /*onMsgClick = () => {
     const { onClick, item } = this.props;
@@ -8,29 +10,26 @@ export default class MessageItem extends Component {
       onClick(item);
     }
   }*/
-  onfxClick = () => {
-    const {idx,isDialogActive,tianjia,dispatch } = this.props;
+  onfxClick = (idx,event) => {
+    const {isDialogActive,tianjia,todoActions,state } = this.props;
     // if (onClick) {
     //   onClick(item,idx);
     // }
-    this.index=idx;
-    this.setState(
-      {
-        isDialogActive:true,
-        tianjia:false
-      })
-      const action=more(idx,isDialogActive,tianjia)
-      dispatch(action)
+    //this.index=idx;
+    todoActions.onfxClick(idx)
+      
   }
   duoxuanonClick=(e)=>{
     // const { onduoxuanClick, item,idx } = this.props;
     // onduoxuanClick(idx,e.target.checked);
-    this.arr[idx] = checked;
+    const{isDialogActive,duoxuan,todoActions}= this.props;
+    //this.arr[idx] = checked;
+    todoActions.duoxuan();
   }
 
   addInput = () => {
-    const { duoxuan } = this.props;
-    if(!duoxuan) {
+    const { state } = this.props;
+    if(!state.duoxuan) {
       return null;
     }else {
       return <input className="notselect" type="checkbox" onClick={this.duoxuanonClick} />
@@ -38,60 +37,29 @@ export default class MessageItem extends Component {
   }
 
   render(){
-    const { item ,duoxuan,select} = this.props;
-    //this.idx=new Array[]
-    // if (!duoxuan) {
+    const { state} = this.props;
     return(
-      <li className="chat-list__item" /*onClick={this.onMsgClick}*/>
-      {this.addInput()}
-        <img className="chat-list__item__avatar" src={item.icon} alt="" />
-        <div className="chat-list__item__content">
-          <div className="chat-list__item__content__topBar">
-            <h2 className="chat-list__item__content__title">{item.title}</h2>
-            <div className="chat-list__item__content__time">{item['time']}</div>
+      <div className="body">
+        {
+      state.messages.map((item,idx)=>{
+        return(
+        <li className="chat-list__item">
+          {this.addInput()}
+          <img className="chat-list__item__avatar" src={item.icon} alt="" />
+          <div className="chat-list__item__content">
+            <div className="chat-list__item__content__topBar">
+              <h2 className="chat-list__item__content__title">{item.title}</h2>
+              <div className="chat-list__item__content__time">{item['time']}</div>
+            </div>
+            <div className="chat-list__item__content__recentMsg">{item['descript']}</div>
+            <div className="gengduo" onClick={()=>this.onfxClick(idx)}>更多</div>
           </div>
-          <div className="chat-list__item__content__recentMsg">{item['descript']}</div>
-          <div className="gengduo" onClick={this.onfxClick}>更多</div>
-        </div>
-      </li>
-    );
-  //}
-/*else
-{
-  // if(!select)
-  // {
-  return(
-    <li className="chat-list__item" onClick={this.onMsgClick}>
-    <input className="notselect" type="checkbox" onClick={this.duoxuanonClick} />
-      <img className="chat-list__item__avatar" src={item.icon} alt="" />
-      <div className="chat-list__item__content">
-        <div className="chat-list__item__content__topBar">
-          <h2 className="chat-list__item__content__title">{item.title}</h2>
-          <div className="chat-list__item__content__time">{item['time']}</div>
-        </div>
-        <div className="chat-list__item__content__recentMsg">{item['descript']}</div>
-        <div className="gengduo" onClick={this.onfxClick}>更多</div>
+        </li>
+        )
+      })
+    }
       </div>
-    </li>
-  );
-//}
-// else
-// {
-//   return(
-//     <li className="chat-list__item" onClick={this.onMsgClick}>
-//     <input className="select" type="checkbox" onClick={this.duoxuanonClick} />
-//       <img className="chat-list__item__avatar" src={item.icon} alt="" />
-//       <div className="chat-list__item__content">
-//         <div className="chat-list__item__content__topBar">
-//           <h2 className="chat-list__item__content__title">{item.title}</h2>
-//           <div className="chat-list__item__content__time">{item['time']}</div>
-//         </div>
-//         <div className="chat-list__item__content__recentMsg">{item['descript']}</div>
-//         <div className="gengduo" onClick={this.onfxClick}>更多</div>
-//       </div>
-//     </li>
-//   );
-// }
-}*/
+    );
+
 }
 }

@@ -4,12 +4,13 @@ import { shanchu } from '../actions'
 import { zhiding } from '../actions'
 import { duoxuan } from '../actions'
 
-const icon = require('./resource/icon_Good_B-2.png');
+const icon = require('../source/icon_Good_B-2.png');
 export default class DialogViewMore extends Component {
   handleClose = () => {
     //this.props.onCloseClick(false);
-    const{isDialogActive,tianjia}=this.props
-    this.setState({ isDialogActive: false,tianjia:false });
+    const{isDialogActive,tianjia,todoActions,state}=this.props
+    todoActions.handleClose()
+    // this.setState({ isDialogActive: false,tianjia:false });
   }
 zhiding=()=>{
     // this.props.onCloseClick(false);
@@ -18,9 +19,8 @@ zhiding=()=>{
   //   this.props.onzhidingClick()
   // }
 this.handleClose();
-const{dispatch,idx,messages,isDialogActive,duoxuan,vip}=thsi.props;
-const action=shanchu(idx,messages,this.state.isDialogActive,duoxuan,vip)
-dispatch(action)
+const{state,isDialogActive,duoxuan,vip,todoActions}=this.props;
+todoActions.zhiding(state)
 
   }
   shanchu=()=>{
@@ -29,10 +29,9 @@ dispatch(action)
     // if (onClick) {
     //   this.props.onshanchuClick()
     // }
-    const{dispatch,idx,messages,isDialogActive,duoxuan}=thsi.props;
+    const{state,isDialogActive,duoxuan,todoActions}=this.props;
     this.handleClose();
-    const action=shanchu(idx,messages,this.state.isDialogActive,duoxuan)
-    dispatch(action)
+    todoActions.shanchu(state)
   }
   duoxuan=()=>{
     // this.props.onCloseClick(false);
@@ -41,17 +40,16 @@ dispatch(action)
     //   this.props.onduoxuanClick()
     // }
     this.handleClose();
-    this.setState({
-      duoxuan:true,
-      //select:true
-    })
-const{dispatch,idx,messages,isDialogActive,duoxuan}=thsi.props;
-const action=shanchu(idx,messages,this.state.isDialogActive,duoxuan)
-dispatch(action)
+    // this.setState({
+    //   duoxuan:true,
+    //   //select:true
+    // })
+const{state,isDialogActive,duoxuan,todoActions}=this.props;
+todoActions.duoxuan(state)
   }
   render(){
-    const { isDialogActive,tianjia } = this.props;
-    if (!isDialogActive) {
+    const { state,isDialogActive,tianjia } = this.props;
+    if (!state.isDialogActive) {
         return null;
       }
     else {
