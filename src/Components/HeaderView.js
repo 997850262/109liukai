@@ -3,8 +3,8 @@ import { handleShowDialog } from '../actions/index'
 const img=require("../source/添加.svg");
 export default class HeaderView extends Component{
   handleShowDialog=()=>{
-    const {isDialogActive,tianjia} =this.props
-    const {state, todoActions} = this.props;
+    const {Item ,Dialog} =this.props
+    const { todoActions} = this.props;
     todoActions.handleShowDialog()
     // this.setState(
     //   {

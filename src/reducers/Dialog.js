@@ -1,6 +1,9 @@
 import * as ActionTypes from '../const/ActionTypes'
 import { init_state } from './INIT_STATE';
-export default function Item(state =init_state,action){
+export default function Dialog(state ={
+    isDialogActive: false,
+    tianjia:false,
+    duoxuan:false,},action){
     switch(action.type){
       case ActionTypes.HandleShowDialog: 
     {
@@ -12,17 +15,25 @@ export default function Item(state =init_state,action){
 
     case ActionTypes.OnfxClick:
     {
+        // const{idx}=action;
+        // state.idx=idx;
         let newState = {...state};
         newState.isDialogActive = true;
         newState.tianjia = false;
         return newState;
     }
 
-    // case ActionTypes.duoxuan:
-    // {
-    //     return{...state,isDialogActive:false,duoxuan:true}
-    // }
-
+    case ActionTypes.Duoxuan:{
+        const newState={...state}
+        newState.duoxuan=true
+        newState.isDialogActive=false
+        return newState;
+      }
+      case ActionTypes.BlankDuoxuan:{
+        const newState={...state}
+        newState.duoxuan=false
+        return newState;
+      }
     case ActionTypes.HandleClose:
     {
         let newState = {...state};

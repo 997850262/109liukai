@@ -4,11 +4,12 @@ import Dialog from './Dialog';
 import { init_state } from './INIT_STATE';
 import * as ActionTypes from '../const/ActionTypes'
 const icon = require('../source/icon_Good_B-2.png');
-// export default combineReducers({
-//   Item,
-//   Dialog
-// });
-export default function index(state =init_state,action){
+export default combineReducers({
+  Item,
+  Dialog
+});
+
+/*export default function index(state =init_state,action){
   switch(action.type){
     case ActionTypes.HandleShowDialog: 
   {
@@ -101,4 +102,4 @@ export default function index(state =init_state,action){
       default:
       return state;
   }
-}
+}*/

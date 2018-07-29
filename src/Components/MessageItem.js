@@ -16,13 +16,18 @@ export default class MessageItem extends Component {
   }
 
   onfxClick = (idx,event) => {
-    const {isDialogActive,tianjia,todoActions,state } = this.props;
+    const {todoActions } = this.props;
     // if (onClick) {
     //   onClick(item,idx);
     // }
     this.index=idx;
     todoActions.onfxClick(idx)
-      
+    this.getidx(idx)
+  }
+
+  getidx=(idx)=>{
+    const {todoActions } = this.props;
+    todoActions.getidx(idx)
   }
   // duoxuanonClick=(e)=>{
   //   // const { onduoxuanClick, item,idx } = this.props;
@@ -31,13 +36,13 @@ export default class MessageItem extends Component {
   //   todoActions.duoxuan();
   // }
   select=(idx,event)=>{
-    const{state}=this.props;
-    state.arr[idx]=!state.arr[idx]
+    const{Item}=this.props;
+    Item.arr[idx]=!Item.arr[idx]
   }
 
   addInput = (idx) => {
-    const { state } = this.props;
-    if(!state.duoxuan) {
+    const { Dialog } = this.props;
+    if(!Dialog.duoxuan) {
       return null;
     }else 
       return <input className="notselect" type="checkbox" onClick={()=>this.select(idx)} />
@@ -45,11 +50,11 @@ export default class MessageItem extends Component {
   
 
   render(){
-    const { state} = this.props;
+    const { Item} = this.props;
     return(
       <div className="body">
         {
-      state.messages.map((item,idx)=>{
+      Item.messages.map((item,idx)=>{
         return(
         <li className="chat-list__item">
           {this.addInput(idx)}

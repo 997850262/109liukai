@@ -1,3 +1,5 @@
+export const Getidx ='Getidx'
+export const BlankDuoxuan ='BlankDuoxuan'
 export const HandleShowDialog ='HandleShowDialog'
 export const OnfxClick ='OnfxClick'
 export const HandleClose ='HandleClose'

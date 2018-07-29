@@ -1,5 +1,15 @@
-import { HandleShowDialog,OnfxClick,HandleClose,AddTodo,Shanchu,Zhiding,Selectdelect,Duoxuan } from '../const/ActionTypes'
-
+import { Getidx,BlankDuoxuan,HandleShowDialog,OnfxClick,HandleClose,AddTodo,Shanchu,Zhiding,Selectdelect,Duoxuan } from '../const/ActionTypes'
+export function getidx(idx){
+  return {
+    type: Getidx,
+    idx
+  }
+}
+export function blankDuoxuan(){
+  return {
+    type: BlankDuoxuan,
+  }
+}
 export function handleShowDialog(){
   return {
     type: HandleShowDialog

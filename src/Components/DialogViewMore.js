@@ -8,7 +8,7 @@ const icon = require('../source/icon_Good_B-2.png');
 export default class DialogViewMore extends Component {
   handleClose = () => {
     //this.props.onCloseClick(false);
-    const{isDialogActive,tianjia,todoActions,state}=this.props
+    const{todoActions}=this.props
     todoActions.handleClose()
     // this.setState({ isDialogActive: false,tianjia:false });
   }
@@ -19,8 +19,8 @@ zhiding=()=>{
   //   this.props.onzhidingClick()
   // }
 this.handleClose();
-const{state,isDialogActive,duoxuan,vip,todoActions}=this.props;
-todoActions.zhiding(state)
+const{todoActions}=this.props;
+todoActions.zhiding()
 
   }
   shanchu=()=>{
@@ -29,9 +29,9 @@ todoActions.zhiding(state)
     // if (onClick) {
     //   this.props.onshanchuClick()
     // }
-    const{state,isDialogActive,duoxuan,todoActions}=this.props;
+    const{todoActions}=this.props;
     this.handleClose();
-    todoActions.shanchu(state)
+    todoActions.shanchu()
   }
   duoxuan=()=>{
     // this.props.onCloseClick(false);
@@ -44,16 +44,15 @@ todoActions.zhiding(state)
     //   duoxuan:true,
     //   //select:true
     // })
-const{state,isDialogActive,duoxuan,todoActions}=this.props;
-todoActions.duoxuan(state)
+const{todoActions}=this.props;
+todoActions.duoxuan()
   }
   render(){
-    const { state,isDialogActive,tianjia } = this.props;
-    if (!state.isDialogActive) {
+    const { Dialog } = this.props;
+    if (!Dialog.isDialogActive) {
         return null;
       }
     else {
-        // if(!isjia){
             return(
                 <div className="mask-ctn">
                 <div className="close-btn" onClick={this.handleClose}>close</div>
@@ -73,4 +72,3 @@ todoActions.duoxuan(state)
         }
   }
 }
-// }

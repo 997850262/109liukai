@@ -81,10 +81,10 @@ const img6=require("../source/添加.svg");
     const { todoActions,state } = this.props;
     const { Item, Dialog } = this.props;
     //console.log(state.isDialogActive)
-    if(!state.tianjia) {
-      return <DialogViewMore state={state} isDialogActive={isDialogActive} tianjia={tianjia} todoActions={todoActions}/*onCloseClick={this.handleShowDialog} onClick={this.onDialogViewClick} onshanchuClick={this.shanchu} onzhidingClick={this.zhiding} onduoxuanClick={this.duoxuan}*//>;
+    if(!Dialog.tianjia) {
+      return <DialogViewMore  todoActions={todoActions} Item={Item} Dialog={Dialog}/*onCloseClick={this.handleShowDialog} onClick={this.onDialogViewClick} onshanchuClick={this.shanchu} onzhidingClick={this.zhiding} onduoxuanClick={this.duoxuan}*//>;
     }else {
-    return <DialogView state={state} isDialogActive={isDialogActive} tianjia={tianjia} todoActions={todoActions}/*onCloseClick={this.handleShowDialog} onClick={this.onDialogViewClick}*/ />
+    return <DialogView todoActions={todoActions} Item={Item} Dialog={Dialog}/*onCloseClick={this.handleShowDialog} onClick={this.onDialogViewClick}*/ />
     }
   }
   render() {
@@ -95,7 +95,7 @@ const img6=require("../source/添加.svg");
       <div className="main">
         <div className="header" >
         
-         <HeaderView  todoActions={todoActions} state={state}/>
+         <HeaderView  todoActions={todoActions} state={state} Item={Item} Dialog={Dialog}/>
         
         </div>
         
@@ -106,9 +106,10 @@ const img6=require("../source/添加.svg");
         tianjia={tianjia}
          duoxuan={duoxuan}
          todoActions={todoActions}
+         Item={Item} Dialog={Dialog}
          />
 
-        <Blank state={state} todoActions={todoActions}/>
+        <Blank state={state} Item={Item} Dialog={Dialog} todoActions={todoActions}/>
         <Footer />
         {this.addDialog()}
       
@@ -120,10 +121,8 @@ const img6=require("../source/添加.svg");
 function mapStateToProps(state,ownProps){
   // state.list;
   //return{...state}
-return {state
-  // Item:state,
-  // Dialog:state
-}
+  const{Item,Dialog}=state;
+return {Item,Dialog}
   /*const props = { list:null };
   props.list = state.list;
   return props;*/

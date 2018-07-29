@@ -42,7 +42,7 @@ export default class DialogView extends Component {
 
   handleClose = () => {
     //this.props.onCloseClick(false);
-    const{isDialogActive,tianjia,todoActions,state}=this.props
+    const{todoActions}=this.props
     todoActions.handleClose()
     //this.setState({ isDialogActive: false,tianjia:false });
   }
@@ -74,9 +74,9 @@ export default class DialogView extends Component {
 
   render() {
     console.log('component render');
-    const { state,isDialogActive,tianjia } = this.props;
+    const { Dialog } = this.props;
 
-    if (!state.isDialogActive) {
+    if (!Dialog.isDialogActive) {
       return null;
     }
     else {
