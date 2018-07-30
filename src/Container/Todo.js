@@ -122,7 +122,7 @@ function mapStateToProps(state,ownProps){
   // state.list;
   //return{...state}
   const{Item,Dialog}=state;
-return {Item,Dialog}
+  return {Item,Dialog}
   /*const props = { list:null };
   props.list = state.list;
   return props;*/

@@ -1,0 +1,25 @@
+/* .ButtonBox{
+    display: flex;
+    flex-direction: row
+} */
+.buttonleft{
+    position: relative;
+    float: left;
+}
+.buttonleft1{
+    position: relative;
+    margin-left: 10px
+}
+.buttonleft2{
+    position: relative;
+    margin-left: 10px
+}
+.buttonleft3{
+    position: relative;
+    margin-left: 10px
+}
+.buttonright{
+    float: right;
+    right: 50px;
+    margin-right: 10px
+}

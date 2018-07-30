@@ -1,0 +1,8 @@
+.Main{
+    margin-left: 150px;
+    margin-top: 10px; 
+    display: flex;
+    width: 1000px;
+    height: 600px;
+    flex-direction: column
+}

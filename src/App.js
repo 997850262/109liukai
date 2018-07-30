@@ -1,10 +1,6 @@
 import React from 'react';
-// import MessageItemView from './MessageItem.js';
-// import DialogView from './DialogView.js';
-// import HeaderView from './HeaderView.js';
-// import Blank from './Blank.js';
-import Todo from './Container/Todo.js';
-// import ListItem from './Container/ListItem.js';
+// import Todo from './Container/Todo.js';
+import Op from './Container/Op';
 import './App.css';
 import { createStore,applyMiddleware,compose } from 'redux';
 import { Provider } from 'react-redux';
@@ -24,8 +20,9 @@ export default class App extends React.Component {
     return (
       <div>
         <Provider store={store}>
-        <Todo />
+        {/* <Todo /> */}
         {/* <ListItem /> */}
+        <Op />
         </Provider>
       </div>
     );
