@@ -55,45 +55,7 @@ export default function List(state ={
     Comment:'78.76%',
     card:'21/21',
     satisfaction:'94.10%'
-  }
-],columns : [{
-  title: '班级',
-  dataIndex: 'class',
-  key: 'class',
-}, {
-  title: '课程状态',
-  dataIndex: 'classstate',
-  key: 'classstate',
-}, {
-  title: '开课时间',
-  dataIndex: 'opentime',
-  key: 'opentime',
-}, {
-  title: '老师',
-  dataIndex: 'teacher',
-  key: 'teacher',
-}, {
-  title: '上课率',
-  dataIndex: 'classrate',
-  key: 'classrate',
-}, {
-  title: '作业提交率',
-  dataIndex: 'submitwork',
-  key: 'submitwork',
-}, {
-  title: '被点评情况',
-  dataIndex: 'Comment',
-  key: 'Comment',
-}, {
-  title: '打卡率',
-  dataIndex: 'card',
-  key: 'card',
-}, {
-  title: '满意度',
-  dataIndex: 'satisfaction',
-  key: 'satisfaction',
-}
-],
+  }],
 data : [{
   key: '1',
   class: '高级班',
@@ -106,44 +68,6 @@ data : [{
   card:'5/21',
   satisfaction:'90%'
 }],
-column: [{
-  title: '班级',
-  dataIndex: 'class',
-  key: 'class',
-}, {
-  title: '课程状态',
-  dataIndex: 'classstate',
-  key: 'classstate',
-}, {
-  title: '开课时间',
-  dataIndex: 'opentime',
-  key: 'opentime',
-}, {
-  title: '教学组负责人',
-  dataIndex: 'teacher1',
-  key: 'teacher1',
-}, {
-  title: '上课率',
-  dataIndex: 'classrate',
-  key: 'classrate',
-}, {
-  title: '作业提交率',
-  dataIndex: 'submitwork',
-  key: 'submitwork',
-}, {
-  title: '被点评情况',
-  dataIndex: 'Comment',
-  key: 'Comment',
-}, {
-  title: '打卡率',
-  dataIndex: 'card',
-  key: 'card',
-}, {
-  title: '满意度',
-  dataIndex: 'satisfaction',
-  key: 'satisfaction',
-}
-],
 },action){
   switch(action.type){
 

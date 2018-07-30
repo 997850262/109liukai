@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Head.css';
 import { Table, Icon, Divider } from 'antd';
+import {column1, column2} from './List';
 export default class ListView extends Component {
   constructor(props) {
     super(props);
@@ -27,9 +28,9 @@ export default class ListView extends Component {
         <div>
           <p><br></br></p>
           <div>在学课程</div>
-          <Table columns={List.columns} dataSource={List.dataSource} />
+          <Table columns={column1} dataSource={List.dataSource} />
           <div>历史数据</div>
-          <Table columns={List.column} dataSource={List.data} />
+          <Table columns={column2} dataSource={List.data} />
         </div>
       </div>
     )
