@@ -2,8 +2,8 @@ import React from 'react';
 
 export const column1 = [{
     title: '班级',
-    dataIndex: 'classInfo',
-    key: 'classInfo',
+    dataIndex: 'classInfo.name',
+    key: 'classInfo.name',
   }, {
     title: '课程状态',
     dataIndex: 'status',
@@ -14,8 +14,8 @@ export const column1 = [{
     key: 'startTime',
   }, {
     title: '老师',
-    dataIndex: 'teacherInfo',
-    key: 'teacherInfo',
+    dataIndex: 'teacherInfo.nick',
+    key: 'teacherInfo.nick',
   }, {
     title: '上课率',
     dataIndex: 'enterRate',
@@ -39,11 +39,11 @@ export const column1 = [{
     dataIndex: 'homeworkSubmitRate',
     key: 'homeworkSubmitRate',
     render:text=>{
-        let num=parseInt(text, 10);
-        if(num<80){
+        // let num=parseInt(text, 10);
+        if(text<0.80){
           return <span className="Red">{text}</span>
         }
-        else if(num>95){
+        else if(text>0.95){
           return <span className="Orange">{text}</span>
         }
         else{
@@ -56,11 +56,11 @@ export const column1 = [{
     dataIndex: 'beCommenttedRate',
     key: 'beCommenttedRate',
     render:text=>{
-        let num=parseInt(text, 10);
-        if(num<80){
+        // let num=parseInt(text, 10);
+        if(text<0.80){
           return <span className="Red">{text}</span>
         }
-        else if(num>95){
+        else if(text>0.95){
           return <span className="Orange">{text}</span>
         }
         else{
@@ -90,11 +90,11 @@ export const column1 = [{
     dataIndex: 'satisfyRate',
     key: 'satisfyRate',
     render:text=>{
-        let num=parseInt(text, 10);
-        if(num<80){
+        // let num=parseInt(text, 10);
+        if(text<0.80){
           return <span className="Red">{text}</span>
         }
-        else if(num>95){
+        else if(text>0.95){
           return <span className="Orange">{text}</span>
         }
         else{
@@ -106,8 +106,8 @@ export const column1 = [{
 
   export const column2 = [{
     title: '班级',
-    dataIndex: 'classInfo',
-    key: 'classInfo',
+    dataIndex: 'classInfo.name',
+    key: 'classInfo.name',
   }, {
     title: '课程状态',
     dataIndex: 'status',
@@ -118,8 +118,8 @@ export const column1 = [{
     key: 'startTime',
   }, {
     title: '教学组负责人',
-    dataIndex: 'teacherInfo',
-    key: 'teacherInfo',
+    dataIndex: 'teacherInfo.nick',
+    key: 'teacherInfo.nick',
   }, {
     title: '上课率',
     dataIndex: 'enterRate',
@@ -143,11 +143,11 @@ export const column1 = [{
     dataIndex: 'homeworkSubmitRate',
     key: 'homeworkSubmitRate',
     render:text=>{
-      let num=parseInt(text, 10);
-      if(num<80){
+      // let num=parseInt(text, 10);
+      if(text<0.80){
         return <span className="Red">{text}</span>
       }
-      else if(num>95){
+      else if(text>0.95){
         return <span className="Orange">{text}</span>
       }
       else{
@@ -160,11 +160,11 @@ export const column1 = [{
     dataIndex: 'beCommenttedRate',
     key: 'beCommenttedRate',
     render:text=>{
-      let num=parseInt(text, 10);
-      if(num<80){
+      // let num=parseInt(text, 10);
+      if(text<0.80){
         return <span className="Red">{text}</span>
       }
-      else if(num>95){
+      else if(text>0.95){
         return <span className="Orange">{text}</span>
       }
       else{
@@ -194,11 +194,11 @@ export const column1 = [{
     dataIndex: 'satisfyRate',
     key: 'satisfyRate',
     render:text=>{
-        let num=parseInt(text, 10);
-        if(num<80){
+        // let num=parseInt(text, 10);
+        if(text<0.80){
           return <span className="Red">{text}</span>
         }
-        else if(num>95){
+        else if(text>0.95){
           return <span className="Orange">{text}</span>
         }
         else{

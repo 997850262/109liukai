@@ -11,6 +11,7 @@ export default class Head extends Component {
   getdata=()=>{
     const{dispatch}=this.props;
     api.getuser(dispatch);
+    api.getlesson(dispatch);
   }
 
   render(){

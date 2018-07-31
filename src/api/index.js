@@ -37,6 +37,9 @@ export function getuser(next) {
       headers:{'Content-Type':'application/x-www-form-urlencoded'},
       method: 'POST',
       url: 'http://xly-wkop.xiaoniangao.cn/getLessonInfo',
+      data: {
+        mid:'MID330900002'
+    },
     }).then(res => {
       console.log(res);
       next({

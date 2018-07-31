@@ -13,12 +13,12 @@ import { bindActionCreators } from 'redux';
   constructor(props){
     super(props);
   }
-  // componentDidMount() {
-  //   console.log('componentDidMount');
-  //   const{dispatch}=this.props;
-  //   api.getuser(dispatch);
-  //   api.getlesson(dispatch);
-  // }
+  componentDidMount() {
+    console.log('componentDidMount');
+    const{dispatch}=this.props;
+    api.getuser(dispatch);
+    api.getlesson(dispatch);
+  }
   render() {
     const{dispatch,Authormessages,List,state}=this.props;
     return (

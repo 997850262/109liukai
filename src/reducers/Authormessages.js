@@ -35,7 +35,7 @@ export default function Authormessages(state ={
       {
           console.log('头部数据拉取成功')
           let newState = {...state};
-          newState.list[0].nick=action.data.nick
+          newState.list[0].nick=action.data.data.nick
           newState.list[0].learningLesson=action.data.data.learningLesson
           newState.list[0].enterDate=action.data.data.enterDate
           newState.list[0].history_pay=action.data.data.history_pay
