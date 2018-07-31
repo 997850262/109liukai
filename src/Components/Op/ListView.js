@@ -9,20 +9,6 @@ export default class ListView extends Component {
 
   render(){
     const{List}=this.props;
-    // filterDropdown:text=>{
-    //   let num1=parseInt(text.split("/"[0],10));
-    //   let num2=parseInt(text.split("/"[0],10));
-    //   let num=num1/num2;
-    //   if(num<80){
-    //     return <span className="Red">{text}</span>
-    //   }
-    //   else if(num>95){
-    //     return <span className="Orange">{text}</span>
-    //   }
-    //   else{
-    //     return <span>{text}</span>
-    //   }
-    // }
     return(
       <div>
         <div>

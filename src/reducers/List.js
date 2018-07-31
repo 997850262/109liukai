@@ -1,76 +1,89 @@
+import * as ActionTypes from '../const/ActionTypes'
 
 export default function List(state ={
   dataSource : [{
     key: '1',
-    class: '高级班',
-    classstate:'进行中',
-    opentime: '2017-4-20',
-    teacher:'小白老师',
-    classrate:'3/21',
-    submitwork:'67.98%',
-    Comment:'87.98%',
-    card:'3/21',
-    satisfaction:'90.14%'
+    classInfo: '高级班',
+    status:'进行中',
+    startTime: '2017-4-20',
+    teacherInfo:'小白老师',
+    enterRate:'3/21',
+    homeworkSubmitRate:'67.98%',
+    beCommenttedRate:'87.98%',
+    signRate:'3/21',
+    satisfyRate:'90.14%'
   }, {
     key: '2',
-    class: '进阶班',
-    classstate:'进行中',
-    opentime: '2017-4-21',
-    teacher:'小白老师',
-    classrate:'5/21',
-    submitwork:'76.89%',
-    Comment:'31.87%',
-    card:'5/21',
-    satisfaction:'98.14%'
+    classInfo: '进阶班',
+    status:'进行中',
+    startTime: '2017-4-21',
+    teacherInfo:'小白老师',
+    enterRate:'5/21',
+    homeworkSubmitRate:'76.89%',
+    beCommenttedRate:'31.87%',
+    signRate:'5/21',
+    satisfyRate:'98.14%'
   }, {
     key: '3',
-    class: '提高班',
-    classstate:'进行中',
-    opentime: '2017-4-22',
-    teacher:'小白老师',
-    classrate:'13/21',
-    submitwork:'13.89%',
-    Comment:'21.76%',
-    card:'13/21',
-    satisfaction:'88.01%'
+    classInfo: '提高班',
+    status:'进行中',
+    startTime: '2017-4-22',
+    teacherInfo:'小白老师',
+    enterRate:'13/21',
+    homeworkSubmitRate:'13.89%',
+    beCommenttedRate:'21.76%',
+    signRate:'13/21',
+    satisfyRate:'88.01%'
   }, {
     key: '4',
-    class: '入门班',
-    classstate:'进行中',
-    opentime: '2017-4-23',
-    teacher:'小白老师',
-    classrate:'20/21',
-    submitwork:'98.45%',
-    Comment:'98.67%',
-    card:'20/21',
-    satisfaction:'30.10%'
+    classInfo: '入门班',
+    status:'进行中',
+    startTime: '2017-4-23',
+    teacherInfo:'小白老师',
+    enterRate:'20/21',
+    homeworkSubmitRate:'98.45%',
+    beCommenttedRate:'98.67%',
+    signRate:'20/21',
+    satisfyRate:'30.10%'
   }, {
     key: '5',
-    class: '体验班',
-    classstate:'已结束',
-    opentime: '2017-4-24',
-    teacher:'小白老师',
-    classrate:'21/21',
-    submitwork:'31.54%',
-    Comment:'78.76%',
-    card:'21/21',
-    satisfaction:'94.10%'
+    classInfo: '体验班',
+    status:'已结束',
+    startTime: '2017-4-24',
+    teacherInfo:'小白老师',
+    enterRate:'21/21',
+    homeworkSubmitRate:'31.54%',
+    beCommenttedRate:'78.76%',
+    signRate:'21/21',
+    satisfyRate:'94.10%'
   }],
 data : [{
   key: '1',
-  class: '高级班',
-  classstate:'已结束',
-  opentime: '2017-4-30',
-  teacher1:'小白老师',
-  classrate:'21/21',
-  submitwork:'8/10',
-  Comment:'10/10',
-  card:'5/21',
-  satisfaction:'90%'
+  classInfo: '高级班',
+  status:'已结束',
+  startTime: '2017-4-30',
+  teacherInfo:'小白老师',
+  enterRate:'21/21',
+  homeworkSubmitRate:'80%',
+  beCommenttedRate:'100%',
+  signRate:'5/21',
+  satisfyRate:'90%'
 }],
 },action){
   switch(action.type){
-
+    case ActionTypes.GetLesson_SUC: 
+    {
+      let newState = {...state};
+      const newdataSource = state.dataSource.slice();
+      newdataSource.unshift(action.data)
+      newState.dataSource = newdataSource
+      return newState;
+    }
+    case ActionTypes.GetLesson_FAI: 
+    {
+      console.log('获取列表数据失败')
+      return state;
+    }
     default:
     return state;
   }

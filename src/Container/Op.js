@@ -7,20 +7,27 @@ import './Op.css';
 import { connect } from 'react-redux'
 import * as todoActionCreators from '../actions'
 import { bindActionCreators } from 'redux';
+ import * as api from '../api/index';
 
  class Op extends Component {
   constructor(props){
     super(props);
   }
+  // componentDidMount() {
+  //   console.log('componentDidMount');
+  //   const{dispatch}=this.props;
+  //   api.getuser(dispatch);
+  //   api.getlesson(dispatch);
+  // }
   render() {
-    const{todoActions,Authormessages,List,state}=this.props;
+    const{dispatch,Authormessages,List,state}=this.props;
     return (
         <div className="Main">
           <div>
-          <Head todoActions={todoActions} Authormessages={Authormessages} state={state}/>
+          <Head dispatch={dispatch} Authormessages={Authormessages} state={state}/>
           </div>
           <div>
-          <Tab todoActions={todoActions} List={List} state={state}/>
+          <Tab dispatch={dispatch} List={List} state={state}/>
           </div>
           {/* <div>
           <ButtonBox todoActions={todoActions}/>
@@ -40,7 +47,8 @@ function mapStateToProps(state,ownProps){
 
 function mapDispatchToProps(dispatch){
   return{
-    todoActions:bindActionCreators(todoActionCreators, dispatch)
+    // todoActions:bindActionCreators(todoActionCreators, dispatch)
+    dispatch
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Op);

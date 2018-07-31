@@ -6,6 +6,8 @@ import { createStore,applyMiddleware,compose } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer  from './reducers'
 import { createLogger } from 'redux-logger';
+import axios from 'axios';
+
 const logger = createLogger();
 const store = createStore(
   rootReducer,
@@ -15,7 +17,19 @@ const store = createStore(
 )
 
 export default class App extends React.Component {
-
+  // componentDidMount(){
+  //   axios({
+  //     //headers:{'Content-Type':'application/x-www-form-urlencoded'},
+  //     method:"POST",
+  //     url:"http://xly-wkop.xiaoniangao.cn/getUserInfo" ,
+      
+  //     }).then(res => {
+  //       console.log(res);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //   })
+  // }
   render() {
     return (
       <div>
