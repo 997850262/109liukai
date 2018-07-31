@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './Head.css';
 import { Avatar } from 'antd';
-import { Input } from 'antd';
+import { Input,Icon } from 'antd';
 import {messages} from '../../const/Authormestypes'
 import * as api from '../../api/index';
 
 // const icon=require("../../source/icon_Good_B-2.png")
 export default class Head extends Component {
-
+  
   getdata=()=>{
     const{dispatch}=this.props;
     api.getuser(dispatch);
@@ -16,11 +16,14 @@ export default class Head extends Component {
 
   render(){
     const{dispatch,Authormessages,state}=this.props;
+    console.log('图片地址')
+    console.log(Authormessages.list[0].weiChatCode)
+    
     return(
     <div className="head">
       {/* <div className="touxiang"> */}
       <div className="touxiang" onClick={this.getdata}>
-        <Avatar shape="square" size="large" icon="user" src={require("../../source/icon_Good_B-2.png")} style={{height:"80px",width:"80px"}}/>
+        <Avatar shape="square" size="large" icon="user" src={Authormessages.list[0].hurl} style={{height:"80px",width:"80px"}}/>
       </div>
       <div className="message1">
         <div>{Authormessages.list[0].nick}</div>
@@ -34,15 +37,18 @@ export default class Head extends Component {
         <div>{messages.lastLoginDate}:{Authormessages.list[0].lastLoginDate}</div>
       </div>
       <div className="message3">
-        <div>{messages.tel}:{Authormessages.list[0].tel}</div>
+        <div className="message3-0">
+          <div>{messages.tel}:{Authormessages.list[0].tel}</div>
+          <div className="message3-0-1"><Icon type="file-text" /></div>
+        </div>
         <div className="message3-1">
           <div>{messages.weiChatCode}:</div>
-          <div><Input size="small"placeholder="请输入微信号码" /></div>
+          <div><Input size="small"placeholder={Authormessages.list[0].weiChatCode} /></div>
           <div><button type="primary">提交</button></div>
         </div>
         <div className="message3-2">
           <div className="message3-2-1">{messages.remark}:</div>
-          <div><Input size="small" placeholder="备注" /></div>
+          <div><Input size="small" placeholder={Authormessages.list[0].remark} /></div>
           <div><button type="primary">提交</button></div>
         </div>
       </div>

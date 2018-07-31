@@ -8,6 +8,14 @@ export const column1 = [{
     title: '课程状态',
     dataIndex: 'status',
     key: 'status',
+    render:text=>{
+      if(text==1){
+        return <span>已结束</span>
+      }
+      else{
+        return <span>进行中</span>
+      }
+    }
   }, {
     title: '开课时间',
     dataIndex: 'startTime',
@@ -112,6 +120,14 @@ export const column1 = [{
     title: '课程状态',
     dataIndex: 'status',
     key: 'status',
+    render:text=>{
+      if(text==1){
+        return <span>已结束</span>
+      }
+      else{
+        return <span>进行中</span>
+      }
+    }
   }, {
     title: '开课时间',
     dataIndex: 'startTime',
