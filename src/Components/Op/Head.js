@@ -23,7 +23,7 @@ export default class Head extends Component {
       </div>
       <div className="message1">
         <div>{Authormessages.list[0].nick}</div>
-        <div>{messages.mid}:{Authormessages.list[0].id}</div>
+        <div>{messages.mid}:{Authormessages.list[0].mid}</div>
         <div>{messages.learningLesson}:{Authormessages.list[0].learningLesson}</div>
         <div>{messages.enterDate}:{Authormessages.list[0].enterDate}</div>
       </div>

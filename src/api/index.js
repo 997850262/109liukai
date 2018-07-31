@@ -6,11 +6,13 @@ export function getuser(next) {
         type: ActionTypes.GetUserREQ
       });
     axios({
+      
       method: 'POST',
       url: 'http://xly-wkop.xiaoniangao.cn/getUserInfo',
       data: {
-          mid: 'MID330900002'
-      }
+          mid:'MID330900002'
+      },
+      headers:{'Content-Type':'application/x-www-form-urlencoded'}
     }).then(res => {
       console.log(res);
       next({
@@ -26,11 +28,13 @@ export function getuser(next) {
     });
 
   }
+
   export function getlesson(next) {
     next({
         type: ActionTypes.GetLesson_REQ
       });
     axios({
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
       method: 'POST',
       url: 'http://xly-wkop.xiaoniangao.cn/getLessonInfo',
     }).then(res => {
