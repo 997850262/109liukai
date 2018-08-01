@@ -9,11 +9,19 @@ export default class ListView extends Component {
 
   render(){
     const{DListView}=this.props;
+    console.log(DListView.a)
+    if(DListView.a.length)
     return(
       <div>
-        <div>
-          <Table columns={column1} dataSource={DListView.dataSource} />
-        </div>
+      <Table columns={column1} dataSource={DListView.a} />
+      </div>
+    )
+    else
+    return(
+      <div>
+      <div>
+      <Table columns={column1} dataSource={DListView.dataSource} />
+      </div>
       </div>
     )
 

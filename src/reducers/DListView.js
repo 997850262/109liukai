@@ -11,6 +11,8 @@ export default function DListView(state ={
     learning_lessons:[''],
     teachers:['']
   }],
+  mid:'',
+  a:[]
 },action){
   switch(action.type){
     case ActionTypes.Fetchdangan_SUC: 
@@ -24,6 +26,23 @@ export default function DListView(state ={
     {
       console.log('获取列表数据失败')
       return state;
+    }
+    case ActionTypes.Sendmid:
+    {
+      let newState = {...state};
+      newState.a=[];
+      console.log(123, newState.a)
+      newState.mid=action.obj;
+      console.log(newState.dataSource[0])
+      console.log(newState.mid)
+      for(let i=0;i<newState.dataSource.length;i++)
+      {
+        if(newState.dataSource[i].mid==newState.mid)
+        newState.a.push( newState.dataSource[i])
+      }
+      console.log(newState.a)
+      
+      return newState;
     }
     default:
     return state;

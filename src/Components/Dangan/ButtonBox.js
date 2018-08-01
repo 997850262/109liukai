@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './ButtonBox.css';
 import { Button } from 'antd';
 import { Input, Col, Select, InputNumber, DatePicker, AutoComplete, Cascader } from 'antd';
+import {  } from '../../actions/axiosactions'
 export default class ButtonBox extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +13,8 @@ export default class ButtonBox extends Component {
   }
   sousuo=()=>{
     const { todoActions } = this.props;
-    const obj = { "mid":this.state.mid};
+    const obj = this.state.mid;
+    todoActions.sendmid(obj);
     console.log(obj)
   }
   handlemid=(e)=>{

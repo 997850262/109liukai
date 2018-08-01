@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as ActionTypes from '../const/ActionTypes';
+import { Sendmid } from '../const/ActionTypes'
 export function fetchuser(mid){
     return {
       Server_Api:{ 
@@ -42,5 +43,11 @@ export function fetchuser(mid){
           id
         }
       }
+    }
+  }
+  export function sendmid(obj){
+    return {
+      type: Sendmid,
+      obj
     }
   }
