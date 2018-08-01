@@ -5,7 +5,7 @@ import Tab from '../Components/Op/Tab.js';
 // import ListView from '../Components/Op/ListView.js';
 import './Op.css';
 import { connect } from 'react-redux'
-import * as todoActionCreators from '../actions'
+import * as todoActionCreators from '../actions/axiosactions'
 import { bindActionCreators } from 'redux';
  import * as api from '../api/index';
 
@@ -14,20 +14,20 @@ import { bindActionCreators } from 'redux';
     super(props);
   }
   componentDidMount() {
-    console.log('componentDidMount');
-    const{dispatch}=this.props;
-    api.getuser(dispatch);
-    api.getlesson(dispatch);
+    const{todoActions}=this.props;
+    const mid='MID330900002';
+    todoActions.fetchuser(mid);
+    todoActions.fetchlesson(mid);
   }
   render() {
-    const{dispatch,Authormessages,List,state}=this.props;
+    const{todoActions,Authormessages,List,state}=this.props;
     return (
         <div className="Main">
           <div>
-          <Head dispatch={dispatch} Authormessages={Authormessages} state={state}/>
+          <Head todoActions={todoActions} Authormessages={Authormessages} state={state}/>
           </div>
           <div>
-          <Tab dispatch={dispatch} List={List} state={state}/>
+          <Tab todoActions={todoActions} List={List} state={state}/>
           </div>
           {/* <div>
           <ButtonBox todoActions={todoActions}/>
@@ -47,8 +47,8 @@ function mapStateToProps(state,ownProps){
 
 function mapDispatchToProps(dispatch){
   return{
-    // todoActions:bindActionCreators(todoActionCreators, dispatch)
-    dispatch
+    todoActions:bindActionCreators(todoActionCreators, dispatch)
+    // dispatch
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Op);

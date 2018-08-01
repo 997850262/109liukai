@@ -1,4 +1,5 @@
 import { Getidx,BlankDuoxuan,HandleShowDialog,OnfxClick,HandleClose,AddTodo,Shanchu,Zhiding,Selectdelect,Duoxuan } from '../const/ActionTypes'
+import * as ActionTypes from '../const/ActionTypes';
 export function getidx(idx){
   return {
     type: Getidx,
@@ -19,15 +20,11 @@ export function onfxClick(idx){
   return {
     type: OnfxClick,
     idx
-    // isDialogActive,
-    // tianjia
   }
 }
 export function handleClose(){
   return {
     type: HandleClose,
-    // isDialogActive,
-    // tianjia
   }
 }
 
@@ -35,25 +32,18 @@ export function addTodo(obj){
   return {
     type: AddTodo,
     obj
-    // isDialogActive,
-    // tianjia
   }
 }
   export function shanchu(idx){
     return {
       type: Shanchu,
       idx
-      // isDialogActive,
-      // duoxuan
     }
   }
   export function zhiding(idx){
     return {
       type: Zhiding,
       idx
-      // isDialogActive,
-      // duoxuan,
-      // vip
     }
   }
   export function selectdelect(){
@@ -64,16 +54,6 @@ export function addTodo(obj){
   export function duoxuan(){
     return {
       type: Duoxuan,
-
-      // isDialogActive,
-      // duoxuan
     }
   }
 
-/*export function changeStatus(idx, isCompleted){
-  return {
-    type: CHANGE_TODO_STATUS,
-    idx,
-    isCompleted
-  }
-}*/

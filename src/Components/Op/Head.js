@@ -8,21 +8,19 @@ import * as api from '../../api/index';
 // const icon=require("../../source/icon_Good_B-2.png")
 export default class Head extends Component {
   
-  getdata=()=>{
-    const{dispatch}=this.props;
-    api.getuser(dispatch);
-    api.getlesson(dispatch);
-  }
+  // getdata=()=>{
+  //   const{dispatch}=this.props;
+  //   api.getuser(dispatch);
+  //   api.getlesson(dispatch);
+  // }
 
   render(){
     const{dispatch,Authormessages,state}=this.props;
-    console.log('图片地址')
-    console.log(Authormessages.list[0].weiChatCode)
     
     return(
     <div className="head">
-      {/* <div className="touxiang"> */}
-      <div className="touxiang" onClick={this.getdata}>
+      <div className="touxiang">
+      {/* <div className="touxiang" onClick={this.getdata}> */}
         <Avatar shape="square" size="large" icon="user" src={Authormessages.list[0].hurl} style={{height:"80px",width:"80px"}}/>
       </div>
       <div className="message1">

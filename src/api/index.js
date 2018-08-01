@@ -3,10 +3,9 @@ import * as ActionTypes from '../const/ActionTypes'
 
 export function getuser(next) {
     next({
-        type: ActionTypes.GetUserREQ
+        type: ActionTypes.GetUser_REQ
       });
     axios({
-      
       method: 'POST',
       url: 'http://xly-wkop.xiaoniangao.cn/getUserInfo',
       data: {
@@ -16,14 +15,14 @@ export function getuser(next) {
     }).then(res => {
       console.log(res);
       next({
-        type: ActionTypes.GetUser,
+        type: ActionTypes.GetUser_SUC,
         data: res.data
       });
     })
     .catch(err => {
       console.log(err);
       next({
-        type: ActionTypes.GetUserFAI
+        type: ActionTypes.GetUser_FAI
       });
     });
 

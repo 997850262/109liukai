@@ -1,5 +1,4 @@
 import React from 'react';
-// import Todo from './Container/Todo.js';
 import Op from './Container/Op';
 import './App.css';
 import { createStore,applyMiddleware,compose } from 'redux';
@@ -7,12 +6,15 @@ import { Provider } from 'react-redux';
 import rootReducer  from './reducers'
 import { createLogger } from 'redux-logger';
 import axios from 'axios';
+import serverApi from './middleware/serverApi';
+import Dangan from './Container/Dangan';
+import Dclass from './Container/Dclass';
 
 const logger = createLogger();
 const store = createStore(
   rootReducer,
   compose(
-    applyMiddleware(logger),
+    applyMiddleware(serverApi,logger),
   )
 )
 
@@ -34,9 +36,9 @@ export default class App extends React.Component {
     return (
       <div>
         <Provider store={store}>
-        {/* <Todo /> */}
-        {/* <ListItem /> */}
-        <Op />
+        {/* <Op /> */}
+        <Dangan />
+        {/* <Dclass /> */}
         </Provider>
       </div>
     );
