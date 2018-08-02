@@ -15,7 +15,8 @@ import { bindActionCreators } from 'redux';
   }
   componentDidMount() {
     const{todoActions}=this.props;
-    const mid='MID330900002';
+    // console.log(this.props.params)
+    const mid=this.props.params.mid;
     todoActions.fetchuser(mid);
     todoActions.fetchlesson(mid);
     todoActions.fetchSatisfaction(mid);

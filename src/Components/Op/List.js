@@ -1,11 +1,17 @@
 import React from 'react';
 import { Icon } from 'antd';
 import { Popover, Button } from 'antd';
+import {Link} from 'react-router'
 
 export const column1 = [{
     title: '班级',
-    dataIndex: 'classInfo.name',
-    key: 'classInfo.name',
+    dataIndex: 'classInfo',
+    key: 'classInfo',
+    render:text=>{
+      return <div>
+        <Link to={`/Dclass/${text.id}` }>{text.name}</Link>
+      </div>
+    }
   }, {
     title: '课程状态',
     dataIndex: 'status',

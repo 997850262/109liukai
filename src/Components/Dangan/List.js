@@ -1,6 +1,7 @@
 import React from 'react';
 import DListView from '../../reducers/DListView';
 import './List.css';
+import {Link} from 'react-router'
 export const column1 = [{
     title: '头像',
     dataIndex: 'hurl',
@@ -19,6 +20,11 @@ export const column1 = [{
     title: '学员编号/MID',
     dataIndex: 'mid',
     key: 'mid',
+    render:text=>{
+      return <div>
+        <Link to={`/Op/${text}` }>{text}</Link>
+      </div>
+    }
   }, {
     title: '入学时间',
     dataIndex: 'enter_time',

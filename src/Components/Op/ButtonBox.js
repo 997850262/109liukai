@@ -8,8 +8,8 @@ export default class ButtonBox extends Component {
   }
   handleback=()=>{
     const { router } = this.props
-    const mid='123'
-    router.goBack(mid)
+    // console.log(router)
+    router.goBack()
   }
   render(){
     return(
@@ -21,7 +21,6 @@ export default class ButtonBox extends Component {
           </div>
           <div className="Op-buttonright">
           <Button type="danger" onClick={this.handleback}>返回
-          <Link to="Dclass"></Link>
           </Button>
           
           </div>

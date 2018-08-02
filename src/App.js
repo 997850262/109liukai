@@ -24,8 +24,8 @@ const routes = [{
   indexRoute: { component: Dangan },
   childRoutes: [
     { path: 'Dangan', component: Dangan },
-    { path: 'Op', component: Op },
-    { path: 'Dclass', component: Dclass }
+    { path: 'Op/:mid', component: Op },
+    { path: 'Dclass/:id', component: Dclass }
   ]
 }]
 export default class App extends React.Component {

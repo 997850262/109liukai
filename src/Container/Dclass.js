@@ -12,7 +12,7 @@ import ListView from '../Components/Dclass/ListView';
   }
   componentDidMount() {
     const{todoActions}=this.props;
-    const id='1';
+    const id=this.props.params.id;
     todoActions.fetchclass(id);
   }
   render() {
