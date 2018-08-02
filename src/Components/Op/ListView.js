@@ -12,7 +12,6 @@ export default class ListView extends Component {
     return(
       <div>
         <div>
-          <p><br></br></p>
           <div>在学课程</div>
           <Table columns={column1} dataSource={List.dataSource} />
           <div>历史数据</div>

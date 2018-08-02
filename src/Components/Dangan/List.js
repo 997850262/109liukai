@@ -19,10 +19,6 @@ export const column1 = [{
     title: '学员编号/MID',
     dataIndex: 'mid',
     key: 'mid',
-    // filters: {
-    //   text: '1001',
-    //   value: '1001',
-    // },
   }, {
     title: '入学时间',
     dataIndex: 'enter_time',

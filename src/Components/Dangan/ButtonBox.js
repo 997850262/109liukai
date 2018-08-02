@@ -3,6 +3,7 @@ import './ButtonBox.css';
 import { Button } from 'antd';
 import { Input, Col, Select, InputNumber, DatePicker, AutoComplete, Cascader } from 'antd';
 import {  } from '../../actions/axiosactions'
+import { Link } from 'react-router'
 export default class ButtonBox extends Component {
   constructor(props) {
     super(props);
@@ -22,12 +23,19 @@ export default class ButtonBox extends Component {
       mid:e.target.value
     })
   }
+  handleback=()=>{
+    const { router } = this.props;
+    const mid='123'
+    router.goBack(mid)
+  }
   render(){
     const InputGroup = Input.Group;
     return(
         <div className="ButtonBox">
             <div className="buttonright">
-            <Button type="danger">返回</Button>
+            <Button type="danger" onClick={this.handleback}>返回
+            <Link to="Op"></Link>
+            </Button>
             </div>
 
             <div className="buttonleft">

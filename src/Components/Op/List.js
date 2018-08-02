@@ -1,4 +1,6 @@
 import React from 'react';
+import { Icon } from 'antd';
+import { Popover, Button } from 'antd';
 
 export const column1 = [{
     title: '班级',
@@ -22,8 +24,24 @@ export const column1 = [{
     key: 'startTime',
   }, {
     title: '老师',
-    dataIndex: 'teacherInfo.nick',
-    key: 'teacherInfo.nick',
+    dataIndex: 'teacherInfo',
+    key: 'teacherInfo',
+    render:text=>{
+      const content = (
+        <div>
+          <p>{text.id}</p>
+          <p>{text.mid}</p>
+          <p>{text.nick}</p>
+          <p>{text.realName}</p>
+          <p>{text.wxCode}</p>
+        </div>
+      );
+        return <span>
+          <Popover content={content} title="Title">
+            <Icon type="qq" />
+          </Popover>
+          {text.nick}</span>
+      }
   }, {
     title: '上课率',
     dataIndex: 'enterRate',
@@ -222,4 +240,54 @@ export const column1 = [{
         }
       }
   }
+  ]
+  export const column3 = [{
+      title: '教程',
+      dataIndex: 'course_name',
+      key: 'course_name'
+    },{
+      title: '开课时间',
+      dataIndex: 'time',
+      key: 'time'
+    },{
+      title: '老师',
+      dataIndex: 'teacher_info',
+      key: 'teacher_info',
+      render:text=>{
+        const content = (
+          <div>
+            <p>{text.id}</p>
+            <p>{text.mid}</p>
+            <p>{text.nick}</p>
+            <p>{text.real_name}</p>
+            <p>{text.wx_code}</p>
+          </div>
+        );
+          return <span>
+            <Popover content={content} title="Title">
+              <Icon type="qq" />
+            </Popover>
+            {text.nick}</span>
+        }
+    },{
+      title: '满意度评分',
+      dataIndex: 'satisfied_score',
+      key: 'satisfied_score'
+    },{
+      title: '具体反馈',
+      dataIndex: 'satisfied_detail',
+      key: 'satisfied_detail'
+    },{
+      title: '操作',
+      dataIndex: 'reply_status',
+      key: 'reply_status',
+      render:text=>{
+        if(text==1){
+          return <span>已回复</span>
+        }
+        else{
+          return <span>待回复<Icon type="down-square-o" /></span>
+        }
+      }
+    },
   ]

@@ -18,16 +18,17 @@ import { bindActionCreators } from 'redux';
     const mid='MID330900002';
     todoActions.fetchuser(mid);
     todoActions.fetchlesson(mid);
+    todoActions.fetchSatisfaction(mid);
   }
   render() {
-    const{todoActions,Authormessages,List,state}=this.props;
+    const{todoActions,Authormessages,List,state,router}=this.props;
     return (
         <div className="Main">
           <div>
-          <Head todoActions={todoActions} Authormessages={Authormessages} state={state}/>
+          <Head todoActions={todoActions} Authormessages={Authormessages} state={state} router={router}/>
           </div>
           <div>
-          <Tab todoActions={todoActions} List={List} state={state}/>
+          <Tab todoActions={todoActions} List={List} state={state} router={router}/>
           </div>
           {/* <div>
           <ButtonBox todoActions={todoActions}/>

@@ -1,7 +1,12 @@
-/* .ButtonBox{
+.Op-ButtonBox{
     display: flex;
     flex-direction: row
-} */
+}
+.Op-ButtonBox2{
+    position: relative;
+    display: flex;
+    flex-direction: row
+}
 .buttonleft{
     position: relative;
     float: left;
@@ -18,8 +23,6 @@
     position: relative;
     margin-left: 10px
 }
-.buttonright{
-    float: right;
-    right: 50px;
-    margin-right: 10px
+.Op-buttonright{
+    margin-left: 600px
 }

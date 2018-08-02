@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as ActionTypes from '../const/ActionTypes';
 import { Sendmid } from '../const/ActionTypes'
+import{Sendid} from '../const/ActionTypes'
 export function fetchuser(mid){
     return {
       Server_Api:{ 
@@ -48,6 +49,23 @@ export function fetchuser(mid){
   export function sendmid(obj){
     return {
       type: Sendmid,
+      obj
+    }
+  }
+  export function fetchSatisfaction(mid){
+    return {
+      Server_Api:{ 
+        type: ActionTypes.FetchSatisfaction,
+        endpoint:'/getSatisfiledList',
+        params:{
+          mid
+        }
+      }
+    }
+  }
+  export function sendid(obj){
+    return {
+      type: Sendid,
       obj
     }
   }

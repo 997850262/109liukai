@@ -16,14 +16,14 @@ import ListView from '../Components/Dangan/ListView';
     todoActions.fetchdangan(mid);
   }
   render() {
-    const{todoActions,DListView,state}=this.props;
+    const{todoActions,DListView,state,router}=this.props;
     return (
         <div className="Main">
           <div>
-          <ButtoxBox todoActions={todoActions} DListView={DListView} state={state}/>
+          <ButtoxBox todoActions={todoActions} DListView={DListView} state={state} router={router}/>
           </div>
           <div>
-          <ListView todoActions={todoActions} DListView={DListView} state={state}/>
+          <ListView todoActions={todoActions} DListView={DListView} state={state} router={router}/>
           </div>
         </div>
     );

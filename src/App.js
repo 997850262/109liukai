@@ -9,6 +9,7 @@ import axios from 'axios';
 import serverApi from './middleware/serverApi';
 import Dangan from './Container/Dangan';
 import Dclass from './Container/Dclass';
+import { Router, browserHistory} from 'react-router';
 
 const logger = createLogger();
 const store = createStore(
@@ -17,28 +18,25 @@ const store = createStore(
     applyMiddleware(serverApi,logger),
   )
 )
-
+const routes = [{
+  path: '/',
+  component: App,
+  indexRoute: { component: Dangan },
+  childRoutes: [
+    { path: 'Dangan', component: Dangan },
+    { path: 'Op', component: Op },
+    { path: 'Dclass', component: Dclass }
+  ]
+}]
 export default class App extends React.Component {
-  // componentDidMount(){
-  //   axios({
-  //     //headers:{'Content-Type':'application/x-www-form-urlencoded'},
-  //     method:"POST",
-  //     url:"http://xly-wkop.xiaoniangao.cn/getUserInfo" ,
-      
-  //     }).then(res => {
-  //       console.log(res);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //   })
-  // }
   render() {
     return (
       <div>
         <Provider store={store}>
         {/* <Op /> */}
-        <Dangan />
+        {/* <Dangan /> */}
         {/* <Dclass /> */}
+        <Router routes={routes} history={browserHistory}/>
         </Provider>
       </div>
     );
