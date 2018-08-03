@@ -9,7 +9,7 @@ import axios from 'axios';
 import serverApi from './middleware/serverApi';
 import Dangan from './Container/Dangan';
 import Dclass from './Container/Dclass';
-import { Router, browserHistory} from 'react-router';
+import { Router,Route, browserHistory} from 'react-router';
 
 const logger = createLogger();
 const store = createStore(
