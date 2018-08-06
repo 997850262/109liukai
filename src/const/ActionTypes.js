@@ -1,34 +1,10 @@
-// export const Getidx ='Getidx'
-// export const BlankDuoxuan ='BlankDuoxuan'
-// export const HandleShowDialog ='HandleShowDialog'
-// export const OnfxClick ='OnfxClick'
-// export const HandleClose ='HandleClose'
-// export const AddTodo = 'AddTodo'
-// export const Shanchu = 'Shanchu'
-// export const Zhiding = 'Zhiding'
-// export const Selectdelect ='Selectdelect'
-// export const Duoxuan = 'Duoxuan'
-export const GetUser = 'GetUser'
-export const GetUser_REQ = 'GetUser_REQ'
-export const GetUser_SUC = 'GetUser_SUC'
-export const GetUser_FAI = 'GetUser_FAI'
-export const GetLesson = 'GetLesson'
-export const GetLesson_REQ = 'GetLesson_REQ'
-export const GetLesson_SUC = 'GetLesson_SUC'
-export const GetLesson_FAI = 'GetLesson_FAI'
-export const FetchUser = 'FetchUser'
-export const FetchLesson = 'FetchLesson'
-export const Fetchdangan = 'Fetchdangan'
-export const Fetchdangan_REQ = 'Fetchdangan_REQ'
-export const Fetchdangan_SUC = 'Fetchdangan_SUC'
-export const Fetchdangan_FAI = 'Fetchdangan_FAI'
-export const Fetchclass = 'Fetchclass'
-export const Fetchclass_REQ = 'Fetchclass_REQ'
-export const Fetchclass_SUC = 'Fetchclass_SUC'
-export const Fetchclass_FAI = 'Fetchclass_FAI'
-export const Sendmid = 'Sendmid'
-export const FetchSatisfaction = 'FetchSatisfaction'
-export const FetchSatisfaction_REQ = 'FetchSatisfaction_REQ'
-export const FetchSatisfaction_SUC = 'FetchSatisfaction_SUC'
-export const FetchSatisfaction_FAI = 'FetchSatisfaction_FAI'
-export const Sendid = 'Sendid'
+export default {
+  SEARCH_STUDENT_LIST_BY_OPTION: 'SEARCH_STUDENT_LIST_BY_OPTION',
+
+  FETCH_USER_INFO: 'FETCH_USER_INFO',
+  FETCH_LESSON_INFO: 'FETCH_LESSON_INFO',
+  FETCH_STUDENT_LIST: 'FETCH_STUDENT_LIST',
+  FETCH_CLASS_INFO: 'FETCH_CLASS_INFO',
+  FETCH_LESSON_SATISFIED_INFO: 'FETCH_LESSON_SATISFIED_INFO',
+  REPLY_USER_FEED_BACK: 'REPLY_USER_FEED_BACK'
+}

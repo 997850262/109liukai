@@ -1,11 +1,19 @@
-import { combineReducers } from 'redux';
-import Authormessages from './Authormessages';
-import List from './List';
-import DListView from './DListView'
-import DclassView from './DclassView'
-export default combineReducers({
-  Authormessages,
-  List,
-  DListView,
-  DclassView
-});
+import { combineReducers } from 'redux'
+import lessonInfo from './lessonInfo'
+import userInfo from './userInfo'
+import ui from './ui'
+import studentLib from './studentLib'
+import classesDetail from './classesDetail'
+import satisfied from './satisfied'
+import entities from './entities'
+
+const rootReducer = combineReducers({
+  entities,
+  lessonInfo,
+  userInfo,
+  studentLib,
+  classesDetail,
+  satisfied,
+  ui
+})
+export default rootReducer
