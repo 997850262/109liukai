@@ -21,7 +21,7 @@ export default {
         endpoint: '/getStudentList',
         params: {
         },
-        // normailzerFun:response=> normalize(response.data, schemes.Studentlist)
+        normailzerFun:response=> normalize(response.data, schemes.Studentlist)
       }
     }
   },

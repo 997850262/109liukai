@@ -26,6 +26,7 @@ class UserCenter extends Component {
       entities
     } = this.props
     // const mid = this.props.params.mid
+    console.log(this.props)
     console.log(satisfiedInfo)
     console.log(currentLessonsList)
     return (
@@ -55,6 +56,7 @@ const mapStateToProps = (state, ownProps) => {
     entities
   } = state
   const mid = ownProps.params.mid
+  // console.log(mid)
   console.log(satisfied)
   console.log(currentLessonsList)
   return {

@@ -5,7 +5,10 @@ function currentLessonsList(state = {}, action) {
   switch(action.type){
     case `${ActionTypes.FETCH_LESSON_INFO}_SUC`:
     {
-      return { ...state, [action.mid]: [ ...action.response.current.result ] }
+      console.log('索引',action.response.current.result)
+      const result = action.response.current.result;
+      return { ...state, [action.mid]: result }
+      // return { ...state, [action.mid]: [ ...action.response.current.result ] }
 
       // return {
       //   ...state,
@@ -33,7 +36,9 @@ function historyLessonsList(state = {}, action) {
   switch(action.type){
     case `${ActionTypes.FETCH_LESSON_INFO}_SUC`:
     {
-      return { ...state, [action.mid]: [ ...action.response.history.result ] }
+      const result = action.response.history.result;
+      return { ...state, [action.mid]: result }
+      // return { ...state, [action.mid]: [ ...action.response.history.result ] }
     }
       // return { ...state, [action.mid]: [ ...action.response.data.historyLessonsList ] }
     default:

@@ -1,0 +1,17 @@
+.Topbar{
+    display: flex;
+    flex-direction: row;
+}
+.Topbar-left{
+    display: flex;
+    flex-direction: column;
+}
+.Topbar-right{
+    height: 400px;
+    width: 300px;
+}
+.Topbar-Information{
+    height: 50px;
+    width: 600px;
+    border: 1px solid  rgb(136, 135, 135);
+}

@@ -25,7 +25,6 @@ export default {
           history
          }
         } 
-        // normailzerFun:response=> normalize(response.data.historyLessonsList, schemes.HistoryLessonsList)
       },
       mid: params.mid
     }

@@ -11,6 +11,15 @@ function classes (state = {},action){
         ...entities.classes
       };
     }
+    case `${ActionTypes.FETCH_LESSON_INFO}_SUC`: {
+      const { history, current } = action.response;
+      return {
+        ...state,
+        ...history.entities.classes,
+        ...current.entities.classes
+      };
+    }
+
     default:
       return state;
   }
@@ -23,6 +32,14 @@ function teachers (state = {},action){
       return {
         ...state,
         ...entities.teachers
+      };
+    }
+    case `${ActionTypes.FETCH_LESSON_INFO}_SUC`: {
+      const { history, current } = action.response;
+      return {
+        ...state,
+        ...history.entities.teachers,
+        ...current.entities.teachers
       };
     }
     default:
@@ -57,6 +74,7 @@ function currentLessonsList(state = {}, action) {
     case `${ActionTypes.FETCH_LESSON_INFO}_SUC`:
     {
       const {current} =  action.response
+      console.log(123,current)
       return { ...state,...current.entities.currentLessonsList }
 
     }
@@ -69,17 +87,46 @@ function historyLessonsList(state = {}, action) {
     case `${ActionTypes.FETCH_LESSON_INFO}_SUC`:
     {
       const {history} =  action.response
+      console.log(456,history)
       return { ...state, ...history.entities.historyLessonsList }
     }
     default:
       return state
   }
 }
-
+function list(state = [], action) {
+  switch (action.type) {
+    case `${ActionTypes.FETCH_STUDENT_LIST}_SUC`:
+    {
+      return {...state,...action.response.entities.studentlist}
+    }
+    default:
+      return state
+  }
+}
+function homework(state =[],action){
+  switch(action.type){
+    case `${ActionTypes.Fetchhomework}_SUC`: 
+    {
+      console.log(111,action.response.entities.data)
+      return {...state,
+        ...action.response.entities,
+        // ...action.response.entities.author,
+        // ...action.response.entities.classes,
+        // ...action.response.entities.commentsItem,
+        // ...action.response.entities.teachers,
+      }
+    }
+    default:
+    return state;
+  }
+}
 export default combineReducers({
-  classes,
-  teachers,
-  satisfiled,
-  currentLessonsList,
-  historyLessonsList
+  // classes,
+  // teachers,
+  // satisfiled,
+  // list,
+  // currentLessonsList,
+  // historyLessonsList,
+  homework
 });

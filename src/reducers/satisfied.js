@@ -5,9 +5,9 @@ function satisfied(state={}, action) {
     case `${ActionTypes.FETCH_LESSON_SATISFIED_INFO}_SUC`:{
       const result = action.response.result;
       return { ...state, [action.mid]: result }}
-      case `${ActionTypes.FETCH_LESSON_INFO}_SUC`:{
-        const result = action.response.result;
-        return { ...state, [action.id]: result }}
+      // case `${ActionTypes.FETCH_LESSON_INFO}_SUC`:{
+      //   const result = action.response.result;
+      //   return { ...state, [action.id]: result }}
     default:
       return state
   }

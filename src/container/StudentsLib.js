@@ -11,7 +11,7 @@ class StudentsLib extends Component {
     userActions.fetchStudentList()
   }
   render () {
-    const { studentList, userActions } = this.props
+    const { studentList, userActions,entities } = this.props
     const options = [
       {
         value: 'mid',
@@ -22,10 +22,12 @@ class StudentsLib extends Component {
         text: '根据名字搜索'
       }
     ]
+    console.log(studentList)
+    console.log(entities)
     return (
       <div>
         <StudentSearcher options={options} onSearch={userActions.searchStudentListByOption} />
-        <StudentTable list={studentList} />
+        <StudentTable list={studentList} entities={entities} />
       </div>
     )
   }
@@ -46,10 +48,13 @@ const mapStateToProps = state => {
     studentLib: { 
       list: studentList,
       filterOption
-    }
+    },
+    entities
   } = state
+  console.log(entities)
   return {
-    studentList: getAfterFilterList(studentList, filterOption)
+    studentList: getAfterFilterList(studentList, filterOption),
+    entities
   }
 }
 const mapDispatchToProps = dispatch => {

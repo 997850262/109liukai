@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { Table } from 'antd'
 import { browserHistory } from 'react-router';
+import entities from '../../reducers/entities';
 
 const columns = [
   {
@@ -64,13 +65,24 @@ class StudentTable extends Component {
   }
   
   render() {
-    const { list } = this.props    
+    const { list,entities } = this.props
+    console.log(list)
+    console.log(entities)
+    let newList = list;
+    if(list){
+      newList = list.map(id=>{
+        const list = entities.list[id];
+        return {
+          ...list,
+        }
+      });
+    } 
     return (
       <div className="table-wrapper">
         <Table 
           onRow={this.onRow}
           rowKey={record => record.mid} 
-          dataSource={list} 
+          dataSource={newList} 
           columns={columns} 
           pagination={false} 
         />
