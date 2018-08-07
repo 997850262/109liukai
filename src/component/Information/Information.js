@@ -10,21 +10,22 @@ export default class Information extends Component {
       }
       console.log('作品信息',entities)
       console.log('作品信息',homework)
-      console.log('作品信息',entities.homework.data)
+      console.log('作品信息',entities.data)
       let newList = homework;
-      if(homework){
+
+      if(newList){
         newList = homework.map(id=>{
-          const a = entities.homework.data[id];
+          const a = entities.data[id];
           return {
             ...a,
-            classInfo: entities.homework.classes[a.classInfo],
-            teacherInfo: entities.homework.teachers[a.teacherInfo],
-            author:entities.homework.teachers[a.author],
-            commentsItem:entities.homework.teachers[a.commentsItem]
+            classInfo: entities.classes[a.classInfo],
+            teacherInfo: entities.teachers[a.teacherInfo],
+            author:entities.author[a.author],
+            comments:entities.commentsItem[a.comments]
           }
         });
       }
-      console.log(newList[0])
+      console.log(newList)
 
     // return(
     //   homework.map=((item,id)=>{
@@ -32,25 +33,25 @@ export default class Information extends Component {
     return(
         <div className="Information">
             <div className="Information-0">
-            No.
+            No.754
             </div>
             <div>
             <img src='' />
             </div>
             <div className="Information-1">
                 <div>
-                作业:
+                作业:拍摄一组静物
                 </div>
                 <div>
-                mid:
+                mid:1001
                 </div>
             </div>
             <div className="Information-2">
                 <div className="Information-3">
-                点评人:
+                点评人:xxx
                 </div>
                 <div className="Information-3">
-                提交时间:
+                提交时间:1533362538734
                 </div>
                 <div className="Information-3">佳作
                 <Switch defaultChecked onChange={onChange} />

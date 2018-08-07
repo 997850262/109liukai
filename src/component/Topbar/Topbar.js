@@ -5,6 +5,7 @@ import Information from '../Information/Information.js'
 import Answer from '../Answer/Answer.js'
 import Comment from '../Comment/Comment.js'
 import './Topbar.css'
+import { Table, Icon, Popover } from 'antd'
 export default class Topbar extends Component {
 
 rendermap=(entities,homework)=>{return homework.map=(id=>{
@@ -23,11 +24,24 @@ rendermap=(entities,homework)=>{return homework.map=(id=>{
     const TabPane = Tabs.TabPane;
     console.log('Topbar中的',entities.homework)
     console.log('Topbar中的',homework)
+    // let newList = homework;
+    // newList = homework.map(t=>{
+    //     const a = entities.homework.data[t];
+    //     return {
+    //       ...a,
+    //     }
+    //   });
     return(
         <div>
           <Tabs defaultActiveKey="1">
             <TabPane tab="我的未点评 今日已点评:" key="1" >
             {/* {this.rendermap(entities,homework)} */}
+            {/* <Table 
+            rowKey={this.rowKey} 
+            dataSource={newList} 
+            pagination={false}
+            bordered
+            /> */}
             <div className="Topbar">
                 <div className="Topbar-left">
                     <div>

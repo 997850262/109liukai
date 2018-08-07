@@ -104,23 +104,79 @@ function list(state = [], action) {
       return state
   }
 }
-function homework(state =[],action){
+function author(state =[],action){
   switch(action.type){
     case `${ActionTypes.Fetchhomework}_SUC`: 
     {
-      console.log(111,action.response.entities.data)
       return {...state,
-        ...action.response.entities,
-        // ...action.response.entities.author,
-        // ...action.response.entities.classes,
-        // ...action.response.entities.commentsItem,
-        // ...action.response.entities.teachers,
+        ...action.response.entities.author,
       }
     }
     default:
     return state;
   }
 }
+function classes(state =[],action){
+  switch(action.type){
+    case `${ActionTypes.Fetchhomework}_SUC`: 
+    {
+      return {...state,
+        ...action.response.entities.classes,
+      }
+    }
+    default:
+    return state;
+  }
+}
+function commentsItem(state =[],action){
+  switch(action.type){
+    case `${ActionTypes.Fetchhomework}_SUC`: 
+    {
+      return {...state,
+        ...action.response.entities.commentsItem,
+      }
+    }
+    default:
+    return state;
+  }
+}
+function data(state =[],action){
+  switch(action.type){
+    case `${ActionTypes.Fetchhomework}_SUC`: 
+    {
+      return {...state,
+        ...action.response.entities.data,
+      }
+    }
+    default:
+    return state;
+  }
+}
+function teachers(state =[],action){
+  switch(action.type){
+    case `${ActionTypes.Fetchhomework}_SUC`: 
+    {
+      return {...state,
+        ...action.response.entities.teachers,
+      }
+    }
+    default:
+    return state;
+  }
+}
+// function homework(state =[],action){
+//   switch(action.type){
+//     case `${ActionTypes.Fetchhomework}_SUC`: 
+//     {
+//       console.log(111,action.response.entities.data)
+//       return {...state,
+//         ...action.response.entities,
+//       }
+//     }
+//     default:
+//     return state;
+//   }
+// }
 export default combineReducers({
   // classes,
   // teachers,
@@ -128,5 +184,11 @@ export default combineReducers({
   // list,
   // currentLessonsList,
   // historyLessonsList,
-  homework
+  // homework,
+  commentsItem,
+  author,
+  classes,
+  teachers,
+  data
+
 });
