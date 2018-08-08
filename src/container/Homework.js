@@ -11,16 +11,7 @@ import './Homework.css'
   constructor(props){
     super(props);
   }
-  componentDidMount() {
-    const{todoActions}=this.props;
-    const token=1;
-    const isReviewed=0;
-    todoActions.fetchhomework(token,isReviewed)
-    // const mid=this.props.params.mid;
-    // todoActions.fetchuser(mid);
-    // todoActions.fetchlesson(mid);
-    // todoActions.fetchSatisfaction(mid);
-  }
+
   render() {
     const{todoActions,router,entities,homework}=this.props;
     return (

@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
 import { Carousel } from 'antd';
-import './Imgs.css'
+import '../List/List.css'
 export default class Imgs extends Component {
-
+    // renderItem = (newList) => newList.map((item,idx) => {
+    //     console.log(222)
+    //     return (
+    //         <div>123</div>
+    //     )
+    // })
     render(){
-    const{todoActions,router}=this.props;
-    function onChange(a, b, c) {
-        console.log(a, b, c);
-      }
-    return(
-        <div className="Imgs">
-                <Carousel afterChange={onChange}>
-                    <div><h3>1</h3></div>
-                    <div><h3>2</h3></div>
-                    <div><h3>3</h3></div>
-                    <div><h3>4</h3></div>
-                    <div><h3>5</h3></div>
-                </Carousel>
-        </div>
-    )
+        const{photos}=this.props;
+        return(
+            <div className="list-Information">
+            <Carousel> 
+                
+                {
+                    photos.map(item => {
+                        return (
+                            <div>
+                                <img src={item}/>
+                            </div>
+                        )
+                    })
+                }
+                
+            </Carousel>
+            </div>
+        )
     }
 }

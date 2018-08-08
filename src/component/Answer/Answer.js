@@ -3,7 +3,7 @@ import { Input } from 'antd';
 export default class Answer extends Component {
 
     render(){
-    const{todoActions,router}=this.props;
+    const{todoActions,router,item}=this.props;
 
     return(
         <div>

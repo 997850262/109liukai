@@ -106,6 +106,9 @@ function list(state = [], action) {
 }
 function author(state =[],action){
   switch(action.type){
+    case `${ActionTypes.Fetchhomework2}_SUC`:
+    case `${ActionTypes.Fetchhomework3}_SUC`:
+    case `${ActionTypes.Fetchhomework4}_SUC`:
     case `${ActionTypes.Fetchhomework}_SUC`: 
     {
       return {...state,
@@ -118,6 +121,9 @@ function author(state =[],action){
 }
 function classes(state =[],action){
   switch(action.type){
+    case `${ActionTypes.Fetchhomework2}_SUC`:
+    case `${ActionTypes.Fetchhomework3}_SUC`:
+    case `${ActionTypes.Fetchhomework4}_SUC`:
     case `${ActionTypes.Fetchhomework}_SUC`: 
     {
       return {...state,
@@ -128,13 +134,30 @@ function classes(state =[],action){
     return state;
   }
 }
-function commentsItem(state =[],action){
+function comments(state =[],action){
   switch(action.type){
+    case `${ActionTypes.Fetchhomework2}_SUC`:
+    case `${ActionTypes.Fetchhomework3}_SUC`:
+    case `${ActionTypes.Fetchhomework4}_SUC`:
     case `${ActionTypes.Fetchhomework}_SUC`: 
     {
       return {...state,
-        ...action.response.entities.commentsItem,
+        ...action.response.entities.comments,
       }
+    }
+    case ActionTypes.Fetchid:
+    {
+      const{id}=action;
+      console.log(11111111111111)
+      console.log(id)
+      const newState ={...state,
+        [action.id]:{
+          ...state[action.id],
+          status:"reject",
+          reason:"点评太简单",
+        }
+      }
+      return newState;
     }
     default:
     return state;
@@ -142,6 +165,9 @@ function commentsItem(state =[],action){
 }
 function data(state =[],action){
   switch(action.type){
+    case `${ActionTypes.Fetchhomework2}_SUC`:
+    case `${ActionTypes.Fetchhomework3}_SUC`:
+    case `${ActionTypes.Fetchhomework4}_SUC`:
     case `${ActionTypes.Fetchhomework}_SUC`: 
     {
       return {...state,
@@ -154,6 +180,9 @@ function data(state =[],action){
 }
 function teachers(state =[],action){
   switch(action.type){
+    case `${ActionTypes.Fetchhomework2}_SUC`:
+    case `${ActionTypes.Fetchhomework3}_SUC`:
+    case `${ActionTypes.Fetchhomework4}_SUC`:
     case `${ActionTypes.Fetchhomework}_SUC`: 
     {
       return {...state,
@@ -164,6 +193,8 @@ function teachers(state =[],action){
     return state;
   }
 }
+
+
 // function homework(state =[],action){
 //   switch(action.type){
 //     case `${ActionTypes.Fetchhomework}_SUC`: 
@@ -185,10 +216,9 @@ export default combineReducers({
   // currentLessonsList,
   // historyLessonsList,
   // homework,
-  commentsItem,
+  comments,
   author,
   classes,
   teachers,
-  data
-
+  data,
 });

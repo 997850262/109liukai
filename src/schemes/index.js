@@ -38,16 +38,16 @@ export const Studentlist = [ studentlist ];
 const author = new schema.Entity('author',{},{
   idAttribute:'mid'
 })
-// const comments= new schema.Entity('comments',{},{
-//   idAttribute:'id'
-// })
-const commentsItem = new schema.Entity("commentsItem", {}, {idAttribute: 'id'})
-const comments = new schema.Array(commentsItem);
+const comments= new schema.Entity('comments',{},{
+  idAttribute:'id'
+})
+// const commentsItem = new schema.Entity("comments", {}, {idAttribute: 'id'})
+// const comments = new schema.Array(commentsItem);
 const data = new schema.Entity('data',{
   author:author,
   classInfo:classes,
   teacherInfo:teacher,
-  comments:comments
+  comments:[comments]
 },{
   idAttribute:'id'
 })
