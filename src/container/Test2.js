@@ -8,34 +8,39 @@ export default class Test2 extends React.Component {
     title:'',      // title文字
     okText:true,     // 可定制，默认值为“确定”
     cancelText:false, // 可定制，默认值为“取消”
+    content:''
   };
 
   handleShowios1 = () => {
     this.setState({
       type:{key:'ios1'},
       isActive:true,
-      title:'弹窗标题'
+      title:'弹窗标题',
+      content:'弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内'
     });
   }
   handleShowios2 = () => {
     this.setState({
       type:{key:'ios2'},
       isActive:true,
-      title:''
+      title:'',
+      content:'弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内'
     });
   }
   handleShowAndroid1 = () => {
     this.setState({
       type:{key:'Android1'},
       isActive:true,
-      title:'弹窗标题'
+      title:'弹窗标题',
+      content:'弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内'
     });
   }
   handleShowAndroid2 = () => {
     this.setState({
       type:{key:'Android2'},
       isActive:true,
-      title:''
+      title:'',
+      content:'弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内'
     });
   }
 
@@ -71,6 +76,7 @@ export default class Test2 extends React.Component {
           title={this.state.title}
           okText={this.state.okText}
           cancelText={this.state.cancelText}
+          content={this.state.content}
           onOk={this.handleonDialog}// 确定（主操作）回调
           onCancel={this.handlecancelDialog}// 取消（辅操作）回调
         />

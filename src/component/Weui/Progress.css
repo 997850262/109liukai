@@ -18,15 +18,17 @@
     height: 10px;
     /* width: 80%; */
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0%);
+    
   }
   
   .hideprogress1 {
     background-color: rgb(56, 187, 74);
     position: absolute;
     height: 10px;
-    opacity: 0.1;
-    transform: translateY(100%);
+    /* width: 80%; */
+    opacity: 0.5;
+    transform: translateX(100%);
   }
 
 .up{
@@ -35,8 +37,8 @@
 }
 .icon{
     position: relative;
-    left: 100%;
-    top: -5px;
+    left: 92%;
+    top: -18px;
     height: 20px;
 }
 

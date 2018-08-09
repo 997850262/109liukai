@@ -1,0 +1,21 @@
+.Switch{
+    width: 80px;
+    height: 50px;
+    background-color: rgb(166, 160, 172);
+    border-radius: 30px;
+}
+.open{
+    position: relative;
+    width: 40px;
+    height:50px ;
+    border-radius: 50%;
+    background-color: rgb(22, 241, 14);
+    left:40px;
+}
+.close{
+    position: relative;
+    width: 40px;
+    height:50px ;
+    border-radius: 50%;
+    background-color: rgb(22, 241, 14);
+}

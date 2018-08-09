@@ -5,7 +5,7 @@ const icon=require('./叉.png')
 export default class Progress extends React.Component {
 
   static defaultProps = {
-    value:0,
+    value:1,
     showCancel:true,
     onCancel: () => {}
   };
@@ -18,24 +18,31 @@ export default class Progress extends React.Component {
 
 getvalue=(value)=>{
     console.log('加载')
-    if (!this.props.value==0) {
+    console.log(value)
+    if (value==0) {
         return 'progress1 hideprogress1';
       }
-      else {
+    else{
           return 'progress1 showprogress1'
-      }
+    }
 }
+// addvalue=(value)=>{
+//     this.props.addvalue(value);
+// }
   render() {
     const {value} = this.props;
     return (
       <div>
         <div className="rongqi">
-            <div className={this.getvalue(value)} style={{width:'0%'}}>
-                
+            <div className="progress1" style={{width:`${value}%`}}>
+            {/* <div className={this.getvalue(value)} style={{width:`$value`}}> */}
             </div>
-            <img src={icon} className="icon" onClick={this.props.onCancel}/>
         </div>
-        <button className="up" >上传</button>       
+        <img src={icon} className="icon" onClick={this.props.onCancel}/>
+        <div>
+        <button className="up">上传</button>  
+        {/* <button className="up" onClick={this.addvalue(value)}>上传</button>   */}
+        </div>     
       </div>
     );
   }
