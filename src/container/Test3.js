@@ -13,11 +13,7 @@ export default class Test3 extends React.Component {
       value:50
     });
   }
-//   addvalue= (value) => {
-//     this.setState({
-//       value:100
-//     });
-//   }
+
   render() {
     return (
       <div>
@@ -25,7 +21,6 @@ export default class Test3 extends React.Component {
         value={this.state.value}
         showCancel={this.state.showCancel}
         onCancel={this.handlecancelProgress}
-        // addvalue={this.addvalue}
         />
       </div>
     );

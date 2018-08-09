@@ -26,9 +26,10 @@ getvalue=(value)=>{
           return 'progress1 showprogress1'
     }
 }
-// addvalue=(value)=>{
-//     this.props.addvalue(value);
-// }
+
+onCancel=()=>{
+    this.props.onCancel()
+}
   render() {
     const {value} = this.props;
     return (
@@ -40,8 +41,7 @@ getvalue=(value)=>{
         </div>
         <img src={icon} className="icon" onClick={this.props.onCancel}/>
         <div>
-        <button className="up">上传</button>  
-        {/* <button className="up" onClick={this.addvalue(value)}>上传</button>   */}
+        <button className="up" onClick={this.onCancel}>上传</button>  
         </div>     
       </div>
     );
