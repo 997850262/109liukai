@@ -11,5 +11,7 @@ export default {
   Fetchhomework2:'Fetchhomework2',
   Fetchhomework3:'Fetchhomework3',
   Fetchhomework4:'Fetchhomework4',
-  Fetchid:'Fetchid'
+  Fetchid:'Fetchid',
+  Sendmid:'Sendmid',
+  Sendword:'Sendword'
 }

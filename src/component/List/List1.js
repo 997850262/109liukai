@@ -7,19 +7,15 @@ import Answer from '../Answer/Answer.js'
 import Comment from '../Comment/Comment.js'
 export default class List1 extends Component {
     
-    mapRender = (newList,todoActions) => {
+    mapRender = (newList,todoActions)=>{
         return newList.map(item => {
             return (
                 <div className="list">
                     <div className="list-left">
                         <div>
                         <Imgs photos={item.photos}/>
-                        </div>
-                        <div className="list-Information">
                         <Information item={item} />
-                        </div>
-                        <div className="list-Answer"> 
-                        <Answer item={item}/>
+                        <Answer item={item} todoActions={todoActions}/>
                         </div>
                     </div>
                     <div className="list-right">

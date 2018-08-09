@@ -64,3 +64,16 @@ export function fetchhomework(token,isReviewed){
         id
       }
     }
+    export function sendmid(mid){
+      return {
+        type: ActionTypes.Sendmid,
+        mid
+      }
+    }
+    export function sendword(word){
+      console.log(word)
+      return {
+        type: ActionTypes.Sendword,
+        word
+      }
+    }

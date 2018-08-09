@@ -11,7 +11,7 @@ export default class Comment extends Component {
   reject=(id)=>{
     const{todoActions}=this.props;
     console.log(id)
-     todoActions.fetchid(id);
+    todoActions.fetchid(id);
   }
 rendercomment=(item)=>{
   if(item.status=="unrevised"&&item.from=="teacher")

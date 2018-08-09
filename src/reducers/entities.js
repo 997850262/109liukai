@@ -115,6 +115,23 @@ function author(state =[],action){
         ...action.response.entities.author,
       }
     }
+    case ActionTypes.Sendmid:{//搜索
+      const{mid}=action;
+      console.log(11111111111111111111,mid);
+        // let newState = {...state};
+        // newState.a=[];
+        // console.log(123, newState.a)
+        // newState.mid=action.obj;
+        // console.log(newState.dataSource[0])
+        // console.log(newState.mid)
+        // for(let i=0;i<newState.dataSource.length;i++)
+        // {
+        //   if(newState.dataSource[i].mid==newState.mid)
+        //   newState.a.push( newState.dataSource[i])
+        // }
+        // console.log(newState.a)
+        // return newState;
+    }
     default:
     return state;
   }
@@ -159,6 +176,23 @@ function comments(state =[],action){
       }
       return newState;
     }
+    case ActionTypes.Sendword://发送信息
+    {
+      const{word}=action
+      console.log(22222222,word)
+      const newMessages = {...comments}
+      const newState={
+      ...state,
+      ...newMessages,
+      content:word,
+      from:"author",
+      id:4400,
+      mid:1001,
+      nick:"小年糕",
+      time:1533362538734,
+      }
+      return newState;
+    }
     default:
     return state;
   }
@@ -174,6 +208,12 @@ function data(state =[],action){
         ...action.response.entities.data,
       }
     }
+    // case ActionTypes.Sendword://发送信息
+    // {
+    //   return {...state,
+    //     ...action.response.entities.data,
+    //   }
+    // }
     default:
     return state;
   }

@@ -1,35 +1,31 @@
 import React, { Component } from 'react';
 import { List, Avatar } from 'antd';
-import '../Topbar/Topbar.css'
+import './List.css'
 import Imgs from '../Imgs/Imgs.js'
 import Information from '../Information/Information.js'
 import Answer from '../Answer/Answer.js'
 import Comment from '../Comment/Comment.js'
 export default class List3 extends Component {
-    mapRender = (newList) => {
+    mapRender = (newList,todoActions)=>{
         return newList.map(item => {
             return (
                 <div className="list">
                     <div className="list-left">
                         <div>
                         <Imgs photos={item.photos}/>
-                        </div>
-                        <div className="list-Information">
                         <Information item={item} />
-                        </div>
-                        <div className="list-Answer"> 
-                        <Answer item={item}/>
+                        <Answer item={item} todoActions={todoActions}/>
                         </div>
                     </div>
                     <div className="list-right">
                         <div className="commentright">
-                        <Comment comments={item.comments}/>
+                        <Comment comments={item.comments} todoActions={todoActions}/>
                         </div>
                     </div>
                 </div>
             )
         })
-    } 
+    }
     render(){
         const{todoActions, router, entities, homework}=this.props;
         const data = [
@@ -53,7 +49,7 @@ export default class List3 extends Component {
           }
     return(
         <div>
-        {this.mapRender(newList)}
+        {this.mapRender(newList,todoActions)}
         </div>
     )
 }

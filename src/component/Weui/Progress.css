@@ -1,0 +1,43 @@
+.rongqi{
+    width: 80%;
+    height: 10px;
+    background: #EBEBEB;
+    margin-left: 10%;
+    margin-top: 20%;
+}
+.progress1{
+    background-color: rgb(56, 187, 74);
+    position: absolute;
+    height: 10px;
+    /* width: 80%; */
+    transition: opacity 3.0s ease-in;
+}
+.showprogress1 {
+    background-color: rgb(56, 187, 74);
+    position: absolute;
+    height: 10px;
+    /* width: 80%; */
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .hideprogress1 {
+    background-color: rgb(56, 187, 74);
+    position: absolute;
+    height: 10px;
+    opacity: 0.1;
+    transform: translateY(100%);
+  }
+
+.up{
+    margin-left: 45%;
+    margin-top: 5%;
+}
+.icon{
+    position: relative;
+    left: 100%;
+    top: -5px;
+    height: 20px;
+}
+
+  

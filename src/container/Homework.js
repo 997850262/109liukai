@@ -17,7 +17,7 @@ import './Homework.css'
     return (
         <div className="Main">
           <div>
-          <Head todoActions={todoActions} router={router}/>
+          <Head todoActions={todoActions} router={router} entities={entities} homework={homework}/>
           </div>
           <div>
           <Topbar todoActions={todoActions}  router={router} entities={entities} homework={homework}/>
