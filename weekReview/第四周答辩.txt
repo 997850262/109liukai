@@ -1,0 +1,34 @@
+这周主要学习了数据扁平化、怎么编写组件
+
+数据扁平化的原因:要对某一个数据进行修改时需要传递回一些键值,复制全部数据,然后多次遍历找出需要修改的东西,
+这会使页面的性能降得很低，增加了维护的成本。
+
+原理：把数据的层级关系降低，把深层嵌套的东西拿出来，由多层变为单层，把每部分按照一定的规则拆开，
+如： const name = new schema.Entity("name", {}, {idAttribute: '主键'})
+把数据变成索引加实体的形式，修改数据时就会方便很多，然后在组件中可以再合并进行渲染。
+存储实体数据：                                存储索引：
+case ...:                                     case ...:
+{                                             {
+    return {...state,                          return{...state,
+    ...action.response.entities.name,                return[...action.response.result]
+    }                                                }
+}                                             }
+
+在容器中:
+function mapStateToProps(state,ownProps){
+   const{索引,实体数据}=state;
+   return {索引,实体数据}
+}
+然后传递给需要的组件,组件用map可以再把数据合并
+修改数据时把key传回去,直接修改相应的字段就可以    case ...:
+                                                {
+自治组件：不用关心                               const{id}=action;
+1.样式、2.render Dom层级（外部注入组件）         const newState ={...state,
+外部：传入所需要的数据、EventHandler             [action.id]:{
+内部：state,this.state                          ...state[action.id],
+                                                status:"reject",
+                                                reason:"点评太简单",
+                                                }
+                                                }
+                                                return newState;
+                                                }
