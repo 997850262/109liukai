@@ -70,10 +70,12 @@ export function fetchhomework(token,isReviewed){
         mid
       }
     }
-    export function sendword(word){
+    export function sendword(id,word,newcomment){
       console.log(word)
       return {
         type: ActionTypes.Sendword,
-        word
+        id,
+        word,
+        newcomment
       }
     }

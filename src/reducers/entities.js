@@ -178,20 +178,22 @@ function comments(state =[],action){
     }
     case ActionTypes.Sendword://发送信息
     {
-      const{word}=action
-      console.log(22222222,word)
-      const newMessages = {...comments}
-      const newState={
-      ...state,
-      ...newMessages,
-      content:word,
-      from:"author",
-      id:4400,
-      mid:1001,
-      nick:"小年糕",
-      time:1533362538734,
+      const{id,word,newcomment}=action
+      console.log(11111111,id)//作品id
+      console.log(22222222,word)//回复内容
+      const newState ={...state,
+        [newcomment]:{
+          ...state[newcomment],
+          id:newcomment,
+          content:word,
+          from:"author",
+          mid:1001,
+          nick:"小年糕",
+          time:1533362538734
+        }
       }
       return newState;
+
     }
     default:
     return state;
@@ -208,12 +210,20 @@ function data(state =[],action){
         ...action.response.entities.data,
       }
     }
-    // case ActionTypes.Sendword://发送信息
-    // {
-    //   return {...state,
-    //     ...action.response.entities.data,
-    //   }
-    // }
+    case ActionTypes.Sendword://发送信息
+    {
+      const{id,word,newcomment}=action
+      console.log(11111111,id)//作品id
+      console.log(22222222,word)//回复内容
+      console.log(state[action.id])
+      // const newcomment=state[action.id].comments[0]+state[action.id].comments.length
+      console.log(newcomment)
+      console.log(state[action.id].comments.length)
+      const newState = {...state};
+      newState[action.id].comments.push(newcomment)
+      console.log(newState)
+      return newState;
+    }
     default:
     return state;
   }

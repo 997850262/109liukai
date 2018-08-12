@@ -14,6 +14,7 @@ export default class Comment extends Component {
     todoActions.fetchid(id);
   }
 rendercomment=(item)=>{
+  console.log(item.id)
   if(item.status=="unrevised"&&item.from=="teacher")
   return (
     <div>

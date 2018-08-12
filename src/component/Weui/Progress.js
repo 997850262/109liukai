@@ -7,13 +7,15 @@ export default class Progress extends React.Component {
   static defaultProps = {
     value:1,
     showCancel:true,
-    onCancel: () => {}
+    onCancel: () => {},
+    showCancel: () => {}
   };
 
   static propTypes = {
     value: PropTypes.number.isRequired,
     showCancel: PropTypes.bool.isRequired,
-    onCancel: PropTypes.func.isRequired
+    onCancel: PropTypes.func.isRequired,
+    showCancel: PropTypes.func.isRequired
   }
 
 getvalue=(value)=>{
@@ -30,16 +32,19 @@ getvalue=(value)=>{
 onCancel=()=>{
     this.props.onCancel()
 }
+showCancel=()=>{
+  this.props.showCancel()
+}
   render() {
     const {value} = this.props;
     return (
       <div>
         <div className="rongqi">
             <div className="progress1" style={{width:`${value}%`}}>
-            {/* <div className={this.getvalue(value)} style={{width:`$value`}}> */}
+            {/* <div className={this.getvalue(value)} style={{width:`${value}%`}}> */}
             </div>
         </div>
-        <img src={icon} className="icon" onClick={this.props.onCancel}/>
+        <img src={icon} className="icon" onClick={this.showCancel}/>
         <div>
         <button className="up" onClick={this.onCancel}>上传</button>  
         </div>     

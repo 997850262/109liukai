@@ -13,13 +13,17 @@ export default class Test3 extends React.Component {
       value:50
     });
   }
-
+  showCancel=()=>{
+    this.setState({
+      value:0
+    });
+  }
   render() {
     return (
       <div>
         <Progress
         value={this.state.value}
-        showCancel={this.state.showCancel}
+        showCancel={this.showCancel}
         onCancel={this.handlecancelProgress}
         />
       </div>

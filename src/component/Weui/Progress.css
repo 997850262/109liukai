@@ -7,14 +7,16 @@
 }
 .progress1{
     background-color: rgb(56, 187, 74);
-    position: absolute;
+    position: relative;
     height: 10px;
     /* width: 80%; */
-    transition: opacity 3.0s ease-in;
+    transform: translateZ(100%);
+    transition: opacity 3.5s linear;
+    /* transition:width 3s ease; */
 }
 .showprogress1 {
     background-color: rgb(56, 187, 74);
-    position: absolute;
+    position: relative;
     height: 10px;
     /* width: 80%; */
     opacity: 1;
@@ -24,7 +26,7 @@
   
   .hideprogress1 {
     background-color: rgb(56, 187, 74);
-    position: absolute;
+    position: relative;
     height: 10px;
     /* width: 80%; */
     opacity: 0.5;

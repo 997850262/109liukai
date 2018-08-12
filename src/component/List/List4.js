@@ -14,7 +14,7 @@ export default class List4 extends Component {
                         <div>
                         <Imgs photos={item.photos}/>
                         <Information item={item} />
-                        <Answer item={item} todoActions={todoActions}/>
+                        <Answer item={item} todoActions={todoActions} comments={item.comments}/>
                         </div>
                     </div>
                     <div className="list-right">
