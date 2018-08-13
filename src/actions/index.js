@@ -79,3 +79,10 @@ export function fetchhomework(token,isReviewed){
         newcomment
       }
     }
+    export function fitchimg(id){
+      console.log(id)
+      return {
+        type: ActionTypes.Fitchimg,
+        id,
+      }
+    }

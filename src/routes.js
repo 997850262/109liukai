@@ -8,11 +8,12 @@ import Test2 from './container/Test2';
 import Test3 from './container/Test3';
 
 import Test5 from './container/Test5';
+import Power from './container/Power';
 
 const routeConfig = { 
   path: '/',
   component: AppWrapper,
-  indexRoute: { component: Test5 },
+  indexRoute: { component: Power },
   childRoutes: [
     { path: 'studentsLib', component: StudentsLib },
     { path: 'userCenter/:mid', component: UserCenter },
@@ -21,7 +22,8 @@ const routeConfig = {
     {path:'test',component:Test},
     {path:'test2',component:Test2},
     {path:'test3',component:Test3},
-    {path:'test5',component:Test5}
+    {path:'test5',component:Test5},
+    {path:'power',component:Power},
   ]
 }
 

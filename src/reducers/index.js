@@ -7,6 +7,7 @@ import classesDetail from './classesDetail'
 import satisfied from './satisfied'
 import entities from './entities'
 import homework from './homework'
+import Power from './Power'
 
 const rootReducer = combineReducers({
   entities,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   classesDetail,
   satisfied,
   ui,
-  homework
+  homework,
+  Power
 })
 export default rootReducer

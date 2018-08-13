@@ -13,5 +13,6 @@ export default {
   Fetchhomework4:'Fetchhomework4',
   Fetchid:'Fetchid',
   Sendmid:'Sendmid',
-  Sendword:'Sendword'
+  Sendword:'Sendword',
+  Fitchimg:'Fitchimg'
 }
