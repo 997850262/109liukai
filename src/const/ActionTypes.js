@@ -14,5 +14,10 @@ export default {
   Fetchid:'Fetchid',
   Sendmid:'Sendmid',
   Sendword:'Sendword',
-  Fitchimg:'Fitchimg'
+  Fitchimg:'Fitchimg',
+  Addpower:'Addpower',
+  Setpower:'Setpower',
+  Cutpower:'Cutpower',
+  Deletepower:'Deletepower',
+  Sendid:'Sendid'
 }

@@ -25,14 +25,15 @@ import './Power.css'
     });
   }
   render() {
-    const{todoActions,router,Power}=this.props;
-    console.log(Power)
+    const{todoActions,entities,data}=this.props;
+    console.log(entities,data)
     return (
         <div className="all">
             <div className="PowerComment">
             <PowerComment 
             todoActions={todoActions}
-             Power={Power}
+            entities={entities}
+            data={data}
              isActive={this.state.isActive}
              openitem={this.openitem}
              />
@@ -40,7 +41,8 @@ import './Power.css'
             <div className="PowerItem">
             <PowerItem 
             todoActions={todoActions}
-             Power={Power}
+            entities={entities}
+            data={data}
              isActive={this.state.isActive}
              closeitem={this.closeitem}
              />
@@ -52,8 +54,12 @@ import './Power.css'
 
 function mapStateToProps(state,ownProps){
    const{Power}=state;
+   const entities=Power.Power;
+   const data=Power.data;
    console.log(Power)
-   return {Power}
+   console.log(entities)
+   console.log(data)
+   return {entities,data}
 }
 
 function mapDispatchToProps(dispatch){

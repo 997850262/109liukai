@@ -12,103 +12,75 @@ export default class PowerItemRight extends Component {
     //     const id=item.id;
     //     todoActions.fitchimg(id)
     //   }
-      onSelect = (todoActions) => {
+      onSelect = (selectedKeys) => {
         console.log('Trigger Select');
-        const id=0;
-        todoActions.fitchimg(id)
+        const{todoActions}=this.props
+        console.log('传递ID',selectedKeys)
+        todoActions.fitchimg(selectedKeys)
       };
       onExpand = () => {
         console.log('Trigger Expand');
       };
-    
-    mapRender = (newList,todoActions)=>{
-        return newList.map(item => {
-            console.log(item)
+
+    showimg=(entities,data,showimg)=>{
+        const root=entities.entities[showimg]
+        const idx=root.data;
+        console.log(idx)
+        console.log(data)
+        return(
+            root.data?idx.map(id=>{
             return (
-                    <TreeNode title={item.nick} key="0-0">
-                    {this.mapRender2(newList,item,todoActions)}
-                    </TreeNode>
+                <div className="PowerItemR-all">
+                <span onClick={()=>this.addpower(data[id].id)}>
+                {data[id].name} mid:{data[id].mid}
+                </span>
+                </div>
             )
-        })
-    }
-    mapRender2 = (newList,item,todoActions)=>{
-        console.log('...............', item)
-        console.log('...............', item.department2)
-        return item.department2.map(item2 => {
-            console.log(1111111111)
-            return(
-                    <TreeNode title={item2.nick} key="0-0-0">
-                    {this.mapRender3(newList,item,todoActions)}
-                    </TreeNode>
+            }
             )
-        })
-    }
-    mapRender3 = (newList,item,todoActions)=>{
-        return item.department3.map(item3 => {
-            return(
-                    <TreeNode title={item3.nick} key="0-0-0-0">
-                    {this.mapRender4(newList,item,todoActions)}
-                    </TreeNode>
+            :null
             )
-        })
     }
-    mapRender4 = (newList,item,todoActions)=>{
-        return item.department4.map(item4 => {
-            return(
-                    <TreeNode title={item4.nick} key="0-0-0-0-0" isLeaf />
-                    
+    addpower=(id)=>{
+        const {todoActions}=this.props
+        console.log(id)
+        todoActions.addpower(id)
+    }
+    mapRender=(entities,result,todoActions)=>{
+        const root=entities.entities[result]
+        console.log(root)
+        return(
+            <TreeNode title={root.nick} key={root.key}>
+            {
+            root.children?root.children.map(result=>{
+            return this.mapRender(entities,result,todoActions);}
             )
-        })
-    }
-    showimg=(showimg)=>{
-        console.log(showimg)
-        if(showimg==1)
-        {
-            <div>王鹏</div>
-        }
-        else{
-            <div>空</div>
-        }
+            :null
+            }
+            </TreeNode>
+            )
     }
     render(){
-        const{Power,todoActions,newList}=this.props
-        console.log(Power)
-        console.log(Power.entities)
-        console.log(Power.idx)
-        console.log(newList)
-        console.log(Power.showimg)
-        const showimg=Power.showimg;
+        const{entities,data,todoActions}=this.props
+        const result=entities.result;
+        console.log(entities.entities)
+        console.log(result)
+        console.log(data)
+        const showimg=entities.showimg;
+        console.log(showimg)
         return(
         <div className="PowerItemRight-all">
             <div className="PowerItemRight-1">
                 <DirectoryTree
                 multiple
                 onExpand={this.onExpand}
-                onSelect={()=>this.onSelect(todoActions)}
+                onSelect={(selectedKeys)=>this.onSelect(selectedKeys)}
                 >
-                {this.mapRender(newList,todoActions)}
-                {/* <TreeNode title="爱奇迪集团" key="0-0">
-                    <TreeNode title="广州分公司" key="0-0-0" >
-                        <TreeNode title="总经办" key="0-0-0-0" >
-                        <TreeNode title="总经办一组" key="0-0-0-0-0-0" />
-                        </TreeNode>  
-                        <TreeNode title="财务部" key="0-0-0-1" >
-                        <TreeNode title="财务一组" key="0-0-0-1-0-0" />
-                        </TreeNode>  
-                        <TreeNode title="工程部" key="0-0-1-0" >
-                        <TreeNode title="工程一组" key="0-0-1-0-0-0" />
-                        </TreeNode>  
-                        <TreeNode title="产品研发部" key="0-0-1-1" >
-                            <TreeNode title="开发一组" key="0-0-1-1-0-0" />
-                            <TreeNode title="开发二组" key="0-0-1-1-0-1" />
-                            <TreeNode title="测试组" key="0-0-1-1-1-0" />
-                        </TreeNode>  
-                    </TreeNode>
-                </TreeNode> */}
+                {this.mapRender(entities,result,todoActions)}
                 </DirectoryTree>
             </div>
             <div className="PowerItemRight-2">
-                {this.showimg(showimg)}
+                {this.showimg(entities,data,showimg)}
             </div>
         </div>
         )

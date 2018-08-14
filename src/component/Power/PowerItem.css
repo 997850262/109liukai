@@ -47,3 +47,12 @@
 .PowerItemRight-btn{
     float: right;
 }
+/* .PowerItem-name{
+    padding-left: 10px
+}
+.PowerItem-id{
+    margin-left: 10px;
+} */
+.PowerItemR-all{
+    border: 1px solid  rgb(116, 114, 114);
+}

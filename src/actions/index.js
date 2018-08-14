@@ -79,10 +79,42 @@ export function fetchhomework(token,isReviewed){
         newcomment
       }
     }
-    export function fitchimg(id){
-      console.log(id)
+    export function fitchimg(selectedKeys){
+      console.log(selectedKeys)
       return {
         type: ActionTypes.Fitchimg,
+        selectedKeys,
+      }
+    }
+    export function addpower(id){
+      console.log(id)
+      return {
+        type: ActionTypes.Addpower,
         id,
+      }
+    }
+    export function setpower(){
+      console.log()
+      return {
+        type: ActionTypes.Setpower,
+      }
+    }
+    export function cutpower(id){
+      console.log(id)
+      return {
+        type: ActionTypes.Cutpower,
+        id,
+      }
+    }
+    export function deletepower(id){
+      return {
+        type: ActionTypes.Deletepower,
+        id,
+      }
+    }
+    export function sendid(mid){
+      return {
+        type: ActionTypes.Sendid,
+        mid,
       }
     }
