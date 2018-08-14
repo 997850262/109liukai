@@ -26,9 +26,11 @@ export default class PowerItemLeft extends Component {
         if(data.sure==true&&data.sid==false)
         return(
             data.b?data.b.map(id=>{
+            if(data[id].isselect){data[id].color='gray'}
+            else{data[id].color='white'}
             return (
                 <div className="PowerItemR-all">
-                <span onClick={()=>this.cutpower(data[id].id)}>
+                <span onClick={()=>this.cutpower(data[id].id)} style={{background:`${data[id].color}`}}>
                 {data[id].name} mid:{data[id].mid}
                 </span>
                 </div>
@@ -44,9 +46,11 @@ export default class PowerItemLeft extends Component {
         console.log(data.sid)
        return data.b.map(id=>{
             if(id==data.sid){
+            if(data[id].isselect){data[id].color='gray'}
+            else{data[id].color='white'}
             return(
                 <div className="PowerItemR-all">
-                <span onClick={()=>this.cutpower(data[id].id)}>
+                <span onClick={()=>this.cutpower(data[id].id)} style={{background:`${data[id].color}`}}>
                 {data[id].name} mid:{data[id].mid}
                 </span>
                 </div>  

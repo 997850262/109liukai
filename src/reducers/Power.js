@@ -71,13 +71,13 @@ showimg:0,
     }
   }
   function data(state ={
-    1001: { id:1001,name: '白帆', mid: 1001,isselect:false},
-    1002: { id:1002,name: '王鹏', mid: 1002,isselect:false},
-    1003: { id:1003,name: '王鹏2', mid: 1003,isselect:false},
+    1001: { id:1001,name: '白帆', mid: 1001,isselect:false,color:'white'},
+    1002: { id:1002,name: '王鹏', mid: 1002,isselect:false,color:'white'},
+    1003: { id:1003,name: '王鹏2', mid: 1003,isselect:false,color:'white'},
     sure:false,
-    a:[],
-    b:[],
-    sid:0
+    a:[],//右边的数组
+    b:[],//左边渲染的数组
+    sid:0,
 }
 ,action){
     switch(action.type){
@@ -89,7 +89,7 @@ showimg:0,
             ...state,
             [action.id]: {
                 ...state[action.id],
-                isselect: !state[action.id].isselect
+                isselect: !state[action.id].isselect,
             },
             ...state.a.push(action.id)
         }
@@ -110,7 +110,8 @@ showimg:0,
             ...state,
             [action.id]: {
                 ...state[action.id],
-                isselect: !state[action.id].isselect
+                isselect: !state[action.id].isselect,
+                // color:'gray'
             },
         }
       }
