@@ -9,24 +9,27 @@ import Test3 from './container/Test3';
 
 import Test5 from './container/Test5';
 import Power from './container/Power';
+import game2048 from './container/game2048';
 
-const routeConfig = { 
+const routeConfig = {
   path: '/',
   component: AppWrapper,
-  indexRoute: { component: Power },
+  indexRoute: { component: game2048 },
   childRoutes: [
     { path: 'studentsLib', component: StudentsLib },
     { path: 'userCenter/:mid', component: UserCenter },
     { path: 'classDetail/:classId', component: ClassDetail },
-    { path:'homework', component:Homework},
-    {path:'test',component:Test},
-    {path:'test2',component:Test2},
-    {path:'test3',component:Test3},
-    {path:'test5',component:Test5},
-    {path:'power',component:Power},
+    { path: 'homework', component: Homework },
+    { path: 'test', component: Test },
+    { path: 'test2', component: Test2 },
+    { path: 'test3', component: Test3 },
+    { path: 'test5', component: Test5 },
+    { path: 'power', component: Power },
+    { path: 'game', component: game2048 }
+
   ]
-}
+};
 
 // /studentsLib
 
-export default routeConfig
+export default routeConfig;

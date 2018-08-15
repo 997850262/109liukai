@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import './PowerItem.css'
+import './PowerItem.css';
+/* eslint-disable */
 import { Input } from 'antd';
 
 export default class PowerItemLeft extends Component {
-    constructor(props) {
-        super(props);
-        this.state={
-            mid:''
-          }
-          this.handlemid = this.handlemid.bind(this);
-      }
-      handlemid=(e)=>{
+  constructor(props) {
+    super(props);
+    this.state = {
+      mid: ''
+    };
+    this.handlemid = this.handlemid.bind(this);
+  }
+      handlemid=e => {
         this.setState({
-          mid:e.target.value
-        })
+          mid: e.target.value
+        });
       }
-      sousuo=()=>{
+      /* eslint-disable */
+      sousuo= () => {
         const { todoActions } = this.props;
         const mid = this.state.mid;
         todoActions.sendid(mid);
       }
+      /* eslint-disable */
     renderpower=(data)=>{
         console.log('左侧',data)
         console.log('左侧',data.sid)

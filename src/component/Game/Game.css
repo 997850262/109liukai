@@ -1,0 +1,245 @@
+.Head-all{
+    width: 50%;
+    margin-left: 100px;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.Head1{
+    display: flex;
+    flex-direction: row;
+}
+.Head2{
+    display: flex;
+    flex-direction: row;
+}
+.title{
+    font-size:24px;
+    font-weight: 600;
+}
+.Score{
+    position: relative;
+    width: 100px;
+    margin-top: 20px;
+    margin-left: 40%;
+    background: rgba(145, 115, 16, 0.623);
+    text-align: center;
+}
+.Best-Score{
+    position: relative;
+    width: 100px;
+    margin-top: 20px;
+    margin-left: 5%;
+    background: rgba(145, 115, 16, 0.623);
+    text-align: center;
+}
+.description{
+    position: relative;
+    margin-top: 20px;
+    width: 30%;
+}
+.restart{
+    margin-left: 60%;
+    margin-top: 20px;
+}
+.game-all{
+    width: 50%;
+    margin-left: 100px;
+    margin-top: 50px;
+    height: 450px;
+    background: rgba(145, 115, 16, 0.623);
+    display: flex;
+    flex-wrap: wrap;
+}
+.btn1-1{
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+.btn1-2{
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+.btn1-3{
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+.btn1-4{
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+.btn2-1{
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+.btn2-2{
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+.btn2-3{
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+.btn2-4{
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+.btn3-1{
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+.btn3-2{
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+.btn3-3{
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+.btn3-4{
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+.btn4-1{
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+.btn4-2{
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+.btn4-3{
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+.btn4-4{
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}

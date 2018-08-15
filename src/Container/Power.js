@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import * as todoActionCreators from '../actions/index'
+import { connect } from 'react-redux';
+import * as todoActionCreators from '../actions/index';
+/* eslint-disable */
 import { bindActionCreators } from 'redux';
-import PowerComment from '../component/Power/PowerComment'
-import PowerItem from '../component/Power/PowerItem'
-import './Power.css'
+import PowerComment from '../component/Power/PowerComment';
+import PowerItem from '../component/Power/PowerItem';
+import './Power.css';
 
 
- class Power extends Component {
+class Power extends Component {
+/* eslint-disable */
   constructor(props){
     super(props);
     this.state={
