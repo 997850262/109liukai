@@ -1,5 +1,6 @@
 .Head-all{
     width: 50%;
+    height: 30%;
     margin-left: 100px;
     padding-top: 50px;
     display: flex;
@@ -8,10 +9,12 @@
 .Head1{
     display: flex;
     flex-direction: row;
+    height: 10%;
 }
 .Head2{
     display: flex;
     flex-direction: row;
+    height: 20%;
 }
 .title{
     font-size:28px;
@@ -36,16 +39,16 @@
 .description{
     position: relative;
     margin-top: 20px;
-    width: 30%;
+    width: 50%;
 }
 .restart{
-    margin-left: 60%;
+    margin-left: 35%;
     margin-top: 20px;
 }
 .game-all{
     width: 50%;
     margin-left: 100px;
-    margin-top: 50px;
+    margin-top: 10px;
     height: 450px;
     background: rgba(145, 115, 16, 0.623);
     display: flex;
@@ -65,183 +68,4 @@
     font-size:24px;
     font-weight: 600;
 }
-.btn1-2{
-    width: 20%;
-    height: 20%;
-    background: rgb(207, 207, 166);
-    border-radius: 15px;
-    text-align: center;
-    padding-top: 20px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-}
-.btn1-3{
-    width: 20%;
-    height: 20%;
-    background: rgb(207, 207, 166);
-    border-radius: 15px;
-    text-align: center;
-    padding-top: 20px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-}
-.btn1-4{
-    width: 20%;
-    height: 20%;
-    background: rgb(207, 207, 166);
-    border-radius: 15px;
-    text-align: center;
-    padding-top: 20px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-}
-.btn2-1{
-    width: 20%;
-    height: 20%;
-    background: rgb(207, 207, 166);
-    border-radius: 15px;
-    text-align: center;
-    padding-top: 20px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-}
-.btn2-2{
-    width: 20%;
-    height: 20%;
-    background: rgb(207, 207, 166);
-    border-radius: 15px;
-    text-align: center;
-    padding-top: 20px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-}
-.btn2-3{
-    width: 20%;
-    height: 20%;
-    background: rgb(207, 207, 166);
-    border-radius: 15px;
-    text-align: center;
-    padding-top: 20px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-}
-.btn2-4{
-    width: 20%;
-    height: 20%;
-    background: rgb(207, 207, 166);
-    border-radius: 15px;
-    text-align: center;
-    padding-top: 20px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-}
-.btn3-1{
-    width: 20%;
-    height: 20%;
-    background: rgb(207, 207, 166);
-    border-radius: 15px;
-    text-align: center;
-    padding-top: 20px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-}
-.btn3-2{
-    width: 20%;
-    height: 20%;
-    background: rgb(207, 207, 166);
-    border-radius: 15px;
-    text-align: center;
-    padding-top: 20px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-}
-.btn3-3{
-    width: 20%;
-    height: 20%;
-    background: rgb(207, 207, 166);
-    border-radius: 15px;
-    text-align: center;
-    padding-top: 20px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-}
-.btn3-4{
-    width: 20%;
-    height: 20%;
-    background: rgb(207, 207, 166);
-    border-radius: 15px;
-    text-align: center;
-    padding-top: 20px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-}
-.btn4-1{
-    width: 20%;
-    height: 20%;
-    background: rgb(207, 207, 166);
-    border-radius: 15px;
-    text-align: center;
-    padding-top: 20px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-}
-.btn4-2{
-    width: 20%;
-    height: 20%;
-    background: rgb(207, 207, 166);
-    border-radius: 15px;
-    text-align: center;
-    padding-top: 20px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-}
-.btn4-3{
-    width: 20%;
-    height: 20%;
-    background: rgb(207, 207, 166);
-    border-radius: 15px;
-    text-align: center;
-    padding-top: 20px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-}
-.btn4-4{
-    width: 20%;
-    height: 20%;
-    background: rgb(207, 207, 166);
-    border-radius: 15px;
-    text-align: center;
-    padding-top: 20px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
-}
+

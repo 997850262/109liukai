@@ -29,7 +29,7 @@ class game2048 extends React.Component {
         {
           this.initialize();
         }
-        else{alert('game over')}
+        else{alert('换条路试试?')}
       } else if (data[hang][lie] == 0) {
         if (num > 3) {
           num = 4;

@@ -61,6 +61,10 @@ function game(state = {
                         {
                                 newdata[i][id]=2*newdata[i][id];
                                 state.Score=state.Score+newdata[i][id];
+                                if(state.Score>state.bestScore)
+                                {
+                                    state.bestScore=state.Score;
+                                }
                                 console.log('加倍',newdata[i][id])
                                 newdata[i+1][id]=0;
                                 console.log('清空',newdata[i+1][id])
@@ -116,6 +120,10 @@ function game(state = {
                         {
                                 newdata[i][j]=2*newdata[i][j];
                                 state.Score=state.Score+newdata[i][j];
+                                if(state.Score>state.bestScore)
+                                {
+                                    state.bestScore=state.Score;
+                                }
                                 console.log('加倍',newdata[i][j])
                                 newdata[i][j+1]=0;
                                 console.log('清空',newdata[i][j+1])
@@ -151,6 +159,10 @@ function game(state = {
                         {
                                 newdata[i][j]=2*newdata[i][j];
                                 state.Score=state.Score+newdata[i][j];
+                                if(state.Score>state.bestScore)
+                                {
+                                    state.bestScore=state.Score;
+                                }
                                 newdata[i-1][j]=0;
                                 b=1; 
                             if(b==1) break;
@@ -184,6 +196,10 @@ function game(state = {
                         {
                                 newdata[i][j]=2*newdata[i][j];
                                 state.Score=state.Score+newdata[i][j];
+                                if(state.Score>state.bestScore)
+                                {
+                                    state.bestScore=state.Score;
+                                }
                                 console.log('加倍',newdata[i][j])
                                 newdata[i][j-1]=0;
                                 console.log('清空',newdata[i][j-1])

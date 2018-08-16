@@ -6,6 +6,9 @@ import './Game.css';
 export default class Gamearea extends Component {
   constructor(props) {
     super(props);
+    // this.state={
+
+    // }
   }
   rendergamebtn=()=>{
     const{data}=this.props;
@@ -31,31 +34,74 @@ export default class Gamearea extends Component {
       })
     })
   }
-  // listenReturnKeyDown=event=>{
-  //   console.log('监听键盘',KEY_RETURN[0])
-  //   const{todoActions}=this.props;
-  //   switch(event.keyCode){
-  //     case 87:
-  //         alert("W");
-  //         break;
-  //     case 65:
-  //         alert("A");
-  //         break;
-  //     case 83:
-  //         alert("S");
-  //         break;
-  //     case 68:
-  //         alert("D");
-  //         break;
-  // }
-  // }
+
+  onTouchStart=(event)=>{
+  console.log(event)
+  console.log(event.touches)
+  this.startX = event.touches[0].clientX;
+  this.startY = event.touches[0].clientY;	
+  console.log('1111111111111',this.startX)
+  console.log('1111111111111',this.startY)
+  }
+  onTouchEnd=(event)=>{
+    const{todoActions}=this.props;
+  console.log(event.changedTouches)
+  this.endX = event.changedTouches[0].clientX;
+  this.endY = event.changedTouches[0].clientY;
+  console.log('22222222',this.endX)
+  console.log('22222222',this.endY)
+  var x = this.endX - this.startX;
+  var y = this.endY - this.startY;
+  console.log('33333',x)
+  console.log('33333',y)
+    if(x>0&&y>0){
+      if(x-y>0)
+      {
+        todoActions.rightward();
+      }
+      else{
+        todoActions.downward();
+      }
+    }
+    else if(x>0&&y<0){
+      if(x+y>0)
+      {
+        todoActions.rightward();
+      }
+      else{
+        todoActions.upward();
+      }
+    }
+    else if(x<0&&y>0){
+      if(x+y>0){
+        todoActions.downward();
+      }
+      else{
+        todoActions.leftward();
+      }
+    }
+    else if(x<0&&y<0){
+      if(x-y>0){
+        todoActions.upward();
+      }
+      else{
+        todoActions.leftward();
+      }
+    }
+  }
+  onTouchMove=(event)=>{
+    console.log(event.defaultPrevented)
+    event.preventDefault();
+  }
   render() {
     const{data}=this.props;
     console.log('游戏区域',data)
     return (
-        <div className="game-all">
+        <div className="game-all" onTouchStart={this.onTouchStart}
+         onTouchEnd={this.onTouchEnd}
+         onTouchMove={this.onTouchMove}
+         >
         {this.rendergamebtn()}
-           
         </div>
     );
   }
