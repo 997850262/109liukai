@@ -20,5 +20,10 @@ export default {
   Cutpower: 'Cutpower',
   Deletepower: 'Deletepower',
   Sendid: 'Sendid',
-  Reset: 'Reset'
+  Reset: 'Reset',
+  Upward: 'Upward',
+  Leftward: 'Leftward',
+  Downward: 'Downward',
+  Rightward: 'Rightward',
+  Initialize: 'Initialize'
 };

@@ -10,6 +10,8 @@ export default class Head extends Component {
     todoActions.reset();
   }
   render() {
+    const{Score,bestScore}=this.props;
+    console.log(Score)
     return (
       <div className="Head-all">
         <div className="Head1">
@@ -17,10 +19,10 @@ export default class Head extends Component {
               2048
           </div>
           <div className="Score">
-              Scores<br/>0
+              Scores<br/>{Score}
           </div>
           <div className="Best-Score">
-              Best Scores <br/>0
+              Best Scores <br/>{bestScore}
           </div>
         </div>
         <div className="Head2">

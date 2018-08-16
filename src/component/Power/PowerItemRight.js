@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
-import './PowerItem.css';
-/* eslint-disable */
 import { Tree } from 'antd';
-/* eslint-disable */
-const DirectoryTree = Tree.DirectoryTree;
-const TreeNode = Tree.TreeNode;
+import './PowerItem.css';
+
+const { DirectoryTree } = Tree.DirectoryTree;
+const { TreeNode } = Tree.TreeNode;
 export default class PowerItemRight extends Component {
-  constructor(props) {
-    super(props);
-  }
-  //   handlename=(item,todoActions)=>{
-  //     console.log('获取名字',item.name)
-  //     const id=item.id;
-  //     todoActions.fitchimg(id)
-  //   }
       onSelect = selectedKeys => {
         console.log('Trigger Select');
         const { todoActions } = this.props;
@@ -23,7 +14,7 @@ export default class PowerItemRight extends Component {
       onExpand = () => {
         console.log('Trigger Expand');
       };
-
+/* eslint-disable */
     showimg=(entities, data, showimg) => {
       const root = entities.entities[showimg];
       const idx = root.data;

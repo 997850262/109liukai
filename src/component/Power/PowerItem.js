@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { Icon } from 'antd';
 import './PowerItem.css';
 import PowerItemLeft from './PowerItemLeft';
 import PowerItemRight from './PowerItemRight';
-/* eslint-disable */
-import { Icon } from 'antd';
+
 
 export default class PowerItem extends Component {
 /* eslint-disable */

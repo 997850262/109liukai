@@ -125,3 +125,28 @@ export function reset() {
     type: ActionTypes.Reset,
   };
 }
+export function upward() {
+  return {
+    type: ActionTypes.Upward,
+  };
+}
+export function leftward() {
+  return {
+    type: ActionTypes.Leftward,
+  };
+}
+export function downward() {
+  return {
+    type: ActionTypes.Downward,
+  };
+}
+export function rightward() {
+  return {
+    type: ActionTypes.Rightward,
+  };
+}
+export function initialize() {
+  return {
+    type: ActionTypes.Initialize,
+  };
+}

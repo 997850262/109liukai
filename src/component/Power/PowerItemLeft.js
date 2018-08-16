@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './PowerItem.css';
-/* eslint-disable */
 import { Input } from 'antd';
+import './PowerItem.css';
+
 
 export default class PowerItemLeft extends Component {
   constructor(props) {

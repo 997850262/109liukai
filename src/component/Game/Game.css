@@ -14,8 +14,8 @@
     flex-direction: row;
 }
 .title{
-    font-size:24px;
-    font-weight: 600;
+    font-size:28px;
+    font-weight: 700;
 }
 .Score{
     position: relative;
@@ -62,6 +62,8 @@
     margin-right: 2.5%;
     margin-top: 2.5%;
     margin-bottom: 2.5%;
+    font-size:24px;
+    font-weight: 600;
 }
 .btn1-2{
     width: 20%;

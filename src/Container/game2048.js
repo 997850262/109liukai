@@ -1,70 +1,94 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as todoActionCreators from '../actions/index';
-/* eslint-disable */
 import { bindActionCreators } from 'redux';
+import * as todoActionCreators from '../actions/index';
 import Head from '../component/Game/Head';
 import Gamearea from '../component/Game/Gamearea';
 
 
 class game2048 extends React.Component {
-    componentDidMount=()=>{
-
+    componentDidMount=() => {
+      window.addEventListener('keydown', this.handleKeyDown);
     }
-    initialize=()=>{//初始化
-        const {data}=this.props;
-        let num=Math.floor(Math.random()*(4-2+1)+2);
-        let num2=Math.floor(Math.random()*(4-2+1)+2);
-        let hang=Math.floor(Math.random()*(3-0+1)+0);
-        let hang2=Math.floor(Math.random()*(3-0+1)+0);
-        let lie=Math.floor(Math.random()*(3-0+1)+0);
-        let lie2=Math.floor(Math.random()*(3-0+1)+0);
-        console.log(num)
-        console.log(num2)
-        console.log('行',hang)
-        console.log('列',lie)
-        console.log('行',hang2)
-        console.log('列',lie2)
-        if(hang2==hang&&lie2==lie)
+/* eslint-disable */
+    initialize=() => { // 初始化
+      const { data, isinitialize, todoActions } = this.props;
+      let m = 0;
+      console.log(isinitialize);
+      let num = Math.floor(Math.random() * (4 - 2 + 1) + 2);
+      const hang = Math.floor(Math.random() * (3 - 0 + 1) + 0);
+      const lie = Math.floor(Math.random() * (3 - 0 + 1) + 0);
+      if (data[hang][lie] > 0) {
+        console.log('重新随机');
+        data.map((n, hang) => n.map((num, lie) => {
+          if (data[hang][lie] == 0) {
+            m++;
+          }
+        }));
+        if(m>0)
         {
-            hang2=hang2-1;
+          this.initialize();
         }
-        if(num>3){
-            num=4;
-        console.log(num)
+        else{alert('game over')}
+      } else if (data[hang][lie] == 0) {
+        if (num > 3) {
+          num = 4;
+          console.log(num);
+        } else {
+          num = 2;
+          console.log(num);
         }
-        else{
-            num=2;
-            console.log(num)
-        }
-        if(num2>=3){
-            num2=4;
-        }
-        else{
-            num2=2;
-        }
-        data[hang][lie]=num;
-        data[hang2][lie2]=num2;
-        console.log(data)
+        data[hang][lie] = num;
+      }
+      if (isinitialize == true) {
+        todoActions.initialize();
+      }
+      console.log(data);
     }
 
-  render() {
-    const{data,todoActions}=this.props;
-    return (
-      <div>
-        {this.initialize()}
-        <Head data={data} todoActions={todoActions}/>
-        <Gamearea data={data} todoActions={todoActions}/>
-      </div>
-    );
-  }
+    handleKeyDown=event => {
+      const { todoActions } = this.props;
+      switch (event.keyCode) {
+        case 87:
+          todoActions.upward();
+          break;
+        case 65:
+          todoActions.leftward();
+          break;
+        case 83:
+          todoActions.downward();
+          break;
+        case 68:
+          todoActions.rightward();
+          break;
+        default:
+          break;
+      }
+    }
+    render() {
+      const { data,Score,bestScore, todoActions} = this.props;
+      let {color}=this.props
+      this.initialize();
+      return (
+        <div>
+          <Head data={data} Score={Score} bestScore={bestScore} todoActions={todoActions} />
+          <Gamearea data={data} color={color} todoActions={todoActions} />
+        </div>
+      );
+    }
 }
-function mapStateToProps(state, ownProps) {
+/* eslint-disable */
+function mapStateToProps(state) {
   const { game } = state;
-  console.log(game.game)
-  const data=game.game.data;
-  console.log(data)
-  return { data };
+  console.log(game.game);
+  const data = game.game.data;
+  const isinitialize = game.game.isinitialize;
+  const Score = game.game.Score;
+  const bestScore = game.game.bestScore;
+  let color=game.game.color;
+  // console.log(game.game.isinitialize);
+  // console.log(color);
+  return { data, isinitialize,Score,bestScore,color };
 }
 
 function mapDispatchToProps(dispatch) {
