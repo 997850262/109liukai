@@ -1,0 +1,35 @@
+这周主要学了ant design的使用、直接使用axios API拉数据、中间件、router路由、数据扁平化
+
+我对中间件的印象比较深刻：
+componentDidMount请求拉取数据时会发出异步请求
+异步操作：
+一个异步action可以分解为三个同步action
+
+中间件的特点：
+1.可插拔（热插拔）
+2.可无限延展
+3.前后可依赖
+步骤：
+1.创建中间件
+export default store => next => action => {}
+
+2.插入中间件
+在applyMiddleware插中间件,logger放在最后
+
+3.具体中间件的编写
+先判断action的类型,如果是不是自己要处理的就直接return next(action)
+,否则就结构出action的内容然后自己处理它
+    axios({
+      method: '',
+      url:,
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      data: params//参数
+    })
+method:有get、post两种方式，get的参数会在url中，不安全
+
+4.对应的action以及action的发起
+特殊的action:Server_Api:{type:,其它数据} ,发送action
+.then：发出成功的action
+.catch：发出失败的action
+
+reduce响应action,进行处理
