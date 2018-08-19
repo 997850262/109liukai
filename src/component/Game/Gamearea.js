@@ -56,6 +56,7 @@ export default class Gamearea extends Component {
     console.log(event.defaultPrevented);
     event.preventDefault();
   }
+  /* eslint-disable */
   rendergamebtn=() => {
     const { data } = this.props;
     let { color } = this.props;
@@ -66,7 +67,7 @@ export default class Gamearea extends Component {
       // console.log(lie)
       // console.log('内容',data[hang][lie])
         if (data[hang][lie] > 0) {
-          if (num == 4) { color = 'green'; } else if (num == 8) { color = 'orange'; } else if (num == 16) { color = 'red'; }
+          if (num == 2) { color = 'wgite'; } else if (num == 4) { color = 'green'; } else if (num == 8) { color = 'orange'; } else if (num == 16) { color = 'yellow'; } else if (num >= 32) { color = 'red'; }
           return (
             <div className="btn1-1" style={{ background: `${color}` }}>{data[hang][lie]}</div>
           );

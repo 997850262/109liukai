@@ -150,3 +150,8 @@ export function initialize() {
     type: ActionTypes.Initialize,
   };
 }
+export function random() {
+  return {
+    type: ActionTypes.Random,
+  };
+}

@@ -5,45 +5,53 @@ import * as todoActionCreators from '../actions/index';
 import Head from '../component/Game/Head';
 import Gamearea from '../component/Game/Gamearea';
 
-
+/* eslint-disable */
 class game2048 extends React.Component {
     componentDidMount=() => {
       window.addEventListener('keydown', this.handleKeyDown);
     }
-/* eslint-disable */
+
     initialize=() => { // 初始化
-      const { data, isinitialize, todoActions } = this.props;
-      let m = 0;
-      console.log(isinitialize);
-      let num = Math.floor(Math.random() * (4 - 2 + 1) + 2);
-      const hang = Math.floor(Math.random() * (3 - 0 + 1) + 0);
-      const lie = Math.floor(Math.random() * (3 - 0 + 1) + 0);
-      if (data[hang][lie] > 0) {
-        console.log('重新随机');
-        data.map((n, hang) => n.map((num, lie) => {
-          if (data[hang][lie] == 0) {
-            m++;
+      const { data, isinitialize, todoActions,slide } = this.props;
+      let gameover=false;
+      data.map((n, hang) => n.map((num, lie) => {
+        if (data[hang][lie] == 2048){
+          alert('游戏结束');
+          gameover=true
+        }
+      }))
+      if(slide==true&&gameover==false){
+        let m = 0;
+        console.log(isinitialize);
+        let num = Math.floor(Math.random() * (4 - 2 + 1) + 2);
+        const hang = Math.floor(Math.random() * (3 - 0 + 1) + 0);
+        const lie = Math.floor(Math.random() * (3 - 0 + 1) + 0);
+        if (data[hang][lie] > 0) {
+          console.log('重新随机');
+          data.map((n, hang) => n.map((num, lie) => {
+            if (data[hang][lie] == 0) {
+              m++;
+            }
+          }));
+          if (m > 0) {
+            this.initialize();
+          } else { alert('换条路试试?'); }//,进不来,此时滑块必定为flase
+        } else if (data[hang][lie] == 0) {
+          if (num > 3) {
+            num = 4;
+            console.log(num);
+          } else {
+            num = 2;
+            console.log(num);
           }
-        }));
-        if(m>0)
-        {
-          this.initialize();
+          data[hang][lie] = num;
         }
-        else{alert('换条路试试?')}
-      } else if (data[hang][lie] == 0) {
-        if (num > 3) {
-          num = 4;
-          console.log(num);
-        } else {
-          num = 2;
-          console.log(num);
+        if (isinitialize == true) {//是否初始化
+          todoActions.initialize();
         }
-        data[hang][lie] = num;
-      }
-      if (isinitialize == true) {
-        todoActions.initialize();
-      }
-      console.log(data);
+        else todoActions.random();
+        console.log(data);
+      } 
     }
 
     handleKeyDown=event => {
@@ -66,8 +74,10 @@ class game2048 extends React.Component {
       }
     }
     render() {
-      const { data,Score,bestScore, todoActions} = this.props;
-      let {color}=this.props
+      const {
+        data, Score, bestScore, todoActions,slide
+      } = this.props;
+      const { color } = this.props;
       this.initialize();
       return (
         <div>
@@ -77,7 +87,7 @@ class game2048 extends React.Component {
       );
     }
 }
-/* eslint-disable */
+
 function mapStateToProps(state) {
   const { game } = state;
   console.log(game.game);
@@ -85,10 +95,13 @@ function mapStateToProps(state) {
   const isinitialize = game.game.isinitialize;
   const Score = game.game.Score;
   const bestScore = game.game.bestScore;
-  let color=game.game.color;
-  // console.log(game.game.isinitialize);
+  const color = game.game.color;
+  const slide = game.game.slide;
+  console.log(game.game.slide);
   // console.log(color);
-  return { data, isinitialize,Score,bestScore,color };
+  return {
+    data, isinitialize, Score, bestScore, color,slide
+  };
 }
 
 function mapDispatchToProps(dispatch) {

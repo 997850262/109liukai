@@ -1,5 +1,0 @@
-store：包含state和dispatch,存储数据
-dispatch:运送action
-reduces:根据现在的state和action进行处理,返回新的state
-connect:将组件连接起来
-mapstateToprops：接收state返回一个对象,它能更新store
