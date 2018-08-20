@@ -11,74 +11,74 @@ class game2048 extends React.Component {
       window.addEventListener('keydown', this.handleKeyDown);
     }
 
-    initialize=() => { // 初始化,随机函数
-      const {
-        data, isinitialize, todoActions, slide, gameover, twinkle
-      } = this.props;
-      // todoActions.initialize();
-      let x = 0;
-      let y = 0;
-      for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 4; j++) {
-          if (data[i][j] == 2048) {
-            alert('游戏结束');
-            todoActions.gameover();
-            break;
-          }
-        }
-      }
-      for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 3; j++) {
-          if (data[i][j] != 0 && data[i][j] != data[i][j + 1]) {
-            x++;
-          }
-        }
-      }
-      for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 4; j++) {
-          if (data[i][j] != 0 && data[i][j] != data[i + 1][j]) {
-            y++;
-          }
-        }
-      }
-      if (x == 12 && y == 12) {
-        alert('游戏结束');
-        todoActions.gameover();
-      }
-      if (slide == true && gameover == false) {
-        let m = 0;
-        console.log(isinitialize);
-        let num = Math.floor(Math.random() * (4 - 2 + 1) + 2);
-        const hang = Math.floor(Math.random() * (3 - 0 + 1) + 0);
-        const lie = Math.floor(Math.random() * (3 - 0 + 1) + 0);
-        if (data[hang][lie] > 0) {
-          console.log('重新随机');
-          data.map((n, hang) => n.map((num, lie) => {
-            if (data[hang][lie] == 0) {
-              m++;
-            }
-          }));
-          if (m > 0) {
-            this.initialize();
-          } else { alert('换条路试试?'); }
-        } else if (data[hang][lie] == 0) {
-          if (num > 3) {
-            num = 4;
-            console.log(num);
-          } else {
-            num = 2;
-            console.log(num);
-          }
-          data[hang][lie] = num;
-          twinkle[hang][lie]=2;
-        }
-        if (isinitialize == true) { // 是否初始化
-          todoActions.initialize();
-        }
-        else todoActions.random();
-        console.log(data);
-      }
-    }
+    // initialize=() => { // 初始化,随机函数
+    //   const {
+    //     data, isinitialize, todoActions, slide, gameover, twinkle
+    //   } = this.props;
+    //   // todoActions.initialize();
+    //   let x = 0;
+    //   let y = 0;
+    //   for (let i = 0; i < 4; i++) {
+    //     for (let j = 0; j < 4; j++) {
+    //       if (data[i][j] == 2048) {
+    //         alert('游戏结束');
+    //         todoActions.gameover();
+    //         break;
+    //       }
+    //     }
+    //   }
+    //   for (let i = 0; i < 4; i++) {
+    //     for (let j = 0; j < 3; j++) {
+    //       if (data[i][j] != 0 && data[i][j] != data[i][j + 1]) {
+    //         x++;
+    //       }
+    //     }
+    //   }
+    //   for (let i = 0; i < 3; i++) {
+    //     for (let j = 0; j < 4; j++) {
+    //       if (data[i][j] != 0 && data[i][j] != data[i + 1][j]) {
+    //         y++;
+    //       }
+    //     }
+    //   }
+    //   if (x == 12 && y == 12) {
+    //     alert('游戏结束');
+    //     todoActions.gameover();
+    //   }
+    //   if (slide == true && gameover == false) {
+    //     let m = 0;
+    //     console.log(isinitialize);
+    //     let num = Math.floor(Math.random() * (4 - 2 + 1) + 2);
+    //     const hang = Math.floor(Math.random() * (3 - 0 + 1) + 0);
+    //     const lie = Math.floor(Math.random() * (3 - 0 + 1) + 0);
+    //     if (data[hang][lie] > 0) {
+    //       console.log('重新随机');
+    //       data.map((n, hang) => n.map((num, lie) => {
+    //         if (data[hang][lie] == 0) {
+    //           m++;
+    //         }
+    //       }));
+    //       if (m > 0) {
+    //         this.initialize();
+    //       } else { alert('换条路试试?'); }
+    //     } else if (data[hang][lie] == 0) {
+    //       if (num > 3) {
+    //         num = 4;
+    //         console.log(num);
+    //       } else {
+    //         num = 2;
+    //         console.log(num);
+    //       }
+    //       data[hang][lie] = num;
+    //       twinkle[hang][lie]=2;
+    //     }
+    //     if (isinitialize == true) { // 是否初始化
+    //       todoActions.initialize();
+    //     }
+    //     else todoActions.random();
+    //     console.log(data);
+    //   }
+    // }
 
     handleKeyDown=event => {
       const { todoActions, gameover } = this.props;
@@ -112,7 +112,7 @@ class game2048 extends React.Component {
         data, Score, bestScore, todoActions, gameover, twinkle, addScore
       } = this.props;
       const { color } = this.props;
-      this.initialize();
+      // this.initialize();
       return (
         <div>
           <Head data={data} Score={Score} bestScore={bestScore} todoActions={todoActions} addScore={addScore}/>
