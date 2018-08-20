@@ -488,71 +488,71 @@ function game(state = {
     }
     case ActionTypes.Initialize:
     {
-      console.log(222222222222222);
-      const data=state.data;
-       let x = 0;
-      let y = 0;
-      for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 4; j++) {
-          if (data[i][j] == 2048) {
-            alert('游戏结束');
-            state.gameover=true;
-            break;
-          }
-        }
-      }
-      for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 3; j++) {
-          if (data[i][j] != 0 && data[i][j] != data[i][j + 1]) {
-            x++;
-          }
-        }
-      }
-      for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 4; j++) {
-          if (data[i][j] != 0 && data[i][j] != data[i + 1][j]) {
-            y++;
-          }
-        }
-      }
-      if (x == 12 && y == 12) {
-        alert('游戏结束');
-        state.gameover=true;
-      }
-      if (state.slide == true && state.gameover == false) {
-        let m = 0;
-        let num = Math.floor(Math.random() * (4 - 2 + 1) + 2);
-        const hang = Math.floor(Math.random() * (3 - 0 + 1) + 0);
-        const lie = Math.floor(Math.random() * (3 - 0 + 1) + 0);
-        if (data[hang][lie] > 0) {
-          console.log('重新随机');
-          data.map((n, hang) => n.map((num, lie) => {
-            if (data[hang][lie] == 0) {
-              m++;
-            }
-          }));
-          if (m > 0) {
-            // this.initialize();
-          } else { alert('换条路试试?'); }
-        } else if (data[hang][lie] == 0) {
-          if (num > 3) {
-            num = 4;
-          } else {
-            num = 2;
-          }
-          data[hang][lie] = num;
-          state.twinkle[hang][lie]=2;
-        }
-        if (state.isinitialize == true) { // 是否初始化
-          state.isinitialize=false
-        }
-        else state.random=false
-      }
+      // console.log(222222222222222);
+      // const data=state.data;
+      //  let x = 0;
+      // let y = 0;
+      // for (let i = 0; i < 4; i++) {
+      //   for (let j = 0; j < 4; j++) {
+      //     if (data[i][j] == 2048) {
+      //       alert('游戏结束');
+      //       state.gameover=true;
+      //       break;
+      //     }
+      //   }
+      // }
+      // for (let i = 0; i < 4; i++) {
+      //   for (let j = 0; j < 3; j++) {
+      //     if (data[i][j] != 0 && data[i][j] != data[i][j + 1]) {
+      //       x++;
+      //     }
+      //   }
+      // }
+      // for (let i = 0; i < 3; i++) {
+      //   for (let j = 0; j < 4; j++) {
+      //     if (data[i][j] != 0 && data[i][j] != data[i + 1][j]) {
+      //       y++;
+      //     }
+      //   }
+      // }
+      // if (x == 12 && y == 12) {
+      //   alert('游戏结束');
+      //   state.gameover=true;
+      // }
+      // if (state.slide == true && state.gameover == false) {
+      //   let m = 0;
+      //   let num = Math.floor(Math.random() * (4 - 2 + 1) + 2);
+      //   const hang = Math.floor(Math.random() * (3 - 0 + 1) + 0);
+      //   const lie = Math.floor(Math.random() * (3 - 0 + 1) + 0);
+      //   if (data[hang][lie] > 0) {
+      //     console.log('重新随机');
+      //     data.map((n, hang) => n.map((num, lie) => {
+      //       if (data[hang][lie] == 0) {
+      //         m++;
+      //       }
+      //     }));
+      //     if (m > 0) {
+      //       // this.initialize();
+      //     } else { alert('换条路试试?'); }
+      //   } else if (data[hang][lie] == 0) {
+      //     if (num > 3) {
+      //       num = 4;
+      //     } else {
+      //       num = 2;
+      //     }
+      //     data[hang][lie] = num;
+      //     state.twinkle[hang][lie]=2;
+      //   }
+      //   if (state.isinitialize == true) { // 是否初始化
+      //     state.isinitialize=false
+      //   }
+      //   else state.slide=false
+      // }
 
       return {
         ...state,
-        data:data,
-        // isinitialize: false,
+        // data:data,
+        isinitialize: false,
       };
     }
     case ActionTypes.Random:
