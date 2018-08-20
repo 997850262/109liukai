@@ -26,5 +26,6 @@ export default {
   Downward: 'Downward',
   Rightward: 'Rightward',
   Initialize: 'Initialize',
-  Random: 'Random'
+  Random: 'Random',
+  Gameover: 'Gameover'
 };

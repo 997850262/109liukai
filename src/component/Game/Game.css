@@ -17,16 +17,57 @@
     height: 20%;
 }
 .title{
-    font-size:28px;
+    font-size:32px;
     font-weight: 700;
 }
-.Score{
+.Score-all{
     position: relative;
     width: 100px;
     margin-top: 20px;
     margin-left: 40%;
     background: rgba(145, 115, 16, 0.623);
     text-align: center;
+}
+.Score{
+    padding-top: 20px;
+}
+.addScore-true{
+    position: absolute;
+    height: 20px;
+    text-align: center;
+    margin-left: 30%;
+    color: brown;
+    -webkit-animation: addscores-true 2s 1 ease-out;
+    animation-fill-mode:forwards
+}
+.addScore-false{
+    position: absolute;
+    height: 20px;
+    text-align: center;
+    margin-left: 30%;
+    color: brown;
+    -webkit-animation: addscores-false 2s 1 ease-out;
+    animation-fill-mode:forwards
+}
+@-webkit-keyframes addscores-true{
+	from {
+        opacity:1;
+        transform: translateY(0);
+	}
+	to {
+        opacity:0;
+        transform: translateY(-80px);
+	}
+}
+@-webkit-keyframes addscores-false{
+	from {
+        opacity:1;
+        transform: translateY(0);
+	}
+	to {
+        opacity:0;
+        transform: translateY(-80px);
+	}
 }
 .Best-Score{
     position: relative;
@@ -49,12 +90,13 @@
     width: 50%;
     margin-left: 100px;
     margin-top: 10px;
-    height: 450px;
+    height: 400px;
     background: rgba(145, 115, 16, 0.623);
     display: flex;
     flex-wrap: wrap;
 }
 .btn1-1{
+    position: relative;
     width: 20%;
     height: 20%;
     background: rgb(207, 207, 166);
@@ -63,9 +105,155 @@
     padding-top: 20px;
     margin-left: 2.5%;
     margin-right: 2.5%;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
+    margin-top: 2.5%; 
+    /* margin-bottom: 2.5%; */
     font-size:24px;
     font-weight: 600;
 }
+.btn1-2{
+    position: relative;
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%; 
+    /* margin-bottom: 2.5%; */
+    font-size:24px;
+    font-weight: 600;
+    -webkit-animation: twinkling 1s 3 ease-in-out;
+}
+@-webkit-keyframes twinkling{
+	0%{
+		opacity:0;
+	}
+	100%{
+		opacity:1;
+	}
+}
+.btn1-3{
+    position: relative;
+    width: 20%;
+    height: 20%;
+    background: rgb(207, 207, 166);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 20px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 2.5%; 
+    /* margin-bottom: 2.5%; */
+    font-size:24px;
+    font-weight: 600;
+    -webkit-animation: twinkling 1s 1 ease-in-out;
+}
 
+@media screen and (max-width: 520px) {
+    .Head-all{
+        width: 70%;
+        margin:0 auto;
+    }
+    .Head1{
+        display: flex;
+        flex-direction: row;
+        height: 10%;
+    }
+    .Head2{
+        display: flex;
+        flex-direction: row;
+        height: 20%;
+    }
+    .title{
+        font-size:28px;
+        font-weight: 600;
+    }
+    .Score-all{
+        position: relative;
+        width: 100px;
+        margin-top: 15px;
+        margin-left: 50px;
+        text-align: center;
+    }
+    .addScore-true{
+        position: absolute;
+        height: 20px;
+        text-align: center;
+    }
+    .addScore-false{
+        position: absolute;
+        height: 20px;
+        text-align: center;
+    }
+
+    .Best-Score{
+        position: relative;
+        width: 100px;
+        margin-top: 15px;
+        margin-left: 5%;
+        background: rgba(145, 115, 16, 0.623);
+        text-align: center;
+    }
+    .description{
+        position: relative;
+        margin-top: 5px;
+    }
+    .restart{
+        margin-left: 35%;
+        margin-top: 20px;
+    }
+    .game-all{
+        width: 70%;
+        margin:0 auto;
+        margin-top: 10px;
+        height: 400px;
+    }
+    .btn1-1{
+        position: relative;
+        width: 20%;
+        height: 20%;
+        background: rgb(207, 207, 166);
+        border-radius: 15px;
+        text-align: center;
+        padding-top: 20px;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        margin-top: 2.5%; 
+        margin-bottom: 2.5%;
+        font-size:24px;
+        font-weight: 600;
+    }
+    .btn1-2{
+        position: relative;
+        width: 20%;
+        height: 20%;
+        background: rgb(207, 207, 166);
+        border-radius: 15px;
+        text-align: center;
+        padding-top: 20px;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        margin-top: 2.5%; 
+        margin-bottom: 2.5%;
+        font-size:24px;
+        font-weight: 600;
+    }
+
+    .btn1-3{
+        position: relative;
+        width: 20%;
+        height: 20%;
+        background: rgb(207, 207, 166);
+        border-radius: 15px;
+        text-align: center;
+        padding-top: 20px;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        margin-top: 2.5%; 
+        margin-bottom: 2.5%;
+        font-size:24px;
+        font-weight: 600;
+    }
+}

@@ -11,63 +11,97 @@ class game2048 extends React.Component {
       window.addEventListener('keydown', this.handleKeyDown);
     }
 
-    initialize=() => { // 初始化
-      const { data, isinitialize, todoActions,slide } = this.props;
-      let gameover=false;
-      data.map((n, hang) => n.map((num, lie) => {
-        if (data[hang][lie] == 2048){
-          alert('游戏结束');
-          gameover=true
-        }
-      }))
-      if(slide==true&&gameover==false){
-        let m = 0;
-        console.log(isinitialize);
-        let num = Math.floor(Math.random() * (4 - 2 + 1) + 2);
-        const hang = Math.floor(Math.random() * (3 - 0 + 1) + 0);
-        const lie = Math.floor(Math.random() * (3 - 0 + 1) + 0);
-        if (data[hang][lie] > 0) {
-          console.log('重新随机');
-          data.map((n, hang) => n.map((num, lie) => {
-            if (data[hang][lie] == 0) {
-              m++;
-            }
-          }));
-          if (m > 0) {
-            this.initialize();
-          } else { alert('换条路试试?'); }//,进不来,此时滑块必定为flase
-        } else if (data[hang][lie] == 0) {
-          if (num > 3) {
-            num = 4;
-            console.log(num);
-          } else {
-            num = 2;
-            console.log(num);
-          }
-          data[hang][lie] = num;
-        }
-        if (isinitialize == true) {//是否初始化
-          todoActions.initialize();
-        }
-        else todoActions.random();
-        console.log(data);
-      } 
+    initialize=() => { // 初始化,随机函数
+      const {
+        data, isinitialize, todoActions, slide, gameover, twinkle
+      } = this.props;
+      todoActions.initialize();
+      // let x = 0;
+      // let y = 0;
+      // for (let i = 0; i < 4; i++) {
+      //   for (let j = 0; j < 4; j++) {
+      //     if (data[i][j] == 2048) {
+      //       alert('游戏结束');
+      //       todoActions.gameover();
+      //       break;
+      //     }
+      //   }
+      // }
+      // for (let i = 0; i < 4; i++) {
+      //   for (let j = 0; j < 3; j++) {
+      //     if (data[i][j] != 0 && data[i][j] != data[i][j + 1]) {
+      //       x++;
+      //     }
+      //   }
+      // }
+      // for (let i = 0; i < 3; i++) {
+      //   for (let j = 0; j < 4; j++) {
+      //     if (data[i][j] != 0 && data[i][j] != data[i + 1][j]) {
+      //       y++;
+      //     }
+      //   }
+      // }
+      // if (x == 12 && y == 12) {
+      //   alert('游戏结束');
+      //   todoActions.gameover();
+      // }
+      // if (slide == true && gameover == false) {
+      //   let m = 0;
+      //   console.log(isinitialize);
+      //   let num = Math.floor(Math.random() * (4 - 2 + 1) + 2);
+      //   const hang = Math.floor(Math.random() * (3 - 0 + 1) + 0);
+      //   const lie = Math.floor(Math.random() * (3 - 0 + 1) + 0);
+      //   if (data[hang][lie] > 0) {
+      //     console.log('重新随机');
+      //     data.map((n, hang) => n.map((num, lie) => {
+      //       if (data[hang][lie] == 0) {
+      //         m++;
+      //       }
+      //     }));
+      //     if (m > 0) {
+      //       this.initialize();
+      //     } else { alert('换条路试试?'); }
+      //   } else if (data[hang][lie] == 0) {
+      //     if (num > 3) {
+      //       num = 4;
+      //       console.log(num);
+      //     } else {
+      //       num = 2;
+      //       console.log(num);
+      //     }
+      //     data[hang][lie] = num;
+      //     twinkle[hang][lie]=2;
+      //   }
+      //   if (isinitialize == true) { // 是否初始化
+      //     todoActions.initialize();
+      //   }
+      //   else todoActions.random();
+      //   console.log(data);
+      // }
     }
 
     handleKeyDown=event => {
-      const { todoActions } = this.props;
+      const { todoActions, gameover } = this.props;
       switch (event.keyCode) {
         case 87:
-          todoActions.upward();
+          if (gameover == false) {
+            todoActions.upward();
+          } else if (gameover == true) { alert('游戏结束,请重新开始'); }
           break;
         case 65:
-          todoActions.leftward();
+          if (gameover == false) {
+            todoActions.leftward();
+          } else if (gameover == true) { alert('游戏结束,请重新开始'); }
           break;
         case 83:
-          todoActions.downward();
+          if (gameover == false) {
+            todoActions.downward();
+          } else if (gameover == true) { alert('游戏结束,请重新开始'); }
           break;
         case 68:
-          todoActions.rightward();
+          if (gameover == false) {
+            todoActions.rightward();
+          } else if (gameover == true) { alert('游戏结束,请重新开始'); }
           break;
         default:
           break;
@@ -75,14 +109,14 @@ class game2048 extends React.Component {
     }
     render() {
       const {
-        data, Score, bestScore, todoActions,slide
+        data, Score, bestScore, todoActions, gameover, twinkle, addScore
       } = this.props;
       const { color } = this.props;
       this.initialize();
       return (
         <div>
-          <Head data={data} Score={Score} bestScore={bestScore} todoActions={todoActions} />
-          <Gamearea data={data} color={color} todoActions={todoActions} />
+          <Head data={data} Score={Score} bestScore={bestScore} todoActions={todoActions} addScore={addScore}/>
+          <Gamearea data={data} color={color} todoActions={todoActions} gameover={gameover} twinkle={twinkle}/>
         </div>
       );
     }
@@ -97,10 +131,13 @@ function mapStateToProps(state) {
   const bestScore = game.game.bestScore;
   const color = game.game.color;
   const slide = game.game.slide;
+  const gameover = game.game.gameover;
+  const twinkle = game.game.twinkle;
+  const addScore = game.game.addScore;
   console.log(game.game.slide);
   // console.log(color);
   return {
-    data, isinitialize, Score, bestScore, color,slide
+    data, isinitialize, Score, bestScore, color, slide, gameover,twinkle,addScore
   };
 }
 

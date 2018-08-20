@@ -155,3 +155,8 @@ export function random() {
     type: ActionTypes.Random,
   };
 }
+export function gameover() {
+  return {
+    type: ActionTypes.Gameover,
+  };
+}

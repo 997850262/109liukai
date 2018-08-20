@@ -1,25 +1,38 @@
 import React, { Component } from 'react';
 import './Game.css';
 
+let add = false;
 export default class Head extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
   reset=() => {
     const { todoActions } = this.props;
     todoActions.reset();
   }
+  addScore=() => {
+    const { addScore } = this.props;
+    console.log(123456, addScore);
+    if (addScore > 0) {
+      console.log('取反前', add);
+      add = !add;
+      console.log('取反后', add);
+      return <div className={`addScore-${add}`}>+{addScore}</div>;
+    }
+    return null;
+  }
   render() {
-    const { Score, bestScore } = this.props;
+    const { Score, bestScore, addScore } = this.props;
     console.log(Score);
+    console.log(addScore);
     return (
       <div className="Head-all">
         <div className="Head1">
           <div className="title">
               2048
           </div>
-          <div className="Score">
-              Scores<br />{Score}
+          <div className="Score-all">
+              Scores<br />
+            {this.addScore()}
+            {/* <div className="addScore">+{addScore}</div> */}
+            <div className="Score">{Score}</div>
           </div>
           <div className="Best-Score">
               Best Scores <br />{bestScore}
