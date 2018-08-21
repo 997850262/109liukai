@@ -50,24 +50,22 @@ export default class Gamearea extends Component {
   }
   /* eslint-disable */
   rendergamebtn=() => {
-    const { data,twinkle } = this.props;
+    const { data, twinkle } = this.props;
     let { color } = this.props;
-    console.log(twinkle)
+    console.log(twinkle);
     return data.map((n, hang) =>
       n.map((num, lie) => {
         if (data[hang][lie] > 0) {
           if (num == 2) { color = 'white'; } else if (num == 4) { color = 'green'; } else if (num == 8) { color = 'orange'; } else if (num == 16) { color = 'yellow'; } else if (num >= 32) { color = 'red'; }
-          if(twinkle[hang][lie]==1){
-            return(<div className="btn1-2" style={{ background: `${color}` }}>{data[hang][lie]}</div>)
+          if (twinkle[hang][lie] == 1) {
+            return (<div className="btn1-2" style={{ background: `${color}` }}>{data[hang][lie]}</div>);
+          } else if (twinkle[hang][lie] == 2) {
+            return (<div className="btn1-3" style={{ background: `${color}` }}>{data[hang][lie]}</div>);
           }
-          else if(twinkle[hang][lie]==2){
-            return(<div className="btn1-3" style={{ background: `${color}` }}>{data[hang][lie]}</div>)
-          }
-          else{
-            return (
-              <div className="btn1-1" style={{ background: `${color}` }}>{data[hang][lie]}</div>
-            );
-          }
+
+          return (
+            <div className="btn1-1" style={{ background: `${color}` }}>{data[hang][lie]}</div>
+          );
         }
         return (
           <div className="btn1-1" />

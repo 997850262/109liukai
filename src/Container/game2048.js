@@ -5,7 +5,6 @@ import * as todoActionCreators from '../actions/index';
 import Head from '../component/Game/Head';
 import Gamearea from '../component/Game/Gamearea';
 
-/* eslint-disable */
 class game2048 extends React.Component {
     componentDidMount=() => {
       window.addEventListener('keydown', this.handleKeyDown);
@@ -112,6 +111,7 @@ class game2048 extends React.Component {
         data, Score, bestScore, todoActions, gameover, twinkle, addScore, addbestScore
       } = this.props;
       const { color } = this.props;
+      console.log(data);
       // this.initialize();
       return (
         <div>
@@ -136,19 +136,25 @@ class game2048 extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { game } = state;
-  console.log(game.game);
-  const data = game.game.data;
-  const isinitialize = game.game.isinitialize;
-  const Score = game.game.Score;
-  const bestScore = game.game.bestScore;
-  const color = game.game.color;
-  const slide = game.game.slide;
-  const gameover = game.game.gameover;
-  const twinkle = game.game.twinkle;
-  const addScore = game.game.addScore;
-  const addbestScore = game.game.addbestScore;
-  console.log(game.game.slide);
+  const {
+    game: {
+      game: {
+        data, isinitialize, Score, bestScore, color, slide, gameover, twinkle, addScore, addbestScore
+      }
+    }
+  } = state;
+  // console.log(game.game);
+  // const data = game.game.data;
+  // const isinitialize = game.game.isinitialize;
+  // const Score = game.game.Score;
+  // const bestScore = game.game.bestScore;
+  // const color = game.game.color;
+  // const slide = game.game.slide;
+  // const gameover = game.game.gameover;
+  // const twinkle = game.game.twinkle;
+  // const addScore = game.game.addScore;
+  // const addbestScore = game.game.addbestScore;
+  // console.log(game);
   return {
     data, isinitialize, Score, bestScore, color, slide, gameover, twinkle, addScore, addbestScore
   };
