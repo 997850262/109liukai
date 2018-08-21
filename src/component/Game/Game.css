@@ -69,6 +69,44 @@
         transform: translateY(-80px);
 	}
 }
+.addbestScore-true{
+    position: absolute;
+    margin-left: 30%;
+    text-align: center;
+    height: 20px;
+    color: brown;
+    -webkit-animation: addscores-true 2s 1 ease-out;
+    animation-fill-mode:forwards
+}
+.addbestScore-false{
+    position: absolute;
+    margin-left: 30%;
+    text-align: center;
+    height: 20px;
+    color: brown;
+    -webkit-animation: addscores-false 2s 1 ease-out;
+    animation-fill-mode:forwards
+}
+@-webkit-keyframes addbestScore-true{
+	from {
+        opacity:1;
+        transform: translateY(0);
+	}
+	to {
+        opacity:0.8;
+        transform: translateY(-80px);
+	}
+}
+@-webkit-keyframes addbestScore-false{
+	from {
+        opacity:1;
+        transform: translateY(0);
+	}
+	to {
+        opacity:0.8;
+        transform: translateY(-80px);
+	}
+}
 .Best-Score{
     position: relative;
     width: 100px;

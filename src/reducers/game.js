@@ -17,6 +17,7 @@ function game(state = {
   Score: 0,
   bestScore: 0,
   addScore: 0,
+  addbestScore: 0,
   isinitialize: true,//是否初始化
   slide:true,//是否滑动
   gameover:false,
@@ -27,24 +28,43 @@ function game(state = {
     case ActionTypes.Reset:
     {
       console.log('重置');
+      state.data= [
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+      ];
+      state.twinkle=[
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+      ]
+      state.Score= 0,
+      state.slide=true,
+      state.gameover=false,
+      state.isinitialize=true;
+      state.addScore=0;
+      state.addbestScore=0;
+      initialize(state);
       return {
         ...state,
-        data: [
-          [0, 0, 0, 0],
-          [0, 0, 0, 0],
-          [0, 0, 0, 0],
-          [0, 0, 0, 0]
-        ],
-        twinkle : [
-          [0,0,0,0],
-          [0,0,0,0],
-          [0,0,0,0],
-          [0,0,0,0]
-        ],
-        Score: 0,
-        isinitialize: true,
-        slide:true,
-        gameover:false,
+        // data: [
+        //   [0, 0, 0, 0],
+        //   [0, 0, 0, 0],
+        //   [0, 0, 0, 0],
+        //   [0, 0, 0, 0]
+        // ],
+        // twinkle : [
+        //   [0,0,0,0],
+        //   [0,0,0,0],
+        //   [0,0,0,0],
+        //   [0,0,0,0]
+        // ],
+        // Score: 0,
+        // isinitialize: true,
+        // slide:true,
+        // gameover:false,
       };
     }
     case ActionTypes.Upward:
@@ -59,6 +79,7 @@ function game(state = {
         [0,0,0,0]
       ];
       let newaddScore=0;
+      let newaddbestScore=0;
       let m=3;
       while(m)
       {
@@ -86,6 +107,7 @@ function game(state = {
             state.slide=true;
             newtwinkle[i][j]=1;
             if (state.Score > state.bestScore) {
+              newaddbestScore=newaddbestScore+newdata[i][j];
               state.bestScore = state.Score;
             }
         }
@@ -109,7 +131,8 @@ function game(state = {
         ...state,
         data: newdata,
         twinkle: newtwinkle,
-        addScore: newaddScore
+        addScore: newaddScore,
+        addbestScore: newaddbestScore
       };
     }
     case ActionTypes.Leftward:
@@ -122,6 +145,7 @@ function game(state = {
         [0,0,0,0]
       ];
       let newaddScore=0;
+      let newaddbestScore=0;
       let m=3;
       while(m)
       {
@@ -149,6 +173,7 @@ function game(state = {
             state.slide=true;
             newtwinkle[i][j]=1;
             if (state.Score > state.bestScore) {
+              newaddbestScore=newaddbestScore+newdata[i][j];
               state.bestScore = state.Score;
             }
         }
@@ -172,7 +197,8 @@ function game(state = {
         ...state,
         data: newdata,
         twinkle: newtwinkle,
-        addScore: newaddScore
+        addScore: newaddScore,
+        addbestScore: newaddbestScore
       };
     }
     case ActionTypes.Downward:
@@ -185,6 +211,7 @@ function game(state = {
         [0,0,0,0]
       ];
       let newaddScore=0;
+      let newaddbestScore=0;
       let m=3;
       while(m)
       {
@@ -212,6 +239,7 @@ function game(state = {
             state.slide=true;
             newtwinkle[i][j]=1;
             if (state.Score > state.bestScore) {
+              newaddbestScore=newaddbestScore+newdata[i][j];
               state.bestScore = state.Score;
             }
         }
@@ -235,7 +263,8 @@ function game(state = {
         ...state,
         data: newdata,
         twinkle: newtwinkle,
-        addScore: newaddScore
+        addScore: newaddScore,
+        addbestScore: newaddbestScore
       };
     }
     case ActionTypes.Rightward:
@@ -248,6 +277,7 @@ function game(state = {
         [0,0,0,0]
       ];
       let newaddScore=0;
+      let newaddbestScore=0;
       let m=3;
       while(m)
       {
@@ -275,6 +305,7 @@ function game(state = {
             state.slide=true;
             newtwinkle[i][j]=1;
             if (state.Score > state.bestScore) {
+              newaddbestScore=newaddbestScore+newdata[i][j];
               state.bestScore = state.Score;
             }
         }
@@ -298,7 +329,8 @@ function game(state = {
         ...state,
         data: newdata,
         twinkle: newtwinkle,
-        addScore: newaddScore
+        addScore: newaddScore,
+        addbestScore: newaddbestScore
       };
     }
     case ActionTypes.Initialize:

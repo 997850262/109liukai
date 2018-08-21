@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Game.css';
 
 let add = false;
+let addbest = false;
 export default class Head extends Component {
   reset=() => {
     const { todoActions } = this.props;
@@ -18,10 +19,24 @@ export default class Head extends Component {
     }
     return null;
   }
+  addbestScore=() => {
+    const { addbestScore } = this.props;
+    console.log(123456, addbestScore);
+    if (addbestScore > 0) {
+      console.log('取反前', addbest);
+      addbest = !addbest;
+      console.log('取反后', addbest);
+      return <div className={`addbestScore-${addbest}`}>+{addbestScore}</div>;
+    }
+    return null;
+  }
   render() {
-    const { Score, bestScore, addScore } = this.props;
+    const {
+      Score, bestScore, addScore, addbestScore
+    } = this.props;
     console.log(Score);
     console.log(addScore);
+    console.log(addbestScore);
     return (
       <div className="Head-all">
         <div className="Head1">
@@ -35,7 +50,9 @@ export default class Head extends Component {
             <div className="Score">{Score}</div>
           </div>
           <div className="Best-Score">
-              Best Scores <br />{bestScore}
+              Best Scores <br />
+            {this.addbestScore()}
+            <div>{bestScore}</div>
           </div>
         </div>
         <div className="Head2">

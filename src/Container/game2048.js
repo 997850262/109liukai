@@ -109,13 +109,13 @@ class game2048 extends React.Component {
     }
     render() {
       const {
-        data, Score, bestScore, todoActions, gameover, twinkle, addScore
+        data, Score, bestScore, todoActions, gameover, twinkle, addScore, addbestScore
       } = this.props;
       const { color } = this.props;
       // this.initialize();
       return (
         <div>
-          <Head data={data} Score={Score} bestScore={bestScore} todoActions={todoActions} addScore={addScore}/>
+          <Head data={data} Score={Score} bestScore={bestScore} todoActions={todoActions} addScore={addScore} addbestScore={addbestScore}/>
           <Gamearea data={data} color={color} todoActions={todoActions} gameover={gameover} twinkle={twinkle}/>
         </div>
       );
@@ -134,10 +134,11 @@ function mapStateToProps(state) {
   const gameover = game.game.gameover;
   const twinkle = game.game.twinkle;
   const addScore = game.game.addScore;
+  const addbestScore = game.game.addbestScore;
   console.log(game.game.slide);
   // console.log(color);
   return {
-    data, isinitialize, Score, bestScore, color, slide, gameover,twinkle,addScore
+    data, isinitialize, Score, bestScore, color, slide, gameover,twinkle,addScore,addbestScore
   };
 }
 
