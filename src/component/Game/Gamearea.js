@@ -48,7 +48,7 @@ export default class Gamearea extends Component {
     console.log(event.defaultPrevented);
     event.preventDefault();
   }
-  /* eslint-disable */
+
   rendergamebtn=() => {
     const { data, twinkle } = this.props;
     let { color } = this.props;
@@ -56,7 +56,26 @@ export default class Gamearea extends Component {
     return data.map((n, hang) =>
       n.map((num, lie) => {
         if (data[hang][lie] > 0) {
-          if (num == 2) { color = 'white'; } else if (num == 4) { color = 'green'; } else if (num == 8) { color = 'orange'; } else if (num == 16) { color = 'yellow'; } else if (num >= 32) { color = 'red'; }
+          switch (num) {
+            case 2:
+              color = 'white';
+              break;
+            case 4:
+              color = 'green';
+              break;
+            case 8:
+              color = 'orange';
+              break;
+            case 16:
+              color = 'yellow';
+              break;
+            case 32:
+              color = 'red';
+              break;
+            default:
+              color = 'red';
+              break;
+          }
           if (twinkle[hang][lie] == 1) {
             return (<div className="btn1-2" style={{ background: `${color}` }}>{data[hang][lie]}</div>);
           } else if (twinkle[hang][lie] == 2) {
