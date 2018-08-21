@@ -3,6 +3,7 @@ import ActionTypes from '../const/ActionTypes';
 /* eslint-disable */
 function initialize(state) {
   const data = state.data;
+  const twinkle =state.twinkle;
   let x = 0;
   let y = 0;
   for (let i = 0; i < 4; i++) {
@@ -54,7 +55,7 @@ function initialize(state) {
         num = 2;
       }
       data[hang][lie] = num;
-      state.twinkle[hang][lie] = 2;
+      twinkle[hang][lie] = 2;
     }
     if (state.isinitialize == true) { // 是否初始化
       state.isinitialize = false;
@@ -117,12 +118,18 @@ function game(state = {
       console.log('向上');
       console.log(state.data);
       const newdata = state.data.slice();
-      const newtwinkle = [
+      state.twinkle = [
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
       ];
+      // const newtwinkle = [
+      //   [0, 0, 0, 0],
+      //   [0, 0, 0, 0],
+      //   [0, 0, 0, 0],
+      //   [0, 0, 0, 0]
+      // ];
       let newaddScore = 0;
       let newaddbestScore = 0;
       let m = 3;
@@ -148,7 +155,8 @@ function game(state = {
             newdata[i + 1][j] = 0;
             console.log('清空', newdata[i + 1][j]);
             state.slide = true;
-            newtwinkle[i][j] = 1;
+            state.twinkle[i][j]=1;
+            // newtwinkle[i][j] = 1;
             if (state.Score > state.bestScore) {
               newaddbestScore += newdata[i][j];
               state.bestScore = state.Score;
@@ -162,16 +170,19 @@ function game(state = {
             newdata[i][j] = newdata[i + 1][j];
             newdata[i + 1][j] = 0;
             state.slide = true;
-            newtwinkle[i][j] = newtwinkle[i + 1][j];
-            newtwinkle[i + 1][j] = 0;
+            state.twinkle[i][j]=state.twinkle[i+1][j]
+            state.twinkle[i+1][j]=0
+            // newtwinkle[i][j] = newtwinkle[i + 1][j];
+            // newtwinkle[i + 1][j] = 0;
           }
         }
       }
       initialize(state);
+      console.log(state.twinkle)
       return {
         ...state,
         data: newdata,
-        twinkle: newtwinkle,
+        // twinkle: newtwinkle,
         addScore: newaddScore,
         addbestScore: newaddbestScore
       };
@@ -179,12 +190,18 @@ function game(state = {
     case ActionTypes.Leftward:
     {
       const newdata = state.data.slice();
-      const newtwinkle = [
+      state.twinkle = [
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
       ];
+      // const newtwinkle = [
+      //   [0, 0, 0, 0],
+      //   [0, 0, 0, 0],
+      //   [0, 0, 0, 0],
+      //   [0, 0, 0, 0]
+      // ];
       let newaddScore = 0;
       let newaddbestScore = 0;
       let m = 3;
@@ -210,7 +227,8 @@ function game(state = {
             newdata[i][j + 1] = 0;
             console.log('清空', newdata[i][j + 1]);
             state.slide = true;
-            newtwinkle[i][j] = 1;
+            // newtwinkle[i][j] = 1;
+            state.twinkle[i][j] = 1;
             if (state.Score > state.bestScore) {
               newaddbestScore += newdata[i][j];
               state.bestScore = state.Score;
@@ -224,8 +242,10 @@ function game(state = {
             newdata[i][j] = newdata[i][j + 1];
             newdata[i][j + 1] = 0;
             state.slide = true;
-            newtwinkle[i][j] = newtwinkle[i][j + 1];
-            newtwinkle[i][j + 1] = 0;
+            state.twinkle[i][j] = state.twinkle[i][j + 1];
+            state.twinkle[i][j + 1] = 0;
+            // newtwinkle[i][j] = newtwinkle[i][j + 1];
+            // newtwinkle[i][j + 1] = 0;
           }
         }
       }
@@ -233,7 +253,7 @@ function game(state = {
       return {
         ...state,
         data: newdata,
-        twinkle: newtwinkle,
+        // twinkle: newtwinkle,
         addScore: newaddScore,
         addbestScore: newaddbestScore
       };
@@ -241,12 +261,18 @@ function game(state = {
     case ActionTypes.Downward:
     {
       const newdata = state.data.slice();
-      const newtwinkle = [
+      state.twinkle = [
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
       ];
+      // const newtwinkle = [
+      //   [0, 0, 0, 0],
+      //   [0, 0, 0, 0],
+      //   [0, 0, 0, 0],
+      //   [0, 0, 0, 0]
+      // ];
       let newaddScore = 0;
       let newaddbestScore = 0;
       let m = 3;
@@ -272,7 +298,8 @@ function game(state = {
             newdata[i - 1][j] = 0;
             console.log('清空', newdata[i - 1][j]);
             state.slide = true;
-            newtwinkle[i][j] = 1;
+            state.twinkle[i][j] = 1;
+            // newtwinkle[i][j] = 1;
             if (state.Score > state.bestScore) {
               newaddbestScore += newdata[i][j];
               state.bestScore = state.Score;
@@ -286,8 +313,10 @@ function game(state = {
             newdata[i][j] = newdata[i - 1][j];
             newdata[i - 1][j] = 0;
             state.slide = true;
-            newtwinkle[i][j] = newtwinkle[i - 1][j];
-            newtwinkle[i - 1][j] = 0;
+            state.twinkle[i][j] = state.twinkle[i - 1][j];
+            state.twinkle[i - 1][j] = 0;
+            // newtwinkle[i][j] = newtwinkle[i - 1][j];
+            // newtwinkle[i - 1][j] = 0;
           }
         }
       }
@@ -295,7 +324,7 @@ function game(state = {
       return {
         ...state,
         data: newdata,
-        twinkle: newtwinkle,
+        // twinkle: newtwinkle,
         addScore: newaddScore,
         addbestScore: newaddbestScore
       };
@@ -303,12 +332,18 @@ function game(state = {
     case ActionTypes.Rightward:
     {
       const newdata = state.data.slice();
-      const newtwinkle = [
+      state.twinkle = [
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
       ];
+      // const newtwinkle = [
+      //   [0, 0, 0, 0],
+      //   [0, 0, 0, 0],
+      //   [0, 0, 0, 0],
+      //   [0, 0, 0, 0]
+      // ];
       let newaddScore = 0;
       let newaddbestScore = 0;
       let m = 3;
@@ -334,7 +369,8 @@ function game(state = {
             newdata[i][j - 1] = 0;
             console.log('清空', newdata[i][j - 1]);
             state.slide = true;
-            newtwinkle[i][j] = 1;
+            state.twinkle[i][j] = 1;
+            // newtwinkle[i][j] = 1;
             if (state.Score > state.bestScore) {
               newaddbestScore += newdata[i][j];
               state.bestScore = state.Score;
@@ -348,8 +384,10 @@ function game(state = {
             newdata[i][j] = newdata[i][j - 1];
             newdata[i][j - 1] = 0;
             state.slide = true;
-            newtwinkle[i][j] = newtwinkle[i][j - 1];
-            newtwinkle[i][j - 1] = 0;
+            state.twinkle[i][j] = state.twinkle[i][j - 1];
+            state.twinkle[i][j - 1] = 0;
+            // newtwinkle[i][j] = newtwinkle[i][j - 1];
+            // newtwinkle[i][j - 1] = 0;
           }
         }
       }
@@ -357,7 +395,7 @@ function game(state = {
       return {
         ...state,
         data: newdata,
-        twinkle: newtwinkle,
+        // twinkle: newtwinkle,
         addScore: newaddScore,
         addbestScore: newaddbestScore
       };
