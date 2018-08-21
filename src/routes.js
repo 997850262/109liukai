@@ -1,15 +1,15 @@
-import UserCenter from './container/UserCenter';
-import StudentsLib from './container/StudentsLib';
-import ClassDetail from './container/ClassDetail';
-import AppWrapper from './container/AppWrapper';
-import Homework from './container/Homework';
-import Test from './container/Test';
-import Test2 from './container/Test2';
-import Test3 from './container/Test3';
+import UserCenter from './Container/UserCenter';
+import StudentsLib from './Container/StudentsLib';
+import ClassDetail from './Container/ClassDetail';
+import AppWrapper from './Container/AppWrapper';
+import Homework from './Container/Homework';
+import Test from './Container/Test';
+import Test2 from './Container/Test2';
+import Test3 from './Container/Test3';
 
-import Test5 from './container/Test5';
-import Power from './container/Power';
-import game2048 from './container/game2048';
+import Test5 from './Container/Test5';
+import Power from './Container/Power';
+import game2048 from './Container/game2048';
 
 const routeConfig = {
   path: '/',

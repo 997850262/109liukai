@@ -46,7 +46,6 @@ export default class Head extends Component {
           <div className="Score-all">
               Scores<br />
             {this.addScore()}
-            {/* <div className="addScore">+{addScore}</div> */}
             <div className="Score">{Score}</div>
           </div>
           <div className="Best-Score">

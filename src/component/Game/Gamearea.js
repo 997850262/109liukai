@@ -53,12 +53,8 @@ export default class Gamearea extends Component {
     const { data,twinkle } = this.props;
     let { color } = this.props;
     console.log(twinkle)
-    // console.log('渲染按钮的值',data)
     return data.map((n, hang) =>
-    // console.log(hang)
       n.map((num, lie) => {
-      // console.log(lie)
-      // console.log('内容',data[hang][lie])
         if (data[hang][lie] > 0) {
           if (num == 2) { color = 'white'; } else if (num == 4) { color = 'green'; } else if (num == 8) { color = 'orange'; } else if (num == 16) { color = 'yellow'; } else if (num >= 32) { color = 'red'; }
           if(twinkle[hang][lie]==1){

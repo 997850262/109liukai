@@ -1,8 +1,8 @@
 import React from 'react';
-
+/* eslint-disable */
 class AppWrapper extends React.Component {
   render() {
-    const { children } = this.props
+    const { children } = this.props;
     return (
       <div>
         {children}

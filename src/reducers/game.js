@@ -110,22 +110,6 @@ function game(state = {
       initialize(state);
       return {
         ...state
-        // data: [
-        //   [0, 0, 0, 0],
-        //   [0, 0, 0, 0],
-        //   [0, 0, 0, 0],
-        //   [0, 0, 0, 0]
-        // ],
-        // twinkle : [
-        //   [0,0,0,0],
-        //   [0,0,0,0],
-        //   [0,0,0,0],
-        //   [0,0,0,0]
-        // ],
-        // Score: 0,
-        // isinitialize: true,
-        // slide:true,
-        // gameover:false,
       };
     }
     case ActionTypes.Upward:
@@ -173,7 +157,6 @@ function game(state = {
         }
       }
       for (let i = 0; i < 3; i++) {
-        // for (let n = 0; n < 2; n++) {
         for (let j = 0; j < 4; j++) {
           if (newdata[i][j] == 0 && newdata[i + 1][j] != 0) {
             newdata[i][j] = newdata[i + 1][j];
@@ -183,7 +166,6 @@ function game(state = {
             newtwinkle[i + 1][j] = 0;
           }
         }
-        // }
       }
       initialize(state);
       return {
@@ -237,7 +219,6 @@ function game(state = {
         }
       }
       for (let i = 0; i < 4; i++) {
-        // for (let n = 0; n < 2; n++) {
         for (let j = 0; j < 3; j++) {
           if (newdata[i][j] == 0 && newdata[i][j + 1] != 0) {
             newdata[i][j] = newdata[i][j + 1];
@@ -247,7 +228,6 @@ function game(state = {
             newtwinkle[i][j + 1] = 0;
           }
         }
-        // }
       }
       initialize(state);
       return {
@@ -301,7 +281,6 @@ function game(state = {
         }
       }
       for (let i = 3; i > 0; i--) {
-        // for (let n = 0; n < 2; n++) {
         for (let j = 3; j >= 0; j--) {
           if (newdata[i - 1][j] != 0 && newdata[i][j] == 0) {
             newdata[i][j] = newdata[i - 1][j];
@@ -311,7 +290,6 @@ function game(state = {
             newtwinkle[i - 1][j] = 0;
           }
         }
-        // }
       }
       initialize(state);
       return {
@@ -365,7 +343,6 @@ function game(state = {
         }
       }
       for (let i = 3; i >= 0; i--) {
-        // for (let n = 0; n < 2; n++) {
         for (let j = 3; j > 0; j--) {
           if (newdata[i][j] == 0 && newdata[i][j - 1] != 0) {
             newdata[i][j] = newdata[i][j - 1];
@@ -375,7 +352,6 @@ function game(state = {
             newtwinkle[i][j - 1] = 0;
           }
         }
-        // }
       }
       initialize(state);
       return {
