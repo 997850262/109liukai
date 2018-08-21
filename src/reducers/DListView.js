@@ -21,6 +21,13 @@ export default function DListView(state ={
       let newState = {...state};
       newState.dataSource=[...action.response.data]
       return newState;
+      // const {current,history} =  action.response
+      // return { ...state, [action.mid]: [ ...action.response.current.result ] }
+      // return { ...state, [action.mid]: [ ...action.response.history.result ] }
+      // console.log(123,current)
+      // return { ...state,...current.entities.currentLessonsList }
+      // console.log(456,history)
+      // return { ...state, ...history.entities.historyLessonsList }
     }
     case ActionTypes.Fetchdangan_FAI: 
     {
