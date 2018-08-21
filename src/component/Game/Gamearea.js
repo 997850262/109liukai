@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Game.css';
-/* eslint-disable */
+
 // const KEY_RETURN = [87,65,83,68];//W A S D
 export default class Gamearea extends Component {
   // constructor(props) {

@@ -115,8 +115,21 @@ class game2048 extends React.Component {
       // this.initialize();
       return (
         <div>
-          <Head data={data} Score={Score} bestScore={bestScore} todoActions={todoActions} addScore={addScore} addbestScore={addbestScore}/>
-          <Gamearea data={data} color={color} todoActions={todoActions} gameover={gameover} twinkle={twinkle}/>
+          <Head
+            data={data}
+            Score={Score}
+            bestScore={bestScore}
+            todoActions={todoActions}
+            addScore={addScore}
+            addbestScore={addbestScore}
+          />
+          <Gamearea
+            data={data}
+            color={color}
+            todoActions={todoActions}
+            gameover={gameover}
+            twinkle={twinkle}
+          />
         </div>
       );
     }
@@ -136,9 +149,8 @@ function mapStateToProps(state) {
   const addScore = game.game.addScore;
   const addbestScore = game.game.addbestScore;
   console.log(game.game.slide);
-  // console.log(color);
   return {
-    data, isinitialize, Score, bestScore, color, slide, gameover,twinkle,addScore,addbestScore
+    data, isinitialize, Score, bestScore, color, slide, gameover, twinkle, addScore, addbestScore
   };
 }
 
