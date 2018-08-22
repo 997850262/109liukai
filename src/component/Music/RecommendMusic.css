@@ -1,0 +1,16 @@
+.RecommendMusic-all{
+    margin-left: 10px;
+    margin-top: 20px;
+    padding-bottom: 80px;
+}
+.RecommendMusic-title{
+    font-size: 22px;
+    font-weight: 550;
+}
+.RecommendMusic-list{
+    padding-left: 30px;
+}
+.RecommendMusic-list-all{
+    margin-top: 10px;
+    border-bottom:1px solid #ccc;
+}

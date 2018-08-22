@@ -2,161 +2,54 @@ import ActionTypes from '../const/ActionTypes';
 /* eslint-disable */
 import { normalize } from 'normalizr';
 import * as schemes from '../schemes/index';
-/* eslint-disable */
-export function fetchhomework(token, isReviewed) {
+
+export function login(mid) {
+  console.log(111,mid);
   return {
     Server_Api: {
-      type: ActionTypes.Fetchhomework,
-      endpoint: '/getHomeWork',
+      type: ActionTypes.Login,
+      endpoint: '/login',
       params: {
-        token: 1,
-        isReviewed: 0
-        // a:[{token,isReviewed}]
+        mid
       },
-      normailzerFun: response => normalize(response.data, schemes.Data)
+      // normailzerFun: response => normalize(response.data, schemes.Data)
     }
   };
 }
-export function fetchhomework2(token, isReviewed) {
+export function fetchmymusic(token) {
   return {
     Server_Api: {
-      type: ActionTypes.Fetchhomework2,
-      endpoint: '/getHomeWork',
+      type: ActionTypes.Fetchmymusic,
+      endpoint: '/music/my_list',
       params: {
-        token: 1,
-        isReviewed: 1
-        // a:[{token,isReviewed}]
+        token
       },
-      normailzerFun: response => normalize(response.data, schemes.Data)
+      normailzerFun: response => normalize(response, schemes.Data)
     }
   };
 }
-export function fetchhomework3(token, isReviewed) {
+export function fetchrecommendmusic(token) {
+  console.log(11111111111,token);
   return {
     Server_Api: {
-      type: ActionTypes.Fetchhomework3,
-      endpoint: '/getHomeWork',
+      type: ActionTypes.Fetchrecommendmusic,
+      endpoint: '/music/recommend_list',
       params: {
-        token: 0,
-        isReviewed: 0
-        // a:[{token,isReviewed}]
+        token
       },
-      normailzerFun: response => normalize(response.data, schemes.Data)
+      normailzerFun: response => normalize(response.data, schemes.List)
     }
   };
 }
-export function fetchhomework4(token, isReviewed) {
+export function selectid(id) {
   return {
-    Server_Api: {
-      type: ActionTypes.Fetchhomework4,
-      endpoint: '/getHomeWork',
-      params: {
-        token: 0,
-        isReviewed: 1
-        // a:[{token,isReviewed}]
-      },
-      normailzerFun: response => normalize(response.data, schemes.Data)
-    }
-  };
-}
-export function fetchid(id) {
-  console.log(id);
-  return {
-    type: ActionTypes.Fetchid,
+    type: ActionTypes.Selectid,
     id
   };
 }
-export function sendmid(mid) {
+export function selectmoreid(id) {
   return {
-    type: ActionTypes.Sendmid,
-    mid
-  };
-}
-export function sendword(id, word, newcomment) {
-  console.log(word);
-  return {
-    type: ActionTypes.Sendword,
-    id,
-    word,
-    newcomment
-  };
-}
-export function fitchimg(selectedKeys) {
-  console.log(selectedKeys);
-  return {
-    type: ActionTypes.Fitchimg,
-    selectedKeys
-  };
-}
-export function addpower(id) {
-  console.log(id);
-  return {
-    type: ActionTypes.Addpower,
+    type: ActionTypes.Selectmoreid,
     id
-  };
-}
-export function setpower() {
-  console.log();
-  return {
-    type: ActionTypes.Setpower
-  };
-}
-export function cutpower(id) {
-  console.log(id);
-  return {
-    type: ActionTypes.Cutpower,
-    id
-  };
-}
-export function deletepower(id) {
-  return {
-    type: ActionTypes.Deletepower,
-    id
-  };
-}
-export function sendid(mid) {
-  return {
-    type: ActionTypes.Sendid,
-    mid
-  };
-}
-export function reset() {
-  return {
-    type: ActionTypes.Reset,
-  };
-}
-export function upward() {
-  return {
-    type: ActionTypes.Upward,
-  };
-}
-export function leftward() {
-  return {
-    type: ActionTypes.Leftward,
-  };
-}
-export function downward() {
-  return {
-    type: ActionTypes.Downward,
-  };
-}
-export function rightward() {
-  return {
-    type: ActionTypes.Rightward,
-  };
-}
-export function initialize() {
-  return {
-    type: ActionTypes.Initialize,
-  };
-}
-export function random() {
-  return {
-    type: ActionTypes.Random,
-  };
-}
-export function gameover() {
-  return {
-    type: ActionTypes.Gameover,
   };
 }

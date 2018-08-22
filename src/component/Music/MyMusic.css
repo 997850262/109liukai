@@ -1,0 +1,35 @@
+.MyMusic-all{
+    margin-left: 10px;
+}
+.MyMusic-title{
+    font-size: 22px;
+    font-weight: 550;
+}
+.MyMusic-list{
+    padding-left: 30px;
+}
+.MyMusic-Subtitle{
+    float: right;
+    font-size: 18px;
+    font-weight: 300;
+    margin-right: 10px;
+}
+.MyMusic-list-all{
+    margin-top: 10px;
+    border-bottom:1px solid #ccc;
+}
+.moreselect{
+    width: 20px;
+    height: 20px;
+    border-radius:10px;
+    background: white;
+    border: 1px solid black;
+    margin-top: 10px;
+}
+.list-all{
+    display: flex;
+}
+.singleselect{
+    width: 30px;
+    height: 30px;
+}

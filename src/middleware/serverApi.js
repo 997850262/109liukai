@@ -68,7 +68,8 @@
 
 import axios from 'axios';
 
-const API_DOMAIN = 'http://xly-wkop.xiaoniangao.cn/';
+// const arr = [];
+const API_DOMAIN = 'http://xly-wkop.xiaoniangao.cn';
 const axiosFetch = axios.create({
   baseURL: API_DOMAIN,
   timeout: 60000,
@@ -98,7 +99,7 @@ const callServerApi = apiParams => {
   });
 };
 /* eslint-disable */
-const serverApi = () => next => action => {
+const serverApi = (store) => next => action => {
   if (!action.Server_Api) { return next(action); }
   const { type, endpoint, params } = action.Server_Api;
   if (typeof endpoint !== 'string') {
@@ -110,6 +111,25 @@ const serverApi = () => next => action => {
   if (typeof params !== 'object') {
     throw new Error('Specify a object params.');
   }
+  // console.log('147',params)
+  // if(params.token==undefined){
+  //   console.log(123456)
+  //   console.log(action)
+  //   arr.push(action)
+  //   console.log(arr)
+  //   // const a=arr.pop();
+  //   // console.log(a)
+  //   // next(actionWith({
+  //   //   type: `${type}_REQ`,
+  //   //   __api: { endpoint, params }
+  //   // }));
+  // }
+  // else{
+  //   const a=arr.pop();
+  //   console.log(a)
+  //   store.dispatch(a);
+  //   console.log(654321)
+  // }
 
   const { normailzerFun } = action.Server_Api;
   function actionWith(data) {
@@ -123,6 +143,7 @@ const serverApi = () => next => action => {
   }));
   callServerApi({ endpoint, params })
     .then(res => {
+      console.log(999,res)
       const response = typeof (normailzerFun) !== 'undefined' ? normailzerFun(res.data) : res.data;
       console.log('中间件', response);
       next(actionWith({

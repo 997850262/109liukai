@@ -1,0 +1,16 @@
+.Tabbar-all{
+    display: flex;
+    justify-content:space-around;
+}
+.Tabbar-1{
+    font-size: 20px;
+}
+.Tabbar-2{
+    font-size: 20px;
+}
+.Tabbar-3{
+    font-size: 20px;
+}
+a{
+    text-decoration: none;
+}
