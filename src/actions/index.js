@@ -53,3 +53,41 @@ export function selectmoreid(id) {
     id
   };
 }
+export function deleteone() {
+  return {
+    type: ActionTypes.Deleteone,
+  };
+}
+export function deletemore() {
+  return {
+    type: ActionTypes.Deletemore,
+  };
+}
+export function onselect() {//点击单选
+  return {
+    type: ActionTypes.Onselect,
+  };
+}
+export function onmoreselect() {//点击多选
+  return {
+    type: ActionTypes.Onmoreselect,
+  };
+}
+export function rename(name) {//点击多选
+  return {
+    type: ActionTypes.Rename,
+    name
+  };
+}
+export function signtime(signstartTime,signendTime) {//加标记
+  return {
+    type: ActionTypes.Signtime,
+    signstartTime,
+    signendTime
+  };
+}
+export function cleansigntime() {//清除标记
+  return {
+    type: ActionTypes.Cleansigntime,
+  };
+}

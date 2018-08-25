@@ -8,13 +8,16 @@ import Select from '../component/Music/Select';
 import MyMusic from '../component/Music/MyMusic';
 import RecommendMusic from '../component/Music/RecommendMusic';
 import Footer from '../component/Music/Footer';
+import ListenMusic from '../component/Music/ListenMusic';
 import './Music.css';
 /* eslint-disable */
 class Music extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      select:true
+      select:true,
+      isAcitve:false,
+      ispart:0
     }
   }
     componentDidMount=()=>{
@@ -24,13 +27,40 @@ class Music extends React.Component {
         todoActions.fetchrecommendmusic(token);
     }
     handleselect=()=>{
+      const{todoActions}=this.props;
       this.setState({
         select:true
       })
+      todoActions.onselect()
     }
     handlemoreselect=()=>{
+      const{todoActions}=this.props;
       this.setState({
         select:false
+      })
+      todoActions.onmoreselect()
+    }
+    handleplay=()=>{
+      this.setState({
+        isAcitve:true,
+        ispart:0
+      })
+    }
+    handlepart=()=>{
+      this.setState({
+        isAcitve:true,
+        ispart:2
+      })
+    }
+    handlerename=()=>{
+      this.setState({
+        isAcitve:true,
+        ispart:1
+      })
+    }
+    onCancel=()=>{
+      this.setState({
+        isAcitve:false
       })
     }
     render() {
@@ -43,8 +73,13 @@ class Music extends React.Component {
           handleselect={this.handleselect} handlemoreselect={this.handlemoreselect}
           select={this.state.select}/>
           <MyMusic music={music} todoActions={todoActions} select={this.state.select}/>
-          <RecommendMusic music={music} todoActions={todoActions}/>
-          <Footer music={music} todoActions={todoActions}/>
+          <RecommendMusic music={music} todoActions={todoActions} select={this.state.select}/>
+          <Footer music={music} todoActions={todoActions} select={this.state.select}
+          handleplay={this.handleplay} ispart={this.state.ispart} handlepart={this.handlepart}
+          handlerename={this.handlerename}/>
+          <ListenMusic isAcitve={this.state.isAcitve} todoActions={todoActions} music={music}
+          onCancel={this.onCancel} ispart={this.state.ispart}
+          />
         </div>
       );
     }

@@ -26,8 +26,8 @@ rendermylist=()=>{
   const{music,todoActions,select}=this.props;
   let count=0;
   console.log('我的音乐',select)
-  console.log(11111111111,music.operation.selectid)
-  console.log(3333,music.operation.selectmoreid)
+  console.log(11111111111,music.music.selectid)
+  console.log(3333,music.music.selectmoreid)
   let newList = music.music.result;
   if(newList){
     return newList.map((Item)=>{
@@ -35,7 +35,7 @@ rendermylist=()=>{
       if(music.music.entities.data[Item]!=undefined){
        return music.music.entities.data[Item].list.map(item=>{
          console.log(item)
-         if(select==true&&music.operation.selectid==item){//单选
+         if(select==true&&music.music.selectid==item){//单选
            return(
              <div className="list-all">
                <img src={img} className="singleselect"/>
@@ -43,7 +43,7 @@ rendermylist=()=>{
              </div>
            )
          }
-         else if(select==true&&music.operation.selectid!=item){
+         else if(select==true&&music.music.selectid!=item){
            return(
           <div className="list-all">
             <div className="MyMusic-list-all" onClick={()=>this.handleoneselect(item)}>{music.music.entities.list[item].name}</div>
@@ -51,23 +51,25 @@ rendermylist=()=>{
            )
          }
          else if(select==false){//多选
-           for(let i=0;i<music.operation.selectmoreid.length;i++){
-             if(item!=music.operation.selectmoreid[i]){
-               count++;
-             }
-           }
-           if(count>=music.operation.selectmoreid.length){
+          //  for(let i=0;i<music.music.selectmoreid.length;i++){
+          //    if(item!=music.music.selectmoreid[i]){
+          //      count++;
+          //    }
+          //  }
+           if(music.music.selectmoreid.indexOf(item)+1){
             return(
               <div className="list-all">
-              <div className="moreselect" onClick={()=>this.handlemoreselect(item)}></div>
+              <div className="moreselect" style={{background:'red'}} onClick={()=>this.handlemoreselect(item)}>
+              <span className="number">{music.music.selectmoreid.indexOf(item)+1}</span>
+              </div>
               <div className="MyMusic-list-all">{music.music.entities.list[item].name}</div>
             </div>
             )
            }
-           else if(count<music.operation.selectmoreid.length){
+           else{
             return(
               <div className="list-all">
-              <div className="moreselect" style={{background:'red'}} onClick={()=>this.handlemoreselect(item)}></div>
+              <div className="moreselect" onClick={()=>this.handlemoreselect(item)}></div>
               <div className="MyMusic-list-all">{music.music.entities.list[item].name}</div>
             </div>
             )
