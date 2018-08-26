@@ -16,6 +16,7 @@ export function login(mid) {
     }
   };
 }
+
 export function fetchmymusic(token) {
   return {
     Server_Api: {

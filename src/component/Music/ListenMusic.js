@@ -43,7 +43,7 @@ export default class ListenMusic extends React.Component {
     if(ispart==0){
         return(
             <div className="Body">
-              <div className="close" onClick={this.props.onCancel}>关闭</div>
+              <div className="close" onClick={this.close}>关闭</div>
               <div className="title">{music.music.entities.list[music.music.selectid].name}</div>
               <div className="ListenMusic-time"><span>{currentminute}:{currentsecond}</span><span>/{minute}:{second}</span></div>
               <div className="ListenMusic-play-all">
@@ -64,6 +64,7 @@ export default class ListenMusic extends React.Component {
                       id="myAudio"
                       src={music.music.entities.list[music.music.selectid].m_url}
                       autoPlay
+                      loop
                       onTimeUpdate={(e) => this.controlAudio('getCurrentTime')}
                       >
                   </audio>
@@ -93,6 +94,7 @@ export default class ListenMusic extends React.Component {
                       id="myAudio"
                       src={music.music.entities.list[music.music.selectid].m_url}
                       autoPlay
+                      loop
                       onTimeUpdate={(e) => this.controlAudio('getCurrentTime')}
                       >
                   </audio>
@@ -154,6 +156,7 @@ handlerename=(e)=>{
       const name=this.state.name;
     //   console.log(name)
       todoActions.rename(name);
+      this.props.onCancel();
   }
 onTouchStart=event => {
     // console.log(event);
@@ -183,7 +186,6 @@ onTouchStart=event => {
     // console.log(111,this.state.signendTime)
     const{music}=this.props
     if((music.music.entities.list[music.music.selectid].bmt==0&&music.music.entities.list[music.music.selectid].emt==0)&&(this.state.signstartTime==0&&this.state.signendTime==0)){
-        console.log('截取1')
         return(
             <div className="intercept">
                 <div>
@@ -205,7 +207,6 @@ onTouchStart=event => {
         )
     }
     else if(this.state.signstartTime>0&&this.state.signendTime==0){
-        console.log('截取2')
         return(
             <div className="intercept">
             <div>
@@ -227,7 +228,6 @@ onTouchStart=event => {
         )
     }
     else{
-        console.log('截取3')
         return(
             <div className="intercept">
             <div>
@@ -248,6 +248,12 @@ onTouchStart=event => {
         </div>
         )
     }
+  }
+  close=()=>{
+    this.setState({
+        play:true
+    })
+    this.props.onCancel();
   }
     signstart=()=>{//标记起点
         var myVideo=document.getElementById("myAudio");
@@ -286,6 +292,7 @@ onTouchStart=event => {
         this.props.onCancel();
         }
         this.setState({
+            play:true,
             signstartTime:0,
             signendTime:0,
         })
@@ -337,7 +344,6 @@ onTouchStart=event => {
         else return null;
     }
     playorstop=()=>{//显示播放还是暂停按钮
-        const{music}=this.props;
         if(this.state.play==false){
             return(
                 <img src={img2} className="playbtn" onClick={this.playmusic}/>
@@ -376,7 +382,6 @@ onTouchStart=event => {
         // }
     }
     controlAudio(type, value) {
-        const { id, src } = this.props;
         const{music}=this.props;
         var myVideo=document.getElementById("myAudio");
         switch(type) {
@@ -407,6 +412,7 @@ onTouchStart=event => {
                     currentTime: myVideo.currentTime
                 });
                 if (myVideo.currentTime == myVideo.duration) {
+                    myVideo.currentTime=0;
                     this.setState({
                         play: false
                     });
