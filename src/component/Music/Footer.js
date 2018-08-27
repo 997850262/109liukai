@@ -6,14 +6,13 @@ const img2=require("../../source/button_rename_red.png");
 const img3=require("../../source/button_cut.png");
 const img4=require("../../source/button_share.png");
 const img5=require("../../source/button_delete.png");
+let count=0;
 export default class Footer extends React.Component {
   constructor(props) {
     super(props);
   }
   play=()=>{
     const{select,music}=this.props;
-    // console.log(123,music.operation.selectid)
-    // const id=music.operation.selectid;
     if(select==true){
       this.props.handleplay();
     }
@@ -43,18 +42,11 @@ export default class Footer extends React.Component {
     }
   }
   delete=()=>{
-    const{select,music,todoActions}=this.props;
-    if(select==true){
-      todoActions.deleteone()
-    }
-    if(select==false){
-      todoActions.deletemore()
-    }
+    const{select,music,todoActions,isAcitve,ondelect}=this.props;
+    this.props.ondelect();
   }
   renderfooter=()=>{
     const{music,select}=this.props;
-    console.log(music.music.recommendresult)
-    console.log(music.music.selectid)
     if(select==true&&(music.music.selectid==0||music.music.selectid==undefined)){
       return(
         <div className="Footer-all">
@@ -133,7 +125,12 @@ export default class Footer extends React.Component {
     </div>
       );
     }
-    else if(select==false){
+    music.music.selectmoreid.map(item=>{
+      if(music.music.recommendresult.indexOf(item)+1){
+        count++
+      }
+    })
+    if(select==false&&count==0&&music.music.selectmoreid.length>0){
       return(
         <div className="Footer-all">
         <div className="Footer-1">
@@ -155,6 +152,33 @@ export default class Footer extends React.Component {
         <div className="Footer-5">
         <img src={img5} className="Footer-img5" onClick={()=>this.delete()}/><br/>
         <span>删除</span>
+        </div>
+        </div>
+      )
+    }
+    else{
+      count=0;
+      return(
+        <div className="Footer-all">
+        <div className="Footer-1">
+        <img src={img} className="Footer-img"/><br/>
+        <span style={{ color: 'gray' }}>播放</span>
+        </div>
+        <div className="Footer-2">
+        <img src={img2} className="Footer-img2"/><br/>
+        <span style={{ color: 'gray' }}>重命名</span>
+        </div>
+        <div className="Footer-3">
+        <img src={img3} className="Footer-img3"/><br/>
+        <span style={{ color: 'gray' }}>选择片段</span>
+        </div>
+        <div className="Footer-4">
+        <img src={img4} className="Footer-img4"/><br/>
+        <span style={{ color: 'gray' }}>送给朋友</span>
+        </div>
+        <div className="Footer-5">
+        <img src={img5} className="Footer-img5"/><br/>
+        <span style={{ color: 'gray' }}>删除</span>
         </div>
         </div>
       )

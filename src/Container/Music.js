@@ -9,6 +9,7 @@ import MyMusic from '../component/Music/MyMusic';
 import RecommendMusic from '../component/Music/RecommendMusic';
 import Footer from '../component/Music/Footer';
 import ListenMusic from '../component/Music/ListenMusic';
+import Delect from '../component/Music/Delect';
 import './Music.css';
 /* eslint-disable */
 class Music extends React.Component {
@@ -58,6 +59,12 @@ class Music extends React.Component {
         ispart:1
       })
     }
+    ondelect=()=>{
+      this.setState({
+        isAcitve:true,
+        ispart:4
+      })
+    }
     onCancel=()=>{
       this.setState({
         isAcitve:false
@@ -76,10 +83,12 @@ class Music extends React.Component {
           <RecommendMusic music={music} todoActions={todoActions} select={this.state.select}/>
           <Footer music={music} todoActions={todoActions} select={this.state.select}
           handleplay={this.handleplay} ispart={this.state.ispart} handlepart={this.handlepart}
-          handlerename={this.handlerename}/>
+          handlerename={this.handlerename} isAcitve={this.state.isAcitve} ondelect={this.ondelect}/>
           <ListenMusic isAcitve={this.state.isAcitve} todoActions={todoActions} music={music}
           onCancel={this.onCancel} ispart={this.state.ispart}
           />
+          <Delect music={music} select={this.state.select} todoActions={todoActions} isAcitve={this.state.isAcitve}
+          onCancel={this.onCancel}/>
         </div>
       );
     }

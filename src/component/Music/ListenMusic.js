@@ -57,7 +57,6 @@ export default class ListenMusic extends React.Component {
   }
   renderBody=()=>{
     const{music,ispart}=this.props;
-    const circlewidth=(this.state.currentTime/this.state.alltime)*100+"%";
     const minute=Math.floor(this.state.alltime/60);
     const second=Math.floor(this.state.alltime-(60*minute));
     const currentminute=Math.floor(this.state.currentTime/60);
@@ -119,7 +118,7 @@ export default class ListenMusic extends React.Component {
               </div>
           )
       }
-      else{
+      else if(ispart==1){
           return(
                 <div className="rename-Body">
                     <div className="rename-title">请输入新音乐名称</div>

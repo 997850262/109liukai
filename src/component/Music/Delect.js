@@ -1,0 +1,67 @@
+import React from 'react';
+import './Delect.css';
+/* eslint-disable */
+
+export default class Delect extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  getMaskClassName = (isAcitve) => {
+      console.log(123987)
+    if (!isAcitve) {
+      return 'mask hideMask';
+    }
+    return 'mask showMask';
+  }
+  renderbody=()=>{
+    const{music,select}=this.props;
+    const count=music.music.selectmoreid.length;
+    if(select==true&&music.music.selectid>0){
+        return(
+            <div className="delect-Body">
+                <div className="delect-title">确定删除{music.music.entities.list[music.music.selectid].name}音乐吗</div>
+                <div className="delect-btn">
+                  <span className="delect-btn1" onClick={this.props.onCancel}>取消</span>
+                  <span className="delect-btn2" onClick={this.handledelect}>确定</span>
+                </div>
+            </div>
+      )
+    }
+    else if(select==false&&music.music.selectmoreid.length>0){
+        return(
+            <div className="delect-Body">
+                <div className="delect-title">确定删除{count}首音乐吗</div>
+                <div className="delect-btn">
+                  <span className="delect-btn1" onClick={this.props.onCancel}>取消</span>
+                  <span className="delect-btn2" onClick={this.handledelect}>确定</span>
+                </div>
+            </div>
+      )
+    }
+  }
+  
+  handledelect=()=>{
+      const{select,todoActions,ondelect}=this.props
+      if(select==true){
+        todoActions.deleteone()
+      }
+      else{
+        todoActions.deletemore()
+      }
+      this.props.onCancel()
+  }
+  render() {
+    const{isAcitve,music}=this.props;
+    if(isAcitve==true){
+        return(
+            <div>
+                <div className={this.getMaskClassName(isAcitve)} />
+                <div>
+                    {this.renderbody()}
+                </div>
+            </div>
+        )  
+        }
+    else  return null;
+  }
+}
