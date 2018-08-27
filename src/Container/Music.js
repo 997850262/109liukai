@@ -88,7 +88,7 @@ class Music extends React.Component {
           onCancel={this.onCancel} ispart={this.state.ispart}
           />
           <Delect music={music} select={this.state.select} todoActions={todoActions} isAcitve={this.state.isAcitve}
-          onCancel={this.onCancel}/>
+          onCancel={this.onCancel} ispart={this.state.ispart}/>
         </div>
       );
     }

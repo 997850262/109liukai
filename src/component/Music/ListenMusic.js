@@ -243,7 +243,14 @@ handlerename=(e)=>{
                 this.endX=(music.music.entities.list[music.music.selectid].emt+56)
             }
         }
-
+        else{
+            if(this.endX<0){
+                this.endX=0+56
+            }
+            else if(this.endX>this.state.alltime){
+                this.endX=this.state.alltime+55
+            } 
+        }
         const x = this.endX - this.startX;
         this.setState({
             currentTime:myVideo.currentTime+x

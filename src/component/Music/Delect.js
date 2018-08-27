@@ -14,9 +14,9 @@ export default class Delect extends React.Component {
     return 'mask showMask';
   }
   renderbody=()=>{
-    const{music,select}=this.props;
+    const{music,select,ispart}=this.props;
     const count=music.music.selectmoreid.length;
-    if(select==true&&music.music.selectid>0){
+    if(select==true&&music.music.selectid>0&&ispart==4){
         return(
             <div className="delect-Body">
                 <div className="delect-title">确定删除{music.music.entities.list[music.music.selectid].name}音乐吗</div>
@@ -27,7 +27,7 @@ export default class Delect extends React.Component {
             </div>
       )
     }
-    else if(select==false&&music.music.selectmoreid.length>0){
+    else if(select==false&&music.music.selectmoreid.length>0&&ispart==4){
         return(
             <div className="delect-Body">
                 <div className="delect-title">确定删除{count}首音乐吗</div>
