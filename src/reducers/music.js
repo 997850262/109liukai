@@ -134,7 +134,9 @@ function music(state = {
     case ActionTypes.Onmoreselect:
     {
       const newselectmoreid = []
-      newselectmoreid.push(state.selectid)
+      if(state.selectid>0){
+        newselectmoreid.push(state.selectid)
+      }
       return {
         ...state,
         selectmoreid:newselectmoreid

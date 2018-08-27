@@ -10,11 +10,14 @@ const img6=require("../../source/button_cut_music_start_gray.png")//标记起点
 const img7=require("../../source/button_cut_music_finish_gray.png")//标记终点灰色
 const img8=require("../../source/button_cut_music_clear_gray.png")//清除灰色
 const img9=require("../../source/button_cut_music_clear.png")//清除红色
+let shelter=0;
+let widths=0;
 export default class ListenMusic extends React.Component {
   constructor(props) {
     super(props);
     this.state={
         play:true,
+        alltime:0,
         currentTime:0,
         ismove:false,
         // interceptstart:false,
@@ -32,43 +35,68 @@ export default class ListenMusic extends React.Component {
     }
     return 'mask showMask';
   }
+  audioall=()=>{
+    const{music,ispart}=this.props;
+    const circlewidth=(this.state.currentTime/this.state.alltime)*100+"%";
+      return(
+        <div className={`ListenMusic-play-all${ispart}`}>
+            {this.playorstop()}
+            <div className="slider-all" onClick={this.getmusicx}>
+            {this.renderprogress()}
+                {this.rendersign()}
+                <div className="slider-circle"
+                style={{ marginLeft: `${circlewidth}` }}
+                type="range"
+                onTouchMove={this.onTouchMove}
+                onTouchStart={this.onTouchStart}
+                onTouchEnd={this.onTouchEnd}
+                ></div>
+            </div>
+        </div>
+      )
+  }
   renderBody=()=>{
     const{music,ispart}=this.props;
-    const width=(this.state.currentTime/music.music.entities.list[music.music.selectid].du)*100+"%";
-    const circlewidth=(this.state.currentTime/music.music.entities.list[music.music.selectid].du)*100+"%";
-    const minute=Math.floor(music.music.entities.list[music.music.selectid].du/60);
-    const second=Math.floor(music.music.entities.list[music.music.selectid].du-(60*minute));
+    const circlewidth=(this.state.currentTime/this.state.alltime)*100+"%";
+    const minute=Math.floor(this.state.alltime/60);
+    const second=Math.floor(this.state.alltime-(60*minute));
     const currentminute=Math.floor(this.state.currentTime/60);
     const currentsecond=Math.floor(this.state.currentTime%60);
-    if(ispart==0){
+    if(ispart==0&&!(music.music.recommendresult.indexOf(music.music.selectid)+1)){
         return(
             <div className="Body">
               <div className="close" onClick={this.close}>关闭</div>
               <div className="title">{music.music.entities.list[music.music.selectid].name}</div>
               <div className="ListenMusic-time"><span>{currentminute}:{currentsecond}</span><span>/{minute}:{second}</span></div>
-              <div className="ListenMusic-play-all">
-                  {this.playorstop()}
-                  <div className="slider-all">
-                    {this.renderprogress()}
-                      {/* <div className="slider" style={{ width: `${width}` }}></div> */}
-                      {this.rendersign()}
-                      <div className="slider-circle"
-                      style={{ marginLeft: `${circlewidth}` }}
-                      type="range"
-                      onTouchMove={this.onTouchMove}
-                      onTouchStart={this.onTouchStart}
-                      onTouchEnd={this.onTouchEnd}
-                      ></div>
-                  </div>
+              {this.audioall()}
                   <audio
                       id="myAudio"
                       src={music.music.entities.list[music.music.selectid].m_url}
                       autoPlay
                       loop
+                      onCanPlay={(e) => this.controlAudio('gettime')}
                       onTimeUpdate={(e) => this.controlAudio('getCurrentTime')}
                       >
                   </audio>
-              </div>
+            </div>
+        ) 
+    }
+    else if(ispart==0&&music.music.recommendresult.indexOf(music.music.selectid)+1){
+        return(
+            <div className="Body">
+              <div className="close" onClick={this.close}>关闭</div>
+              <div className="title">{music.music.recommendentities[music.music.selectid].name}</div>
+              <div className="ListenMusic-time"><span>{currentminute}:{currentsecond}</span><span>/{minute}:{second}</span></div>
+              {this.audioall()}
+                  <audio
+                      id="myAudio"
+                      src={music.music.recommendentities[music.music.selectid].m_url}
+                      autoPlay
+                      loop
+                      onCanPlay={(e) => this.controlAudio('gettime')}
+                      onTimeUpdate={(e) => this.controlAudio('getCurrentTime')}
+                      >
+                  </audio>
             </div>
         ) 
     }
@@ -76,29 +104,16 @@ export default class ListenMusic extends React.Component {
           return(
               <div className="part-Body">
                 {this.renderbuttons()}
-                <div className="ListenMusic-play-all2">
-                  {this.playorstop()}
-                  <div className="slider-all">
-                      {this.renderprogress()}
-                      {/* <div className="slider" style={{ width: `${width}` }}></div> */}
-                      {this.rendersign()}
-                      <div className="slider-circle"
-                      style={{ marginLeft: `${circlewidth}` }}
-                      type="range"
-                      onTouchMove={this.onTouchMove}
-                      onTouchStart={this.onTouchStart}
-                      onTouchEnd={this.onTouchEnd}
-                      ></div>
-                  </div>
+                {this.audioall()}
                   <audio
                       id="myAudio"
                       src={music.music.entities.list[music.music.selectid].m_url}
                       autoPlay
                       loop
+                      onCanPlay={(e) => this.controlAudio('gettime')}
                       onTimeUpdate={(e) => this.controlAudio('getCurrentTime')}
                       >
                   </audio>
-              </div>
               <div className="ListenMusic-time"><span>{currentminute}:{currentsecond}</span><span>/{minute}:{second}</span></div>
                 <button className="part-close" onClick={this.successsign}>完成</button>
               </div>
@@ -121,29 +136,56 @@ export default class ListenMusic extends React.Component {
 }
 renderprogress=()=>{
     const{music}=this.props;
-    const shelternow=(this.state.signstartTime/music.music.entities.list[music.music.selectid].du)*100+"%";
-    const shelter=(music.music.entities.list[music.music.selectid].bmt/music.music.entities.list[music.music.selectid].du)*100+"%";
-    const widths=(this.state.currentTime/music.music.entities.list[music.music.selectid].du)*100+"%";
-    if(this.state.signstartTime!=0){
-        return(
-            <div className="slider-shelter-all">
-            <div className="slider-shelter" style={{ width: `${shelternow}` }}></div>
-            <div className="sliders" style={{ width: `${widths}` }}></div>
-            </div>
-        )
-    }//给截取但未确定时加标记
-    if(music.music.entities.list[music.music.selectid].bmt!=0){
-        return(
-            <div className="slider-shelter-all">
-            <div className="slider-shelter" style={{ width: `${shelter}` }}></div>
-            <div className="sliders" style={{ width: `${widths}` }}></div>
-            </div>
-        )
+    const shelternow=(this.state.signstartTime/this.state.alltime)*100+"%";
+    if(!(music.music.recommendresult.indexOf(music.music.selectid)+1)){
+        const shelter=(music.music.entities.list[music.music.selectid].bmt/this.state.alltime)*100+"%";
+        const widths=(this.state.currentTime/this.state.alltime)*100+"%";
+        if(this.state.signstartTime!=0){
+            return(
+                <div className="slider-shelter-all">
+                <div className="slider-shelter" style={{ width: `${shelternow}` }}></div>
+                <div className="sliders" style={{ width: `${widths}` }}></div>
+                </div>
+            )
+        }//给截取但未确定时加标记
+        if(music.music.entities.list[music.music.selectid].bmt!=0){
+            return(
+                <div className="slider-shelter-all">
+                <div className="slider-shelter" style={{ width: `${shelter}` }}></div>
+                <div className="sliders" style={{ width: `${widths}` }}></div>
+                </div>
+            )
+        }
+        else{
+            return(
+                <div className="slider" style={{ width: `${widths}` }}></div>
+            )
+        }
     }
     else{
-        return(
-            <div className="slider" style={{ width: `${widths}` }}></div>
-        )
+        const shelter=(music.music.recommendentities[music.music.selectid].bmt/this.state.alltime)*100+"%";
+        const widths=(this.state.currentTime/this.state.alltime)*100+"%";
+        if(this.state.signstartTime!=0){
+            return(
+                <div className="slider-shelter-all">
+                <div className="slider-shelter" style={{ width: `${shelternow}` }}></div>
+                <div className="sliders" style={{ width: `${widths}` }}></div>
+                </div>
+            )
+        }//给截取但未确定时加标记
+        if(music.music.recommendentities[music.music.selectid].bmt!=0){
+            return(
+                <div className="slider-shelter-all">
+                <div className="slider-shelter" style={{ width: `${shelter}` }}></div>
+                <div className="sliders" style={{ width: `${widths}` }}></div>
+                </div>
+            )
+        }
+        else{
+            return(
+                <div className="slider" style={{ width: `${widths}` }}></div>
+            )
+        }
     }
 }
 handlerename=(e)=>{
@@ -158,17 +200,51 @@ handlerename=(e)=>{
       todoActions.rename(name);
       this.props.onCancel();
   }
-onTouchStart=event => {
+  getmusicx=event=>{
+    var myVideo=document.getElementById("myAudio");
     // console.log(event);
-    // console.log(event.touches);
-    this.startX = event.touches[0].clientX;
+    this.startX = event.clientX;
+    const x=this.startX-54
     this.setState({
-        ismove:true
+        currentTime:+x
     })
+    myVideo.currentTime=x;
   }
+    onTouchStart=event => {
+        // console.log(event);
+        // console.log(event.touches);
+        this.startX = event.touches[0].clientX;
+        this.setState({
+            ismove:true
+        })
+    }
     onTouchMove=event => {
+        const{music}=this.props;
         var myVideo=document.getElementById("myAudio");
         this.endX = event.changedTouches[0].clientX;
+        // console.log(11111111,this.startX)
+        // console.log(22222222,this.endX)
+        if(this.state.signendTime==0&&this.endX>300){//限制滑块范围
+            this.endX=300
+        }
+        else if(this.state.signstartTime==0&&this.endX<56){
+            this.endX=56
+        }
+        else if(this.state.signstartTime!=0&&this.endX<this.state.signstartTime){
+            this.endX=(this.state.signstartTime+56)
+        }
+        else if(this.state.signendTime!=0&&this.endX>this.state.signendTime){
+            this.endX=(this.state.signendTime+56)
+        }
+        if(!(music.music.recommendresult.indexOf(music.music.selectid)+1)){
+            if(music.music.entities.list[music.music.selectid].bmt!=0&&this.endX<music.music.entities.list[music.music.selectid].bmt){
+                this.endX=(music.music.entities.list[music.music.selectid].bmt+56)
+            }
+            else if(music.music.entities.list[music.music.selectid].emt!=0&&this.endX>music.music.entities.list[music.music.selectid].emt){
+                this.endX=(music.music.entities.list[music.music.selectid].emt+56)
+            }
+        }
+
         const x = this.endX - this.startX;
         this.setState({
             currentTime:myVideo.currentTime+x
@@ -309,39 +385,70 @@ onTouchStart=event => {
     }
     rendersign=()=>{
         const{music}=this.props;
-        // console.log(music.music.entities.list[music.music.selectid].bmt)
-        // console.log(music.music.entities.list[music.music.selectid].emt)
-        const startTime=(this.state.signstartTime/music.music.entities.list[music.music.selectid].du)*0.7*100+"%"
-        const endTime=(this.state.signendTime/music.music.entities.list[music.music.selectid].du)*0.7*100+"%"
-        const signstartTime=(music.music.entities.list[music.music.selectid].bmt/music.music.entities.list[music.music.selectid].du)*0.7*100+"%"
-        const signendTime=(music.music.entities.list[music.music.selectid].emt/music.music.entities.list[music.music.selectid].du)*0.7*100+"%"
-        if(this.state.signstartTime>0&&this.state.signendTime==0){
-            return(
-                <img src={img4} className="startsign" style={{ left: `${startTime}` }}/>
-            )
+        const startTime=(this.state.signstartTime/this.state.alltime)*0.7*100+"%"
+        const endTime=(this.state.signendTime/this.state.alltime)*0.7*100+"%"
+        if(!(music.music.recommendresult.indexOf(music.music.selectid)+1)){
+            const signstartTime=(music.music.entities.list[music.music.selectid].bmt/this.state.alltime)*0.7*100+"%"
+            const signendTime=(music.music.entities.list[music.music.selectid].emt/this.state.alltime)*0.7*100+"%"
+            if(this.state.signstartTime>0&&this.state.signendTime==0){
+                return(
+                    <img src={img4} className="startsign" style={{ left: `${startTime}` }}/>
+                )
+            }
+            else if(this.state.signendTime>0){
+                return(
+                    <div>
+                    <img src={img4} className="startsign" style={{ left: `${startTime}` }}/>
+                    <img src={img5} className="endsign" style={{ left: `${endTime}` }}/>
+                    </div>
+                )
+            }//渲染未确定的标记
+            if(music.music.entities.list[music.music.selectid].bmt>0&&music.music.entities.list[music.music.selectid].emt==0){//只渲染起点标记
+                return(
+                    <img src={img4} className="startsign" style={{ left: `${signstartTime}` }}/>
+                )
+            }
+            else if(music.music.entities.list[music.music.selectid].emt>0){
+                return(
+                    <div>
+                    <img src={img4} className="startsign" style={{ left: `${signstartTime}` }}/>
+                    <img src={img5} className="endsign" style={{ left: `${signendTime}` }}/>
+                    </div>
+                )
+            }
+            else return null;
         }
-        else if(this.state.signendTime>0){
-            return(
-                <div>
-                <img src={img4} className="startsign" style={{ left: `${startTime}` }}/>
-                <img src={img5} className="endsign" style={{ left: `${endTime}` }}/>
-                </div>
-            )
-        }//渲染未确定的标记
-        if(music.music.entities.list[music.music.selectid].bmt>0&&music.music.entities.list[music.music.selectid].emt==0){//只渲染起点标记
-            return(
-                <img src={img4} className="startsign" style={{ left: `${signstartTime}` }}/>
-            )
+        else{
+            const signstartTime=(music.music.recommendentities[music.music.selectid].bmt/this.state.alltime)*0.7*100+"%"
+            const signendTime=(music.music.recommendentities[music.music.selectid].emt/this.state.alltime)*0.7*100+"%"
+            if(this.state.signstartTime>0&&this.state.signendTime==0){
+                return(
+                    <img src={img4} className="startsign" style={{ left: `${startTime}` }}/>
+                )
+            }
+            else if(this.state.signendTime>0){
+                return(
+                    <div>
+                    <img src={img4} className="startsign" style={{ left: `${startTime}` }}/>
+                    <img src={img5} className="endsign" style={{ left: `${endTime}` }}/>
+                    </div>
+                )
+            }//渲染未确定的标记
+            if(music.music.recommendentities[music.music.selectid].bmt>0&&music.music.recommendentities[music.music.selectid].emt==0){//只渲染起点标记
+                return(
+                    <img src={img4} className="startsign" style={{ left: `${signstartTime}` }}/>
+                )
+            }
+            else if(music.music.recommendentities[music.music.selectid].emt>0){
+                return(
+                    <div>
+                    <img src={img4} className="startsign" style={{ left: `${signstartTime}` }}/>
+                    <img src={img5} className="endsign" style={{ left: `${signendTime}` }}/>
+                    </div>
+                )
+            }
+            else return null;
         }
-        else if(music.music.entities.list[music.music.selectid].emt>0){
-            return(
-                <div>
-                <img src={img4} className="startsign" style={{ left: `${signstartTime}` }}/>
-                <img src={img5} className="endsign" style={{ left: `${signendTime}` }}/>
-                </div>
-            )
-        }
-        else return null;
     }
     playorstop=()=>{//显示播放还是暂停按钮
         if(this.state.play==false){
@@ -353,15 +460,12 @@ onTouchStart=event => {
             return(
                 <div>
                     <img src={img} className="playbtn" onClick={this.playmusic}/>
-                    {/* <embed src={music.music.entities.list[music.music.selectid].m_url} autostart={true} loop={1} hidden={true} starttime="00:00" width="0" height="0"/> */}
                 </div>
             )
         }
     }
     playmusic=()=>{//播放或暂停
         var myVideo=document.getElementById("myAudio");
-        // myVideo.ontimeupdate = function() {myFunction()};
-        // myVideo.addEventListener("timeupdate", myFunction);
         if(this.state.play==false){
             myVideo.play();
             this.setState({
@@ -375,39 +479,52 @@ onTouchStart=event => {
                 currentTime:myVideo.currentTime
             }) 
         }
-        // function myFunction()
-        // {
-        //     document.getElementById("demo").innerHTML = myVideo.currentTime;
-        //     const width=(myVideo.currentTime/music.music.entities.list[music.music.selectid].du)*100+"%"
-        // }
     }
     controlAudio(type, value) {
         const{music}=this.props;
         var myVideo=document.getElementById("myAudio");
         switch(type) {
+            case 'gettime':{
+                this.setState({
+                    alltime: myVideo.duration
+                });
+            }
             case 'getCurrentTime':
             if(this.state.ismove==false){
                 if(this.state.signstartTime!=0&&myVideo.currentTime<this.state.signstartTime){
                     myVideo.currentTime=this.state.signstartTime
                 }
                 if(this.state.signendTime!=0&&myVideo.currentTime>this.state.signendTime){
-                    myVideo.currentTime=this.state.signendTime
+                    myVideo.currentTime=this.state.signstartTime
                 }
                 if(this.state.signendTime!=0&&myVideo.currentTime==this.state.signendTime){
                     this.state.currentTime=this.state.signstartTime
                     myVideo.currentTime=this.state.signstartTime
                 }
-
-                if(music.music.entities.list[music.music.selectid].bmt!=0&&myVideo.currentTime<music.music.entities.list[music.music.selectid].bmt){
-                    myVideo.currentTime=music.music.entities.list[music.music.selectid].bmt
-                }
-                if(music.music.entities.list[music.music.selectid].emt!=0&&myVideo.currentTime>music.music.entities.list[music.music.selectid].emt){
-                    myVideo.currentTime=music.music.entities.list[music.music.selectid].emt
-                }
-                if(music.music.entities.list[music.music.selectid].emt!=0&&myVideo.currentTime==music.music.entities.list[music.music.selectid].emt){
-                    this.state.currentTime=music.music.entities.list[music.music.selectid].bmt
-                    myVideo.currentTime=music.music.entities.list[music.music.selectid].bmt
-                }
+                    if(!(music.music.recommendresult.indexOf(music.music.selectid)+1)){
+                        if(music.music.entities.list[music.music.selectid].bmt!=0&&myVideo.currentTime<music.music.entities.list[music.music.selectid].bmt){
+                            myVideo.currentTime=music.music.entities.list[music.music.selectid].bmt
+                        }
+                        if(music.music.entities.list[music.music.selectid].emt!=0&&myVideo.currentTime>music.music.entities.list[music.music.selectid].emt){
+                            myVideo.currentTime=music.music.entities.list[music.music.selectid].bmt
+                        }
+                        if(music.music.entities.list[music.music.selectid].emt!=0&&myVideo.currentTime==music.music.entities.list[music.music.selectid].emt){
+                            this.state.currentTime=music.music.entities.list[music.music.selectid].bmt
+                            myVideo.currentTime=music.music.entities.list[music.music.selectid].bmt
+                        }
+                    }
+                    // else{
+                    //     if(music.music.recommendentities[music.music.selectid].bmt!=0&&myVideo.currentTime<music.music.recommendentities[music.music.selectid].bmt){
+                    //         myVideo.currentTime=music.music.recommendentities[music.music.selectid].bmt
+                    //     }
+                    //     if(music.music.recommendentities[music.music.selectid].emt!=0&&myVideo.currentTime>music.music.recommendentities[music.music.selectid].emt){
+                    //         myVideo.currentTime=music.music.recommendentities[music.music.selectid].bmt
+                    //     }
+                    //     if(music.music.recommendentities[music.music.selectid].emt!=0&&myVideo.currentTime==music.music.recommendentities[music.music.selectid].emt){
+                    //         this.state.currentTime=music.music.recommendentities[music.music.selectid].bmt
+                    //         myVideo.currentTime=music.music.recommendentities[music.music.selectid].bmt
+                    //     }
+                    // }
                 this.setState({
                     currentTime: myVideo.currentTime
                 });

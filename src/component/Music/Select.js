@@ -3,14 +3,20 @@ import './Select.css';
 /* eslint-disable */
 let color1='white';
 let color2='white';
+let select=true
+let selectmore=false
 export default class Select extends React.Component {
   constructor(props) {
     super(props);
   }
   handleselect=()=>{
+    select=true
+    selectmore=false
     this.props.handleselect();
   }
   handlemoreselect=()=>{
+    select=false
+    selectmore=true
     this.props.handlemoreselect();
   }
   render() {
@@ -25,14 +31,8 @@ export default class Select extends React.Component {
     }
     return (
         <div className="Select-all">
-            {/* <input type="radio" name="class" className="Select-1" checked="checked"
-            onClick={this.handleselect}
-            /> */}
-            <div className="Select-1" onClick={this.handleselect} style={{ background: `${color1}` }}></div>单选
-            <div className="Select-2" onClick={this.handlemoreselect} style={{ background: `${color2}` }}></div>多选
-            {/* <input type="radio" name="class" className="Select-2"
-            onClick={this.handlemoreselect}
-            />多选 */}
+            <div className={`Select-1-${select}`} onClick={this.handleselect} style={{ background: `${color1}` }}></div>单选
+            <div className={`Select-2-${selectmore}`} onClick={this.handlemoreselect} style={{ background: `${color2}` }}></div>多选
         </div>
     );
   }
