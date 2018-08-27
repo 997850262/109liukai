@@ -223,37 +223,41 @@ handlerename=(e)=>{
         this.endX = event.changedTouches[0].clientX;
         // console.log(11111111,this.startX)
         // console.log(22222222,this.endX)
-        if(this.state.signendTime==0&&this.endX>300){//限制滑块范围
-            this.endX=300
-        }
-        else if(this.state.signstartTime==0&&this.endX<56){
-            this.endX=56
-        }
-        else if(this.state.signstartTime!=0&&this.endX<this.state.signstartTime){
-            this.endX=(this.state.signstartTime+56)
-        }
-        else if(this.state.signendTime!=0&&this.endX>this.state.signendTime){
-            this.endX=(this.state.signendTime+56)
-        }
         if(!(music.music.recommendresult.indexOf(music.music.selectid)+1)){
-            if(music.music.entities.list[music.music.selectid].bmt!=0&&this.endX<music.music.entities.list[music.music.selectid].bmt){
-                this.endX=(music.music.entities.list[music.music.selectid].bmt+56)
+            if(this.state.signendTime==0&&this.endX>300&&music.music.entities.list[music.music.selectid].emt==0){//限制滑块范围
+                this.endX=300
             }
-            else if(music.music.entities.list[music.music.selectid].emt!=0&&this.endX>music.music.entities.list[music.music.selectid].emt){
-                this.endX=(music.music.entities.list[music.music.selectid].emt+56)
+            else if(this.state.signstartTime==0&&this.endX<56&&music.music.entities.list[music.music.selectid].bmt==0){
+                this.endX=56
+            }
+            else if(this.state.signstartTime!=0&&this.endX<((this.state.signstartTime*252)/(this.state.alltime)+56)){
+                this.endX=((this.state.signstartTime*252)/(this.state.alltime)+56)
+            }
+            else if(this.state.signendTime!=0&&this.endX>((this.state.signendTime*252)/(this.state.alltime)+56)){
+                this.endX=((this.state.signendTime*252)/(this.state.alltime)+56)
+            }
+            if(music.music.entities.list[music.music.selectid].bmt>=0&&this.endX<((music.music.entities.list[music.music.selectid].bmt)*252/(this.state.alltime)+56)){
+                this.endX=((music.music.entities.list[music.music.selectid].bmt)*252/(this.state.alltime)+56)
+            }
+            else if(music.music.entities.list[music.music.selectid].emt>0&&this.endX>((music.music.entities.list[music.music.selectid].emt)*252/(this.state.alltime)+56)){
+                this.endX=((music.music.entities.list[music.music.selectid].emt)*252/(this.state.alltime)+56)
             }
         }
         else{
             if(this.endX<56){
                 this.endX=56
             }
-            else if(this.endX>this.state.alltime){
+            else if(this.endX-this.state.alltime>55){
                 this.endX=this.state.alltime+55
             } 
         }
+        // console.log('123456',this.endX)
         const x = this.endX - this.startX;
+        // console.log(x);
+        const time=(x/252)*this.state.alltime
+        // console.log(time)
         this.setState({
-            currentTime:myVideo.currentTime+x
+            currentTime:myVideo.currentTime+time
         })
   }
   onTouchEnd=event => {
@@ -415,37 +419,6 @@ handlerename=(e)=>{
                 )
             }
             else if(music.music.entities.list[music.music.selectid].emt>0){
-                return(
-                    <div>
-                    <img src={img4} className="startsign" style={{ left: `${signstartTime}` }}/>
-                    <img src={img5} className="endsign" style={{ left: `${signendTime}` }}/>
-                    </div>
-                )
-            }
-            else return null;
-        }
-        else{
-            const signstartTime=(music.music.recommendentities[music.music.selectid].bmt/this.state.alltime)*0.7*100+"%"
-            const signendTime=(music.music.recommendentities[music.music.selectid].emt/this.state.alltime)*0.7*100+"%"
-            if(this.state.signstartTime>0&&this.state.signendTime==0){
-                return(
-                    <img src={img4} className="startsign" style={{ left: `${startTime}` }}/>
-                )
-            }
-            else if(this.state.signendTime>0){
-                return(
-                    <div>
-                    <img src={img4} className="startsign" style={{ left: `${startTime}` }}/>
-                    <img src={img5} className="endsign" style={{ left: `${endTime}` }}/>
-                    </div>
-                )
-            }//渲染未确定的标记
-            if(music.music.recommendentities[music.music.selectid].bmt>0&&music.music.recommendentities[music.music.selectid].emt==0){//只渲染起点标记
-                return(
-                    <img src={img4} className="startsign" style={{ left: `${signstartTime}` }}/>
-                )
-            }
-            else if(music.music.recommendentities[music.music.selectid].emt>0){
                 return(
                     <div>
                     <img src={img4} className="startsign" style={{ left: `${signstartTime}` }}/>
