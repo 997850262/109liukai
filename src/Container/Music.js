@@ -74,7 +74,7 @@ class Music extends React.Component {
       const{music,todoActions}=this.props;
       return (
         <div className="Music-all">
-          <Head music={music} todoActions={todoActions}/>
+          <Head music={music} todoActions={todoActions} select={this.state.select}/>
           <Tabbar music={music} todoActions={todoActions}/>
           <Select music={music} todoActions={todoActions} 
           handleselect={this.handleselect} handlemoreselect={this.handlemoreselect}

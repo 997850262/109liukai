@@ -244,8 +244,8 @@ handlerename=(e)=>{
             }
         }
         else{
-            if(this.endX<0){
-                this.endX=0+56
+            if(this.endX<56){
+                this.endX=56
             }
             else if(this.endX>this.state.alltime){
                 this.endX=this.state.alltime+55

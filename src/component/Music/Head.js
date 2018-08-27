@@ -7,7 +7,18 @@ export default class Head extends React.Component {
     alert('go back');
   }
   handleover=()=>{
-    alert('当前选中了[213, 987, 776]');
+    const{music,select}=this.props;
+    if(select==true&&music.music.selectid>0){
+      if(!(music.music.recommendresult.indexOf(music.music.selectid)+1)){
+        alert("当前选中了"+`${music.music.entities.list[music.music.selectid].id}`);
+      }
+      else{
+        alert("当前选中了"+`${music.music.recommendentities[music.music.selectid].id}`);
+      }
+    }
+    else if(select==false&&music.music.selectmoreid.length>0){
+      alert("当前选中了"+`${music.music.selectmoreid}`);
+    }
   }
   render() {
     const{music}=this.props;

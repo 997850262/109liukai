@@ -3,15 +3,8 @@ import './RecommendMusic.css';
 /* eslint-disable */
 const img=require("../../source/select_music.png");
 
-// let m=2;
 export default class RecommendMusic extends React.Component {
-//   componentDidMount=()=>{
-//     const{music,todoActions}=this.props;
-//     console.log(music);
-//     const token=music.music.data.token;
-//     console.log('333',token)
-//     todoActions.fetchrecommendmusic(token);
-// }
+
 handleoneselect=(Item)=>{
   const{todoActions}=this.props;
   const id=Item;
@@ -25,7 +18,6 @@ handlemoreselect=(Item)=>{
   rendermylist=()=>{
     const{music,todoActions,select}=this.props;
     let newList = music.music.recommendresult;
-    console.log(2222222222,newList)
     return newList.map((Item,idx)=>{
       if(select==true&&music.music.selectid==Item){
         return(
@@ -67,12 +59,6 @@ handlemoreselect=(Item)=>{
   render() {
     const{music,todoActions}=this.props;
     console.log(music.music.data.token);
-    // if(m>0){
-    //   const token=music.music.data.token;
-    //   todoActions.fetchrecommendmusic(token);
-    //   console.log(m);
-    //   m--;
-    // }
     return (
           <div className="RecommendMusic-all">
             <div className="RecommendMusic-title">推荐音乐</div>
