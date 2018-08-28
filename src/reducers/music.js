@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import ActionTypes from '../const/ActionTypes';
-/* eslint-disable */
+
+
 function music(state = {
   data: {}, // 个人数据
   entities: {}, // 我的音乐
@@ -77,6 +78,7 @@ function music(state = {
       console.log(state.selectid);
       console.log(state);
       const newList = state.result;
+      const newState = { ...state };
       if (newList) {
         newList.map(Item => {
           console.log(Item);
@@ -87,7 +89,8 @@ function music(state = {
               if (item == state.selectid) {
                 console.log(state.entities.data[Item].list[idx]);
                 state.entities.data[Item].list.splice(idx, 1);
-                state.selectid = 0;
+                newState.selectid = 0;
+                // state.selectid = 0;
               }
               return null;
             });
@@ -95,14 +98,13 @@ function music(state = {
           return null;
         });
       }
-      return {
-        ...state
-      };
+      return newState;
     }
     case ActionTypes.Deletemore:
     {
       console.log('多选删除');
       const newList = state.result;
+      const newState = { ...state };
       if (newList) {
         newList.map(Item => {
           console.log(Item);
@@ -112,7 +114,8 @@ function music(state = {
                 console.log(item);
                 if (item == id) {
                   state.entities.data[Item].list.splice(idx, 1);
-                  state.selectmoreid = [];
+                  newState.selectmoreid = [];
+                  // state.selectmoreid = [];
                 }
                 return null;
               });
@@ -122,9 +125,7 @@ function music(state = {
           return null;
         });
       }
-      return {
-        ...state
-      };
+      return newState;
     }
     case ActionTypes.Onselect:// 点击单选时
     {
@@ -149,35 +150,37 @@ function music(state = {
     {
       console.log(123, action.name);
       console.log(123, state.entities.list[state.selectid].name);
+      const newState = { ...state };
       if (state.entities.list[state.selectid].plp == undefined) {
-        state.entities.list[state.selectid].name = action.name;
+        newState.entities.list[state.selectid].name = action.name;
+        // state.entities.list[state.selectid].name = action.name;
       } else {
         alert('不能修改本音乐名');
       }
-      return {
-        ...state
-      };
+      return newState;
     }
     case ActionTypes.Signtime:// 加标记
     {
       console.log(111, action.signstartTime);
       console.log(222, action.signendTime);
+      const newState = { ...state };
       if (action.signendTime != undefined) {
         console.log('标记成功');
-        state.entities.list[state.selectid].bmt = action.signstartTime;
-        state.entities.list[state.selectid].emt = action.signendTime;
+        newState.entities.list[state.selectid].bmt = action.signstartTime;
+        newState.entities.list[state.selectid].emt = action.signendTime;
+        // state.entities.list[state.selectid].bmt = action.signstartTime;
+        // state.entities.list[state.selectid].emt = action.signendTime;
       }
-      return {
-        ...state
-      };
+      return newState;
     }
     case ActionTypes.Cleansigntime:// 清标记
     {
-      state.entities.list[state.selectid].bmt = 0;
-      state.entities.list[state.selectid].emt = 0;
-      return {
-        ...state
-      };
+      const newState = { ...state };
+      newState.entities.list[state.selectid].bmt = 0;
+      newState.entities.list[state.selectid].emt = 0;
+      // state.entities.list[state.selectid].bmt = 0;
+      // state.entities.list[state.selectid].emt = 0;
+      return newState;
     }
     default:
       return state;

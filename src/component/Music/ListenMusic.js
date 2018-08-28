@@ -82,7 +82,7 @@ onTouchEnd=event => {
     }
     return 'mask showMask';
   }
-  getmusicx=event => {
+  getmusicx=event => { // 点击获取新的位置
     const myVideo = document.getElementById('myAudio');
     // console.log(event);
     this.startX = event.clientX;
@@ -93,7 +93,6 @@ onTouchEnd=event => {
     });
     myVideo.currentTime = time;
   }
-
 
   audioall = src => {
     const { ispart } = this.props;
@@ -124,7 +123,7 @@ onTouchEnd=event => {
       </div>
     );
   }
-  controlAudio(type) {
+  controlAudio(type) { // 获取时间
     const { music } = this.props;
     const myVideo = document.getElementById('myAudio');
     switch (type) {
