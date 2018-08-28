@@ -14,7 +14,7 @@ handlemoreselect=item => {
   const id = item;
   todoActions.selectmoreid(id);
 }
-/* eslint-disable */
+
 rendermylist=() => {
   const { music, select } = this.props;
   // const count = 0;
@@ -63,10 +63,13 @@ rendermylist=() => {
               </div>
             );
           }
+          return null;
         });
       }
+      return null;
     });
   }
+  return null;
 }
 render() {
   return (

@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import ActionTypes from '../const/ActionTypes';
 /* eslint-disable */
-
 function music(state = {
   data: {}, // 个人数据
   entities: {}, // 我的音乐
@@ -90,8 +89,10 @@ function music(state = {
                 state.entities.data[Item].list.splice(idx, 1);
                 state.selectid = 0;
               }
+              return null;
             });
           }
+          return null;
         });
       }
       return {
@@ -106,16 +107,19 @@ function music(state = {
         newList.map(Item => {
           console.log(Item);
           if (state.entities.data[Item] != undefined) {
-            state.selectmoreid.map((id, ids) => {
+            state.selectmoreid.map(id => {
               state.entities.data[Item].list.map((item, idx) => {
                 console.log(item);
                 if (item == id) {
                   state.entities.data[Item].list.splice(idx, 1);
                   state.selectmoreid = [];
                 }
+                return null;
               });
+              return null;
             });
           }
+          return null;
         });
       }
       return {

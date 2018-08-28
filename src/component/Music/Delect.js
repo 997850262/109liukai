@@ -22,7 +22,6 @@ export default class Delect extends React.Component {
     }
     this.props.onCancel();
   }
-  /* eslint-disable */
   renderbody=() => {
     const { music, select, ispart } = this.props;
     const count = music.music.selectmoreid.length;
@@ -47,6 +46,7 @@ export default class Delect extends React.Component {
         </div>
       );
     }
+    return null;
   }
 
   render() {

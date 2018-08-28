@@ -6,13 +6,14 @@
     /* justify-content:space-around; */
     /* position: fixed;
     bottom: 0; */ 
-    background: rgb(231, 221, 221);
+    background: rgb(240, 237, 237);
     height: 80px;
     position: fixed;
     left: 0px;
     right: 0px;
     bottom: 0px;
     margin: auto;
+    opacity: 1;
 }
 .Footer-1{
     position: relative;

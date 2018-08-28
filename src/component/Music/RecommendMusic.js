@@ -2,7 +2,7 @@ import React from 'react';
 import './RecommendMusic.css';
 
 const img = require('../../source/select_music.png');
-/* eslint-disable */
+
 export default class RecommendMusic extends React.Component {
 handleoneselect=Item => {
   const { todoActions } = this.props;
@@ -58,6 +58,7 @@ handlemoreselect=Item => {
           </div>
         );
       }
+      return null;
     });
   }
   render() {

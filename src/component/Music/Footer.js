@@ -6,7 +6,7 @@ const img2 = require('../../source/button_rename_red.png');
 const img3 = require('../../source/button_cut.png');
 const img4 = require('../../source/button_share.png');
 const img5 = require('../../source/button_delete.png');
-/* eslint-disable */
+
 let count = 0;
 export default class Footer extends React.Component {
   // constructor(props) {
@@ -127,6 +127,7 @@ export default class Footer extends React.Component {
       if (music.music.recommendresult.indexOf(item) + 1) {
         count++;
       }
+      return null;
     });
     if (select == false && count == 0 && music.music.selectmoreid.length > 0) {
       return (

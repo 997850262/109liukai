@@ -1,6 +1,8 @@
 .MyMusic-all{
     /* margin-left: 10px; */
     padding-top: 10px;
+    /* height: 360px;
+    overflow: auto; */
 }
 .MyMusic-title{
     text-indent:10px;

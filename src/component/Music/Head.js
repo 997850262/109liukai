@@ -2,7 +2,7 @@ import React from 'react';
 import './Head.css';
 
 const img = require('../../source/return.png');
-/* eslint-disable */
+
 export default class Head extends React.Component {
   handleback=() => {
     alert('go back');
@@ -11,12 +11,12 @@ export default class Head extends React.Component {
     const { music, select } = this.props;
     if (select == true && music.music.selectid > 0) {
       if (!(music.music.recommendresult.indexOf(music.music.selectid) + 1)) {
-        alert('当前选中了' + `${music.music.entities.list[music.music.selectid].id}`);
+        alert(`当前选中了 ${music.music.entities.list[music.music.selectid].id}`);
       } else {
-        alert('当前选中了' + `${music.music.recommendentities[music.music.selectid].id}`);
+        alert(`当前选中了 ${music.music.recommendentities[music.music.selectid].id}`);
       }
     } else if (select == false && music.music.selectmoreid.length > 0) {
-      alert('当前选中了' + `${music.music.selectmoreid}`);
+      alert(`当前选中了 ${music.music.selectmoreid}`);
     }
   }
   render() {
