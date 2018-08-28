@@ -18,7 +18,7 @@ handlemoreselect=Item => {
     const { music, select } = this.props;
     const newList = music.music.recommendresult;
     return newList.map(Item => {
-      if (select == true && music.music.selectid == Item) {
+      if (select === true && music.music.selectid === Item) {
         return (
           <div className="list-all">
             <img src={img} className="singleselect" />
@@ -29,7 +29,7 @@ handlemoreselect=Item => {
             </div>
           </div>
         );
-      } else if (select == true && music.music.selectid != Item) {
+      } else if (select === true && music.music.selectid !== Item) {
         return (
           <div className="list-all">
             <div
@@ -39,7 +39,7 @@ handlemoreselect=Item => {
             </div>
           </div>
         );
-      } else if (select == false) { // 多选
+      } else if (select === false) { // 多选
         if (music.music.selectmoreid.indexOf(Item) + 1) {
           return (
             <div className="list-all">

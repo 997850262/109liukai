@@ -21,9 +21,9 @@ rendermylist=() => {
   const newList = music.music.result;
   if (newList) {
     return newList.map(Item => {
-      if (music.music.entities.data[Item] != undefined) {
+      if (music.music.entities.data[Item] !== undefined) {
         return music.music.entities.data[Item].list.map(item => {
-          if (select == true && music.music.selectid == item) { // 单选
+          if (select === true && music.music.selectid === item) { // 单选
             return (
               <div className="list-all">
                 <img src={img} className="singleselect" />
@@ -34,7 +34,7 @@ rendermylist=() => {
                 </div>
               </div>
             );
-          } else if (select == true && music.music.selectid != item) {
+          } else if (select === true && music.music.selectid !== item) {
             return (
               <div className="list-all">
                 <div
@@ -44,7 +44,7 @@ rendermylist=() => {
                 </div>
               </div>
             );
-          } else if (select == false) { // 多选
+          } else if (select === false) { // 多选
             if (music.music.selectmoreid.indexOf(item) + 1) {
               return (
                 <div className="list-all">

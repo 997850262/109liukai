@@ -11,7 +11,6 @@ export function login(mid) {
       params: {
         mid
       }
-      // normailzerFun: response => normalize(response.data, schemes.Data)
     }
   };
 }

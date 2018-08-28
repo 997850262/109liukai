@@ -34,7 +34,7 @@ export default class Footer extends React.Component {
   givefriend=() => {
     const { music } = this.props;
     if (music.music.selectid > 0) {
-      alert(`送出${music.music.entities.list[music.music.selectid].name}音乐`);
+      alert(`送出 ${music.music.entities.list[music.music.selectid].name}音乐`);
     } else {
       alert('请先选择音乐');
     }
@@ -129,7 +129,7 @@ export default class Footer extends React.Component {
       }
       return null;
     });
-    if (select == false && count == 0 && music.music.selectmoreid.length > 0) {
+    if (select === false && count === 0 && music.music.selectmoreid.length > 0) {
       return (
         <div className="Footer-all">
           <div className="Footer-1">
