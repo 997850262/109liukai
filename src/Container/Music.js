@@ -6,7 +6,7 @@ import Head from '../component/Music/Head';
 import Tabbar from '../component/Music/Tabbar';
 import Select from '../component/Music/Select';
 import MyMusic from '../component/Music/MyMusic';
-import RecommendMusic from '../component/Music/RecommendMusic';
+// import RecommendMusic from '../component/Music/RecommendMusic';
 import Footer from '../component/Music/Footer';
 import ListenMusic from '../component/Music/ListenMusic';
 import Delect from '../component/Music/Delect';
@@ -85,6 +85,7 @@ class Music extends React.Component {
       return (
         <div className="Music-all">
           <Head music={music} todoActions={todoActions} select={this.state.select} />
+          {/* <div className="main"> */}
           <Tabbar music={music} todoActions={todoActions} />
           <Select
             music={music}
@@ -94,7 +95,8 @@ class Music extends React.Component {
             select={this.state.select}
           />
           <MyMusic music={music} todoActions={todoActions} select={this.state.select} />
-          <RecommendMusic music={music} todoActions={todoActions} select={this.state.select} />
+          {/* <RecommendMusic music={music} todoActions={todoActions} select={this.state.select} /> */}
+          {/* </div> */}
           <Footer
             music={music}
             todoActions={todoActions}

@@ -16,5 +16,5 @@ export const Data = [data];
 // });
 // export const Relist = [ relist ]
 export const List = ({ list: [list] });
-// export const List = ('list',{ list:[list] })
+// export const List = ('list', { list: [list] });
 // export const Recommenddata = {list:[]};

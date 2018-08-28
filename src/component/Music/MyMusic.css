@@ -1,8 +1,9 @@
+.MUSIC-all{
+    height: 80%;
+    overflow: auto;
+}
 .MyMusic-all{
-    /* margin-left: 10px; */
     padding-top: 10px;
-    /* height: 360px;
-    overflow: auto; */
 }
 .MyMusic-title{
     text-indent:10px;
@@ -34,6 +35,7 @@
 }
 .list-all{
     display: flex;
+    position: relative;
 }
 .singleselect{
     position: absolute;
@@ -42,4 +44,22 @@
 }
 .number{
     padding-left: 5px;
+}
+.RecommendMusic-all{
+    margin-top: 20px;
+    padding-bottom: 80px;
+}
+.RecommendMusic-title{
+    text-indent:10px;
+    font-size: 22px;
+    font-weight: 550;
+}
+.RecommendMusic-list{
+    /* padding-left: 30px; */
+}
+.RecommendMusic-list-all{
+    text-indent:30px;
+    margin-top: 10px;
+    width: 100%;
+    border-bottom:1px solid #ccc;
 }

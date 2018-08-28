@@ -1,7 +1,6 @@
 import React from 'react';
 import './Delect.css';
 
-
 export default class Delect extends React.Component {
   constructor(props) {
     super(props);
