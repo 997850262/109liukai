@@ -99,7 +99,7 @@ const callServerApi = apiParams => {
   });
 };
 /* eslint-disable */
-const serverApi = (store) => next => action => {
+const serverApi = store => next => action => {
   if (!action.Server_Api) { return next(action); }
   const { type, endpoint, params } = action.Server_Api;
   if (typeof endpoint !== 'string') {
@@ -124,9 +124,9 @@ const serverApi = (store) => next => action => {
   }));
   callServerApi({ endpoint, params })
     .then(res => {
-      console.log(999,res)
+      console.log(999, res);
       const response = typeof (normailzerFun) !== 'undefined' ? normailzerFun(res.data) : res.data;
-      if(params.gettoken){
+      if (params.gettoken) {
         params.gettoken(res.data);
       }
       console.log('中间件', response);

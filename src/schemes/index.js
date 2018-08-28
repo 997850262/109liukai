@@ -1,5 +1,5 @@
 import { schema } from 'normalizr';
-/* eslint-disable */
+
 
 const list = new schema.Entity('list', {}, {
   idAttribute: 'id'
@@ -15,6 +15,6 @@ export const Data = [data];
 //   idAttribute: 'qid'
 // });
 // export const Relist = [ relist ]
-export const List = ({ list:[list] })
+export const List = ({ list: [list] });
 // export const List = ('list',{ list:[list] })
 // export const Recommenddata = {list:[]};

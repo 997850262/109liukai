@@ -9,10 +9,7 @@ const img5 = require('../../source/button_cut_music_finish.png');// 标记终点
 const img6 = require('../../source/button_cut_music_start_gray.png');// 标记起点灰色
 const img7 = require('../../source/button_cut_music_finish_gray.png');// 标记终点灰色
 const img8 = require('../../source/button_cut_music_clear_gray.png');// 清除灰色
-const img9 = require('../../source/button_cut_music_clear.png');
-// 清除红色
-// const shelter = 0;
-// const widths = 0;
+const img9 = require('../../source/button_cut_music_clear.png');// 清除红色
 export default class ListenMusic extends React.Component {
   constructor(props) {
     super(props);
@@ -21,8 +18,6 @@ export default class ListenMusic extends React.Component {
       alltime: 0,
       currentTime: 0,
       ismove: false,
-      // interceptstart:false,
-      // intercept:false,
       signstartTime: 0,
       signendTime: 0,
       name: ''
@@ -71,15 +66,17 @@ export default class ListenMusic extends React.Component {
       } else if (this.state.signendTime != 0 && this.endX > ((this.state.signendTime * 252) / (this.state.alltime) + 56)) {
         this.endX = ((this.state.signendTime * 252) / (this.state.alltime) + 56);
       }
-      if (music.music.entities.list[music.music.selectid].bmt >= 0 && this.endX < ((music.music.entities.list[music.music.selectid].bmt) * 252 / (this.state.alltime) + 56)) {
+      if (music.music.entities.list[music.music.selectid].bmt >= 0 &&
+        this.endX < ((music.music.entities.list[music.music.selectid].bmt) * 252 / (this.state.alltime) + 56)) {
         this.endX = ((music.music.entities.list[music.music.selectid].bmt) * 252 / (this.state.alltime) + 56);
-      } else if (music.music.entities.list[music.music.selectid].emt > 0 && this.endX > ((music.music.entities.list[music.music.selectid].emt) * 252 / (this.state.alltime) + 56)) {
+      } else if (music.music.entities.list[music.music.selectid].emt > 0 &&
+        this.endX > ((music.music.entities.list[music.music.selectid].emt) * 252 / (this.state.alltime) + 56)) {
         this.endX = ((music.music.entities.list[music.music.selectid].emt) * 252 / (this.state.alltime) + 56);
       }
     } else if (this.endX < 56) {
       this.endX = 56;
     } else if (this.endX - 300 > 0) {
-      this.endX = 300
+      this.endX = 300;
     }
     // console.log('123456',this.endX)
     const x = this.endX - this.startX;
@@ -97,13 +94,13 @@ onTouchEnd=event => {
     ismove: false
   });
 }
-onrename=() => {
-  const { todoActions } = this.props;
-  const name = this.state.name;
-  //   console.log(name)
-  todoActions.rename(name);
-  this.props.onCancel();
-}
+    onrename=() => {
+      const { todoActions } = this.props;
+      const name = this.state.name;
+      //   console.log(name)
+      todoActions.rename(name);
+      this.props.onCancel();
+    }
   audioall = () => {
     const { ispart } = this.props;
     const circlewidth = `${(this.state.currentTime / this.state.alltime) * 100}%`;
@@ -132,7 +129,7 @@ onrename=() => {
       todoActions.rename(name);
       this.props.onCancel();
     }
-    controlAudio(type, value) {
+    controlAudio(type) {
       const { music } = this.props;
       const myVideo = document.getElementById('myAudio');
       switch (type) {
@@ -141,7 +138,7 @@ onrename=() => {
             alltime: myVideo.duration
           });
         }
-        case 'getCurrentTime':
+        case 'getCurrentTime':  {
           if (this.state.ismove == false) {
             if (this.state.signstartTime != 0 && myVideo.currentTime < this.state.signstartTime) {
               myVideo.currentTime = this.state.signstartTime;
@@ -165,18 +162,6 @@ onrename=() => {
                 myVideo.currentTime = music.music.entities.list[music.music.selectid].bmt;
               }
             }
-            // else{
-            //     if(music.music.recommendentities[music.music.selectid].bmt!=0&&myVideo.currentTime<music.music.recommendentities[music.music.selectid].bmt){
-            //         myVideo.currentTime=music.music.recommendentities[music.music.selectid].bmt
-            //     }
-            //     if(music.music.recommendentities[music.music.selectid].emt!=0&&myVideo.currentTime>music.music.recommendentities[music.music.selectid].emt){
-            //         myVideo.currentTime=music.music.recommendentities[music.music.selectid].bmt
-            //     }
-            //     if(music.music.recommendentities[music.music.selectid].emt!=0&&myVideo.currentTime==music.music.recommendentities[music.music.selectid].emt){
-            //         this.state.currentTime=music.music.recommendentities[music.music.selectid].bmt
-            //         myVideo.currentTime=music.music.recommendentities[music.music.selectid].bmt
-            //     }
-            // }
             this.setState({
               currentTime: myVideo.currentTime
             });
@@ -188,6 +173,8 @@ onrename=() => {
             }
           }
           break;
+        }
+        default: break;
       }
     }
   renderBody=() => {
@@ -327,12 +314,18 @@ handlerename=e => {
     // console.log(111,this.state.signstartTime)
     // console.log(111,this.state.signendTime)
     const { music } = this.props;
-    if ((music.music.entities.list[music.music.selectid].bmt == 0 && music.music.entities.list[music.music.selectid].emt == 0) && (this.state.signstartTime == 0 && this.state.signendTime == 0)) {
+    if ((music.music.entities.list[music.music.selectid].bmt == 0 &&
+         music.music.entities.list[music.music.selectid].emt == 0) &&
+          (this.state.signstartTime == 0 && this.state.signendTime == 0)) {
       return (
         <div className="intercept">
           <div>
             <div className="intercept-1">
-              <img src={img4} className="intercept-start" onClick={this.signstart} /> <span className="intercept-descript">标记起点</span>
+              <img
+                src={img4}
+                className="intercept-start"
+                onClick={this.signstart}
+              /> <span className="intercept-descript">标记起点</span>
             </div>
           </div>
           <div>
@@ -342,7 +335,11 @@ handlerename=e => {
           </div>
           <div>
             <div className="intercept-1">
-              <img src={img5} className="intercept-start" onClick={this.signend} /> <span className="intercept-descript">标记终点</span>
+              <img
+                src={img5}
+                className="intercept-start"
+                onClick={this.signend}
+              /> <span className="intercept-descript">标记终点</span>
             </div>
           </div>
         </div>
@@ -357,12 +354,20 @@ handlerename=e => {
           </div>
           <div>
             <div className="intercept-1">
-              <img src={img9} className="intercept-start" onClick={this.cleansign} /> <span className="intercept-descript">清除</span>
+              <img
+                src={img9}
+                className="intercept-start"
+                onClick={this.cleansign}
+              /> <span className="intercept-descript">清除</span>
             </div>
           </div>
           <div>
             <div className="intercept-1">
-              <img src={img5} className="intercept-start" onClick={this.signend} /> <span className="intercept-descript">标记终点</span>
+              <img
+                src={img5}
+                className="intercept-start"
+                onClick={this.signend}
+              /> <span className="intercept-descript">标记终点</span>
             </div>
           </div>
         </div>
@@ -416,7 +421,7 @@ handlerename=e => {
       }
     }
     successsign=() => {
-      const { todoActions, music } = this.props;
+      const { todoActions } = this.props;
       const signstartTime = this.state.signstartTime;
       const signendTime = this.state.signendTime;
       // if(signstartTime!=0&&signendTime-signstartTime<10){
@@ -463,7 +468,8 @@ handlerename=e => {
             </div>
           );
         }// 渲染未确定的标记
-        if (music.music.entities.list[music.music.selectid].bmt > 0 && music.music.entities.list[music.music.selectid].emt == 0) { // 只渲染起点标记
+        if (music.music.entities.list[music.music.selectid].bmt > 0 &&
+             music.music.entities.list[music.music.selectid].emt == 0) { // 只渲染起点标记
           return (
             <img src={img4} className="startsign" style={{ left: `${signstartTime}` }} />
           );
@@ -508,7 +514,7 @@ handlerename=e => {
     }
 
     render() {
-      const { isAcitve, music } = this.props;
+      const { isAcitve } = this.props;
       if (isAcitve == true) {
         return (
           <div>

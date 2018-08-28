@@ -1,17 +1,16 @@
-import ActionTypes from '../const/ActionTypes';
-/* eslint-disable */
 import { normalize } from 'normalizr';
+import ActionTypes from '../const/ActionTypes';
 import * as schemes from '../schemes/index';
 
 export function login(mid) {
-  console.log(111,mid);
+  console.log(111, mid);
   return {
     Server_Api: {
       type: ActionTypes.Login,
       endpoint: '/login',
       params: {
         mid
-      },
+      }
       // normailzerFun: response => normalize(response.data, schemes.Data)
     }
   };
@@ -30,7 +29,7 @@ export function fetchmymusic(token) {
   };
 }
 export function fetchrecommendmusic(token) {
-  console.log(11111111111,token);
+  console.log(11111111111, token);
   return {
     Server_Api: {
       type: ActionTypes.Fetchrecommendmusic,
@@ -56,39 +55,39 @@ export function selectmoreid(id) {
 }
 export function deleteone() {
   return {
-    type: ActionTypes.Deleteone,
+    type: ActionTypes.Deleteone
   };
 }
 export function deletemore() {
   return {
-    type: ActionTypes.Deletemore,
+    type: ActionTypes.Deletemore
   };
 }
-export function onselect() {//点击单选
+export function onselect() { // 点击单选
   return {
-    type: ActionTypes.Onselect,
+    type: ActionTypes.Onselect
   };
 }
-export function onmoreselect() {//点击多选
+export function onmoreselect() { // 点击多选
   return {
-    type: ActionTypes.Onmoreselect,
+    type: ActionTypes.Onmoreselect
   };
 }
-export function rename(name) {//点击多选
+export function rename(name) { // 点击多选
   return {
     type: ActionTypes.Rename,
     name
   };
 }
-export function signtime(signstartTime,signendTime) {//加标记
+export function signtime(signstartTime, signendTime) { // 加标记
   return {
     type: ActionTypes.Signtime,
     signstartTime,
     signendTime
   };
 }
-export function cleansigntime() {//清除标记
+export function cleansigntime() { // 清除标记
   return {
-    type: ActionTypes.Cleansigntime,
+    type: ActionTypes.Cleansigntime
   };
 }

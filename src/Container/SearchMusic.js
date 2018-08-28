@@ -5,18 +5,18 @@ import * as todoActionCreators from '../actions/index';
 import Head from '../component/Music/Head';
 import Tabbar from '../component/Music/Tabbar';
 import './Music.css';
-/* eslint-disable */
+
 class SearchMusic extends React.Component {
-    componentDidMount=()=>{
-        const{todoActions}=this.props;
-        todoActions.login(109);
+    componentDidMount=() => {
+      const { todoActions } = this.props;
+      todoActions.login(109);
     }
     render() {
-        const{music,todoActions}=this.props;
+      const { music, todoActions } = this.props;
       return (
         <div className="Music-all">
-          <Head music={music} todoActions={todoActions}/>
-          <Tabbar music={music} todoActions={todoActions}/>
+          <Head music={music} todoActions={todoActions} />
+          <Tabbar music={music} todoActions={todoActions} />
         </div>
       );
     }
@@ -24,11 +24,11 @@ class SearchMusic extends React.Component {
 
 function mapStateToProps(state) {
   const {
-      music
+    music
   } = state;
-  console.log(music)
+  console.log(music);
   return {
-      music
+    music
   };
 }
 
