@@ -1,6 +1,7 @@
 .Select-all{
     display: flex;
     margin-top:10px;
+    height: 30px;
 }
 .Select-1-true{
     margin-left: 20px;
