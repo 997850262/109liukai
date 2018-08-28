@@ -1,10 +1,11 @@
-/* eslint-disable */
 const arr = [];
 export default store => next => action => {
+  console.log(store);
   const gettoken = res => {
     console.log('eeeeeeeee', res.data.token);
     arr.forEach(item => {
-      item.Server_Api.params.token = res.data.token;
+      const newitem = item;
+      newitem.Server_Api.params.token = res.data.token;
       next(item);
     });
   };
@@ -31,12 +32,14 @@ export default store => next => action => {
     arr.push(action);
     console.log(arr);
   } else {
-    action.Server_Api.params.gettoken = gettoken;
+    const newaction = action;
+    newaction.Server_Api.params.gettoken = gettoken;
     console.log('qqqqqq', action.Server_Api.params);
     return next(action);
   }
   // if(action.Server_Api.params.token!=undefined){
   //   next(action)
   // }
+  return null;
 };
 
