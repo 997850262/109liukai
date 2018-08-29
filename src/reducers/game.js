@@ -17,14 +17,14 @@ function initialize(state) {
   }
   for (let i = 0; i < 4; i++) {
     for (let j = 0; j < 3; j++) {
-      if (data[i][j] != 0 && data[i][j] != data[i][j + 1]) {
+      if (data[i][j] != 0 &&data[i][j + 1]!=0&& data[i][j] != data[i][j + 1]) {
         x++;
       }
     }
   }
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 4; j++) {
-      if (data[i][j] != 0 && data[i][j] != data[i + 1][j]) {
+      if (data[i][j] != 0 &&data[i + 1][j]!=0&& data[i][j] != data[i + 1][j]) {
         y++;
       }
     }
