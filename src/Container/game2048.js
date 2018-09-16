@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as todoActionCreators from '../actions/index';
 import Head from '../component/Game/Head';
 import Gamearea from '../component/Game/Gamearea';
+import '../component/Game/Game.css';
 
 class game2048 extends React.Component {
     componentDidMount=() => {
@@ -114,7 +115,7 @@ class game2048 extends React.Component {
       console.log(data);
       // this.initialize();
       return (
-        <div>
+        <div className="all">
           <Head
             data={data}
             Score={Score}

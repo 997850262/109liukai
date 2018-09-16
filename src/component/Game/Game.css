@@ -1,7 +1,13 @@
+.all{
+    margin: 0 auto;
+    width: 375px;
+    height:100% ;
+}
 .Head-all{
-    width: 50%;
+    width: 70%;
     height: 30%;
-    margin-left: 100px;
+    margin: 0 auto;
+    /* margin-left: 100px; */
     padding-top: 50px;
     display: flex;
     flex-direction: column;
@@ -125,9 +131,11 @@
     margin-top: 20px;
 }
 .game-all{
-    width: 50%;
-    margin-left: 100px;
+    width: 70%;
+    margin: 0 auto;
+    /* margin-left: 100px; */
     margin-top: 10px;
+    margin-bottom: 30px;
     height: 400px;
     background: rgba(145, 115, 16, 0.623);
     display: flex;
