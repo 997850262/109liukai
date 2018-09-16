@@ -3,11 +3,59 @@ import ActionTypes from '../const/ActionTypes';
 
 
 function music(state = {
-  data: {}, // 个人数据
-  entities: {}, // 我的音乐
-  result: [],
-  recommendentities: {}, // 推荐音乐
-  recommendresult: [],
+  data: { token: 1, nick: '刘凯' }, // 个人数据
+  entities: {
+    data: {
+      1: {
+        e: 1,
+        list: [1]
+      }
+    },
+    list:
+      {
+        1: {
+          id: 1,
+          bmt: 0,
+          emt: 0,
+          fmt: 'mp3',
+          name: '我的音乐.mp3',
+          m_url: 'https://www.xiami.com/play?ids=/song/playlist/id/1902782/object_name/default/object_id/0#loaded',
+          med: 1,
+          qid: 1,
+          singerL: '我的音乐.mp3',
+          t: 1
+        }
+      }
+
+  }, // 我的音乐
+  result: [1],
+  recommendentities: {
+    11: {
+      id: 1,
+      bmt: 0,
+      emt: 0,
+      fmt: 'mp3',
+      name: '推荐音乐.mp3',
+      m_url: 'http://music.taihe.com/song/790142',
+      med: 1,
+      qid: 1,
+      singerL: '推荐音乐.mp3',
+      t: 1
+    },
+    12: {
+      id: 1,
+      bmt: 0,
+      emt: 0,
+      fmt: 'mp3',
+      name: '推荐音乐2.mp3',
+      m_url: 'http://music.taihe.com/song/790142',
+      med: 1,
+      qid: 1,
+      singerL: '推荐音乐2.mp3',
+      t: 1
+    }
+  }, // 推荐音乐
+  recommendresult: [11, 12],
   selectid: 0, // 存单选id
   selectmoreid: []// 存多选id
 }, action) {
